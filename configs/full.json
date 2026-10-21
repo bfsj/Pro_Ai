@@ -1,0 +1,14 @@
+{
+  "batches": [1, 4, 8],
+  "input_lengths": [128, 512, 2048],
+  "new_tokens": 128,
+  "warmup": 2,
+  "repeats": 5,
+  "cache_modes": ["no_cache", "dynamic", "static"],
+  "norm_backends": ["torch", "triton"],
+  "check_input_length": 512,
+  "check_steps": 8,
+  "check_batch_size": 4,
+  "profile": true,
+  "profile_input_length": 512
+}

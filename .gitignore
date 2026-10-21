@@ -20,3 +20,4 @@ results/*
 traces/*
 !traces/.gitkeep
 .DS_Store
+.local-qa/

@@ -45,7 +45,7 @@ def test_cli_with_local_checkpoint(tiny_model, tmp_path, monkeypatch, capsys, co
     elif command == "generate":
         assert '"output_tokens": 2' in text
     elif command == "benchmark":
-        assert len(json.loads((tmp_path / "bench.json").read_text())["records"]) == 2
+        assert len(json.loads((tmp_path / "bench.json").read_text())["records"]) == 3
     elif command == "profile":
         trace = json.loads((tmp_path / "trace.json").read_text())
         names = {event.get("name") for event in trace["traceEvents"]}

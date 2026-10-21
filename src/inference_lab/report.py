@@ -1,4 +1,4 @@
-"""Render measured results. No example or fabricated performance numbers."""
+"""Render measured cache/normalization variants without inventing data."""
 
 import json
 from pathlib import Path
@@ -13,34 +13,35 @@ def plot_report(input_path, output_path):
     rows = report["summary"]
     if not rows:
         raise ValueError("No successful measurements to plot")
-    batches = sorted({row["batch_size"] for row in rows})
-    fig, axes = plt.subplots(1, 3, figsize=(16, 4.5))
+    variants = sorted({(r.get("cache_mode", "dynamic" if r["use_cache"] else "no_cache"),
+                        r.get("norm_backend", "torch"), r["batch_size"]) for r in rows})
+    fig, axes = plt.subplots(1, 3, figsize=(17, 5))
     metrics = [
         ("output_tokens_per_second_median", "Output throughput (tokens/s)"),
         ("decode_step_ms_median", "Mean decode step (ms)"),
         ("peak_allocated_mib_median", "Peak allocated GPU memory (MiB)"),
     ]
-    colors = plt.get_cmap("tab10")
-    for index, batch in enumerate(batches):
-        for cache in (False, True):
-            selected = sorted((r for r in rows if r["batch_size"] == batch and r["use_cache"] == cache),
-                              key=lambda r: r["input_length"])
-            for ax, (metric, label) in zip(axes, metrics):
-                valid = [r for r in selected if r[metric] is not None]
-                if valid:
-                    ax.plot([r["input_length"] for r in valid], [r[metric] for r in valid],
-                            marker="o", linestyle="-" if cache else "--", color=colors(index % 10),
-                            label=f"B={batch}, cache={'on' if cache else 'off'}")
-                ax.set_xlabel("Input tokens per sequence")
-                ax.set_ylabel(label)
-                ax.grid(alpha=0.25)
+    colors = plt.get_cmap("tab20")
+    for index, (mode, norm, batch) in enumerate(variants):
+        selected = sorted((r for r in rows if r["batch_size"] == batch
+                           and r.get("cache_mode", "dynamic" if r["use_cache"] else "no_cache") == mode
+                           and r.get("norm_backend", "torch") == norm), key=lambda r: r["input_length"])
+        for ax, (metric, label) in zip(axes, metrics):
+            valid = [r for r in selected if r.get(metric) is not None]
+            if valid:
+                ax.plot([r["input_length"] for r in valid], [r[metric] for r in valid],
+                        marker="o", color=colors(index % 20),
+                        linestyle="--" if norm == "torch" else "-",
+                        label=f"B={batch} {mode}/{norm}")
+            ax.set(xlabel="Input tokens per sequence", ylabel=label)
+            ax.grid(alpha=0.25)
     for ax in axes:
         if ax.lines:
-            ax.legend(fontsize=8)
+            ax.legend(fontsize=6)
         else:
             ax.text(0.5, 0.5, "No measurements for this metric", ha="center", transform=ax.transAxes)
     env = report["environment"]
-    fig.suptitle(f"{report['configuration']['model']} | {env.get('gpu', 'CPU')} | medians of repeated runs")
+    fig.suptitle(f"{report['configuration']['model']} | {env.get('gpu', 'CPU')} | repeated-run medians")
     fig.tight_layout()
     path = Path(output_path)
     path.parent.mkdir(parents=True, exist_ok=True)

@@ -1,0 +1,13 @@
+{
+  "batches": [1, 2],
+  "input_lengths": [16, 64],
+  "new_tokens": 8,
+  "warmup": 1,
+  "repeats": 3,
+  "cache_modes": ["no_cache", "dynamic", "static"],
+  "norm_backends": ["torch"],
+  "check_input_length": 16,
+  "check_steps": 4,
+  "check_batch_size": 1,
+  "profile": false
+}

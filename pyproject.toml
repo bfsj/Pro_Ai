@@ -4,8 +4,8 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "pro-ai"
-version = "0.1.0"
-description = "A hands-on lab for single-GPU LLM decoding, KV cache and performance analysis"
+version = "0.2.0"
+description = "Single-GPU LLM inference: controlled KV cache experiments, Triton RMSNorm and reproducible reports"
 readme = "README.md"
 requires-python = ">=3.10"
 dependencies = [
@@ -16,6 +16,7 @@ dependencies = [
 
 [project.optional-dependencies]
 dev = ["pytest>=8,<10"]
+gpu = ["triton>=3.2,<4; platform_system == 'Linux'"]
 
 [project.scripts]
 inference-lab = "inference_lab.cli:main"

@@ -1,130 +1,153 @@
-# Pro_Ai
+# Pro_Ai · Single-GPU LLM Inference Lab
 
-面向 AI Infra的实践项目。第一阶段围绕 **单卡 LLM 推理、KV Cache 正确性与性能分析**，推荐在 RTX 4090 上使用 Qwen3-0.6B 完成实验。
+面向 AI Infra 实习准备的单卡推理实验项目。围绕同一个 dense Qwen3 模型，完成 **推理循环 → 缓存正确性 → 受控性能实验 → Triton 算子 → 端到端验证 → 可复现报告**。
 
-代码提供可运行的参考实现；真正需要自己完成的是阅读、实验、解释瓶颈和提出改进。现有功能不应在简历中表述为个人从零独立实现。
+## 核心成果
 
-## 当前范围
+| 模块 | 实现与验收 |
+| --- | --- |
+| 推理引擎 | 自定义 greedy Prefill/Decode；no-cache、DynamicCache、StaticCache 三种路径；显式 cache position |
+| 正确性 | 固定 token 序列逐位置比较 logits；动态/静态缓存、mask、输出长度、批量输入；低精度失败原样保留 |
+| 性能实验 | 相同输入、固定生成量、预热、交错重复测量；分阶段耗时、吞吐、额外峰值显存、缓存字节数 |
+| Triton | 推理用 RMSNorm，FP32 reduction，保持 Qwen3 舍入顺序；对比 eager 和 torch.compile；可接回模型 |
+| 实验交付 | 一条 suite 命令输出正确性 JSON、原始测量、CSV、曲线、Markdown 报告和 Profiler trace |
+| 工程验证 | 离线微型 Qwen3 CPU 测试、条件 GPU 测试、GitHub Actions；无须下载模型即可测逻辑 |
 
-- 手写无缓存 / 有缓存的逐 token 生成循环。
-- 使用固定 token 序列验证完整前向与缓存增量前向的 logits。
-- 检查各层 KV shape，比较 GQA 缓存理论大小与实际张量大小。
-- 批量测试输入长度、batch size 与缓存开关，保存每次测量和汇总结果。
-- 生成吞吐、Decode 耗时与显存曲线。
-- 导出单独的 PyTorch Profiler trace。
-- 使用随机初始化的微型 Qwen3 运行离线 CPU 测试，配置 GitHub Actions。
+**范围：** 单 GPU、等长无 padding、固定输出长度、忽略 EOS。尚未实现生产服务、在线调度、多卡训练或多租户隔离。StaticCache / DynamicCache 来自 Transformers；本项目的工作在于推理执行、策略集成、实验设计、算子和验证。
 
-**验证边界：** 初始版本已在 Python 3.13.5、PyTorch 2.11.0+cpu、Transformers 4.57.6 上通过 19 项测试，包含本地 checkpoint 的命令行集成检查。CPU 测试检查代码逻辑，不代表已在 4090 上验证性能。仓库没有预填任何 GPU 加速数字。GPU 测量需要在你实际使用的机器上执行。
+真实结果会收录到 [实验目录](docs/experiments/README.md)。数字只适用于报告中列明的模型、设备与工作负载。
 
-## 环境准备
+## 快速开始
 
-推荐 Linux + Python 3.11；Windows 可以使用 WSL2。第一阶段只依赖 PyTorch / Transformers，不需要安装 vLLM、FlashAttention 或编译自定义 CUDA 算子。
+推荐 Linux、Python 3.11、CUDA 版 PyTorch；CPU 也能完成 smoke 和测试。
 
 ```bash
 git clone https://github.com/bfsj/Pro_Ai.git
 cd Pro_Ai
 python3 -m venv .venv
 source .venv/bin/activate
-python -m pip install --upgrade pip
-```
-
-在 [PyTorch 官方安装页面](https://pytorch.org/get-started/locally/)选择与你的 NVIDIA 驱动兼容的 CUDA 构建，先执行页面给出的 PyTorch 安装命令，再安装本项目：
-
-```bash
+# 先按 https://pytorch.org/get-started/locally/ 安装适配驱动的 PyTorch
 python -m pip install -e ".[dev]"
 python -m inference_lab env
-```
-
-GPU 实验要求输出中 `cuda_available` 为 `true`，且 GPU 型号与你准备使用的设备一致。`nvidia-smi` 中的 CUDA 版本表示驱动支持上限，不等同于 PyTorch 自带运行时版本。请保存实际环境信息。
-
-第一次加载 `Qwen/Qwen3-0.6B` 会从 Hugging Face 下载权重，也可以把 `--model` 指向已有的本地模型目录。当前脚本仅支持普通 dense Qwen3，统一使用等长、无 padding 的输入。
-
-## 今天先做这三步
-
-```bash
-# 1. 检查 logits、每层 K/V shape、权重和缓存大小
-python -m inference_lab inspect
-
-# 2. 跑通自己可逐行阅读的生成循环
-python -m inference_lab generate --prompt "解释 Prefill 和 Decode 的区别。" --new-tokens 64
-python -m inference_lab generate --prompt "解释 Prefill 和 Decode 的区别。" --new-tokens 64 --no-cache
-
-# 3. 先用 FP32 建立更严格的缓存正确性基线
-python -m inference_lab check --dtype float32 --input-length 128 --steps 8
-```
-
-阅读入口是 [`src/inference_lab/core.py`](src/inference_lab/core.py)。建议先画出一次 Prefill、两次 Decode 的张量变化，再尝试自行重写生成循环并运行测试。
-
-生成命令关闭 Qwen3 thinking，使用 greedy，并固定生成步数、忽略 EOS。这是实验用循环，可能生成重复文字，不代表推荐的对话采样策略。
-
-## 4090 上的性能实验
-
-先跑小规模烟雾测试：
-
-```bash
-python -m inference_lab benchmark --batch-sizes 1 --input-lengths 128 --new-tokens 16 --warmup 1 --repeats 2 --output results/smoke.json
-```
-
-确认通过后，再运行 18 组配置。默认 BF16，输入长度 128/512/2048，batch 1/4/8，缓存开/关，输出固定 128 tokens；每组预热 2 次、测量 5 次：
-
-```bash
-python -m inference_lab check --dtype bfloat16
-python -m inference_lab benchmark --output results/4090-baseline.json
-python -m inference_lab plot --input results/4090-baseline.json --output results/4090-baseline.png
-```
-
-输出包含软件环境、模型 revision（能够获取时）、工作负载、原始逐次结果、中位数和吞吐最小/最大值。输入由固定 seed 生成，cache 开关使用相同 prompt；配置顺序打乱以减少固定运行顺序的影响。OOM 记录为 `oom`，不会当成有效测量。
-
-已有结果不会被覆盖，请为每次实验使用不同文件名。关闭其他占用 GPU 的任务，并记录功耗限制等可能影响结果的运行条件。
-
-### 指标定义
-
-| 字段 | 含义 |
-| --- | --- |
-| `prefill_first_token_ms` | 完整 prompt 前向、首次 argmax 和写入首 token 的本地耗时 |
-| `decode_steps` | `new_tokens - 1`，第一个生成 token 已在 Prefill 阶段产生 |
-| `decode_step_ms` | 后续 Decode 总耗时 / Decode 步数；每步处理整个 batch |
-| `total_ms` | 上述两阶段的完整本地推理耗时 |
-| `output_tokens_per_second` | `batch_size × new_tokens / 完整推理秒数` |
-| `peak_allocated_mib` | PyTorch CUDA 峰值 allocated，包含模型和当前实验的活跃张量 |
-| `peak_reserved_mib` | PyTorch CUDA 峰值 reserved；包含分配器保留内存 |
-| `kv_cache_mib` | 最终持有的 K/V 张量字节数，不是整个进程显存 |
-
-采用同步后的 wall-clock 计时：Prefill 与 Decode 边界同步，不在每个 token 后同步。权重加载、tokenization、输入搬运及预热不计入耗时。Profiler 记录标记在两种模式中保持一致。这里没有网络与请求队列，因此 Prefill 指标不是线上服务的 TTFT。
-
-在生成 N 个 token 后，缓存长度为 `prompt_length + N - 1`：最后生成的 token 尚未再次送入模型。对于普通 dense GQA 缓存，理论字节数为：
-
-```text
-2 × 层数 × batch × 缓存长度 × KV 头数 × head_dim × 每元素字节数
-```
-
-缓存正确性使用 teacher forcing：两种路径读取完全相同的 token 序列，比较相同位置的 logits。默认 FP32 容差 `atol=rtol=1e-4`，低精度为 `0.05`；报告保留最大绝对误差。低精度容差更宽，不可据此声称逐位相同，也不要为了通过测试随意调宽阈值。
-
-## 性能分析
-
-```bash
-python -m inference_lab profile --input-length 512 --new-tokens 32 --output traces/cache-on.json
-python -m inference_lab profile --input-length 512 --new-tokens 32 --no-cache --output traces/cache-off.json
-```
-
-在 [Perfetto](https://ui.perfetto.dev/) 中打开 trace，查看 `prefill`、`decode` 区域、CPU/GPU 间隙、内存分配和主要算子。分析产生额外开销，trace 中的时间不作为正式 benchmark 数字。
-
-## 本地测试
-
-```bash
 python -m pytest -q
 ```
 
-测试使用随机初始化的微型 Qwen3，不下载模型、不需要 GPU；覆盖 eager/SDPA 的缓存正确性、生成长度和输出一致性、GQA 缓存字节数、结果存储及绘图。CPU 数字只用于检查运行链路，不用于 GPU 性能结论。
+服务器已有环境可直接使用：
 
-如果只有 CPU，可显式用 `--device cpu --dtype float32` 运行各模型命令；请把 benchmark 缩小到单条短输入。完整实验应在 4090 上进行。
+```bash
+source /home/optics/miniforge3/etc/profile.d/conda.sh
+conda activate JD_Pro
+cd /data/optics/JD/SN/Pro_Ai
+export PYTHONNOUSERSITE=1
+export HF_HUB_OFFLINE=1
+export PRO_AI_MODEL=/data/optics/JD/SN/models/Qwen3-0.6B
+# 用 nvidia-smi 选空闲卡，将编号替换为实际可用设备
+export CUDA_VISIBLE_DEVICES=1
+```
 
-## 学习与记录
+模型解析顺序：`--model` > `PRO_AI_MODEL` > 仓库同级 `models/Qwen3-0.6B` > Hugging Face 模型 ID。迁移项目后执行一次 `python -m pip install --no-deps --no-build-isolation -e .` 更新 editable 路径。权重不提交 Git。
 
-- [第一阶段 10 天任务](docs/first-10-days.md)
-- [实验报告模板](docs/experiment-report-template.md)
-- [下一阶段：阅读 nano-vLLM](https://github.com/GeeeekExplorer/nano-vllm)
+## 一键完成实验
 
-`results/`、`traces/` 和模型权重默认不提交。整理出你实际分析过的图表与报告后，可将其放到 `docs/experiments/` 并主动提交。模型遵循其各自许可证。
+先执行小规模实验，默认 FP32：
 
-参考：[Qwen3 模型卡](https://huggingface.co/Qwen/Qwen3-0.6B)、[KV Cache 原理](https://huggingface.co/docs/transformers/v4.57.1/cache_explanation)、[PyTorch 测速](https://docs.pytorch.org/tutorials/recipes/recipes/benchmark.html)、[PyTorch Profiler](https://docs.pytorch.org/tutorials/recipes/recipes/profiler_recipe.html)。
+```bash
+python -m inference_lab suite --config configs/smoke.json --output-dir results/smoke-v1
+```
+
+正式实验包含两种 batch、三种长度、三种缓存、两种 Norm backend。需要 Linux/CUDA/Triton：
+
+```bash
+python -m inference_lab suite --config configs/resume.json --output-dir results/resume-v1
+```
+
+suite 首先运行 **FP32 逐位置一致性门禁**，通过才继续。随后执行受控 benchmark，并输出：
+
+```text
+results/resume-v1/
+├── requested-config.json
+├── correctness-fp32.json
+├── benchmark.json
+├── traces/                  # 诊断 trace 和算子耗时摘要
+└── report/
+    ├── report.md
+    ├── summary.csv
+    ├── measurements.json
+    └── performance.png
+```
+
+更大的扫描配置在 `configs/full.json`，耗时更长。CPU smoke 使用 `--device cpu --dtype float32`；CPU 配置应保持 `norm_backends: ["torch"]`。
+
+`suite --dtype bfloat16` 会额外记录低精度诊断，失败不会被改写成通过。性能通过不代表低精度质量通过。
+
+## 单独运行各模块
+
+```bash
+# 模型结构、缓存形状和理论大小
+python -m inference_lab inspect --cache-mode static
+
+# 三种生成路径
+python -m inference_lab generate --cache-mode no_cache --new-tokens 32
+python -m inference_lab generate --cache-mode dynamic --new-tokens 32
+python -m inference_lab generate --cache-mode static --new-tokens 32
+
+# 严格 FP32 正确性；失败时输出 JSON 并返回非零退出码
+python -m inference_lab check --cache-mode static --input-length 128 --steps 8 --output results/check-static.json
+
+# 收集 BF16 数值差异；diagnostic 保留失败结果但允许命令完成
+python -m inference_lab check --dtype bfloat16 --batch-size 4 --input-length 512 --diagnostic --output results/bf16-diagnostic.json
+
+# 只测缓存策略
+python -m inference_lab benchmark --batch-sizes 1 4 --input-lengths 128 512 --new-tokens 32 --output results/cache.json
+
+# 单独导出性能分析文件；不把 profiler 时间当正式测速
+python -m inference_lab profile --cache-mode dynamic --input-length 512 --output traces/dynamic.json
+
+# 测 RMSNorm，排除编译，比较 eager / compile / Triton
+python -m inference_lab kernel-benchmark --rows 1 8 128 512 --widths 128 1024 2048 --output results/norm.json
+python -m inference_lab report --kind kernel --input results/norm.json --output-dir results/norm-report
+
+# 从已有原始数据生成报告
+python -m inference_lab report --input results/cache.json --output-dir results/cache-report
+```
+
+所有输出使用新文件/目录，避免替换已有实验。
+
+## 指标与公平性
+
+- 所有路径使用相同 token IDs、精度和 Attention backend；只将最后一个位置投影到词表，统一预分配输出 buffer。
+- 每次运行使用新缓存；静态缓存的初始惰性分配计入 Prefill。静态缓存不保证更快，容量和 mask 本身也有开销。
+- 首次 Prefill 产生第 1 个输出，后续 Decode 共 N-1 步。最终缓存长度是 `prompt_length + N - 1`。
+- 耗时为同步后的 wall-clock，包含 Python、采样和模型执行；不在每个 token 后同步。加载、分词、输入搬运、预热与编译不计入。
+- `output_tokens_per_second` = 实际 batch × 固定输出数量 / 完整推理时间。
+- `decode_step_ms` 是本地 Decode 平均每步耗时，不是服务端 P95 ITL；Prefill 指标不等于线上 TTFT。
+- `peak_allocated_mib` 包含模型；`extra_peak_allocated_mib` 扣除运行前活跃分配；reserved 与进程显存不是同一指标。
+- 普通 GQA 缓存理论字节数：`2 × 层数 × batch × 缓存容量 × KV头数 × head_dim × 每元素字节数`。
+- 重复测量保存原始值、中位数和 CV。GPU 快照保留在报告中；共享机器仍可能产生干扰。
+
+## 从哪里读代码
+
+```text
+src/inference_lab/
+├── kv_cache_exercise.py   # 保留的个人学习练习
+├── core.py                # 三种执行路径、位置/缓存管理、正确性诊断
+├── benchmark.py           # 相同工作负载、交错重复、统计和环境记录
+├── triton_ops.py          # RMSNorm GPU kernel
+├── kernels.py             # 模型接入、算子对照实验
+├── experiments.py         # 一键实验与 Profiler
+├── artifacts.py           # CSV、图表、Markdown 报告
+├── report.py              # 性能曲线
+└── cli.py                 # 参数和模型加载
+```
+
+建议按 [阅读路线](docs/reading-guide.md) 一点点阅读，再按 [面试讲解与简历边界](docs/interview-guide.md) 练习复述。
+
+## 设计资料与参考
+
+- [Transformers 缓存策略](https://huggingface.co/docs/transformers/v4.57.1/kv_cache)
+- [PyTorch 数值精度](https://docs.pytorch.org/docs/2.11/notes/numerical_accuracy.html)
+- [PyTorch Profiler](https://docs.pytorch.org/tutorials/recipes/recipes/profiler_recipe.html)
+- [Triton LayerNorm 教程](https://triton-lang.org/main/getting-started/tutorials/05-layer-norm.html)
+- [nano-vLLM](https://github.com/GeeeekExplorer/nano-vllm)：学习参考；本项目不将其已有功能列为自行实现。
+
+项目代码在 AI 辅助下整理。简历应描述你实际理解、验证和维护的工作；未独立完成的部分不要写成独立从零实现。
