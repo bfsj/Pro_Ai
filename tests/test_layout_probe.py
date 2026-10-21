@@ -27,6 +27,9 @@ def test_probe_records_and_restores_sdpa(tiny_model):
     # then reports False for the different shapes; Q must remain unchanged.
     assert result["dynamic"]["first_layer_qkv_equal"][0]
     assert result["no_cache_repeat"]["first_layer_qkv_equal"] == [True, True, True]
+    uniform = module.probe(tiny_model, synthetic_ids(97, 2, 4, "cpu", 7), uniform_explicit_mask=True)
+    assert uniform["dynamic"]["max_abs_error"] < 1e-4
+    assert functional.scaled_dot_product_attention is original
 
 
 def test_probe_restores_on_failure():

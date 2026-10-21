@@ -18,7 +18,7 @@ from inference_lab.experiments import save_json
 
 
 @contextmanager
-def intercept_sdpa(capture, force_contiguous):
+def intercept_sdpa(capture, force_contiguous, uniform_explicit_mask=False):
     original = functional.scaled_dot_product_attention
 
     def wrapped(query, key, value, *args, **kwargs):
@@ -29,11 +29,23 @@ def intercept_sdpa(capture, force_contiguous):
                                "contiguous": tensor.is_contiguous()}
                         for name, tensor in (("q", query), ("k", key), ("v", value))},
                 mask_shape=list(mask.shape) if mask is not None else None,
+                mask_dtype=str(mask.dtype) if mask is not None else None,
                 is_causal=kwargs.get("is_causal", False),
                 enable_gqa=kwargs.get("enable_gqa", False),
                 first_layer_values=[tensor.detach().cpu().clone() for tensor in (query, key, value)],
             )
-        if force_contiguous:
+        if uniform_explicit_mask:
+            if args or query.shape[-2] != key.shape[-2]:
+                raise ValueError("Uniform-mask intervention is for equal-length prefill only")
+            groups = query.shape[1] // key.shape[1]
+            key = key.repeat_interleave(groups, dim=1)
+            value = value.repeat_interleave(groups, dim=1)
+            length = query.shape[-2]
+            mask = torch.full((length, length), torch.finfo(query.dtype).min,
+                              dtype=query.dtype, device=query.device).triu(1)
+            kwargs.update(attn_mask=mask[None, None].expand(query.shape[0], 1, length, length).contiguous(),
+                          is_causal=False, enable_gqa=False)
+        if force_contiguous or uniform_explicit_mask:
             query, key, value = query.contiguous(), key.contiguous(), value.contiguous()
         return original(query, key, value, *args, **kwargs)
 
@@ -45,7 +57,7 @@ def intercept_sdpa(capture, force_contiguous):
 
 
 @torch.inference_mode()
-def probe(model, ids, *, force_contiguous=False):
+def probe(model, ids, *, force_contiguous=False, uniform_explicit_mask=False):
     results = {}
     reference = None
     first_values = None
@@ -55,7 +67,7 @@ def probe(model, ids, *, force_contiguous=False):
                         ("dynamic", "dynamic"), ("static", "static")):
         capture = {}
         cache = make_cache(model, mode, ids.shape[1])
-        with intercept_sdpa(capture, force_contiguous):
+        with intercept_sdpa(capture, force_contiguous, uniform_explicit_mask):
             logits = forward_last(model, ids, use_cache=mode != "no_cache",
                                   past_key_values=cache, cache_position=positions).logits.float()
         if not capture:
@@ -89,10 +101,11 @@ def main():
     result = {"environment": environment(), "configuration": vars(args),
               "original_layout": probe(model, ids),
               "force_contiguous_qkv": probe(model, ids, force_contiguous=True),
+              "uniform_explicit_mask": probe(model, ids, uniform_explicit_mask=True),
               "scope": "Prefill only; layout intervention changes SDPA execution, not a production fix. "
                        "Does not establish incremental BF16 correctness or isolate a specific hardware kernel."}
     save_json(args.output, result)
-    for intervention in ("original_layout", "force_contiguous_qkv"):
+    for intervention in ("original_layout", "force_contiguous_qkv", "uniform_explicit_mask"):
         print(intervention, {mode: row["max_abs_error"] for mode, row in result[intervention].items()})
 
 
