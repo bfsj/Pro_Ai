@@ -31,6 +31,16 @@
 
 选两三个最有代表性的实测配置补充数值：精度、batch、输入/输出长度、硬件和比较基线必须能说清楚。不要把实验中的最大倍数概括成所有场景的普遍收益。
 
+### 已有数据支持的版本
+
+> **Pro_Ai：单卡 LLM 推理与 Triton 算子实验（Python / PyTorch / Triton）**
+>
+> 实现显式 Prefill/Decode 执行循环，集成动态/静态 KV Cache，建立逐位置 logits 一致性校验与 52 项自动化测试；在 RTX 4090 / Qwen3-0.6B、FP32、B=4、输入 1024 / 输出 32 的实验中，动态缓存吞吐相对完整前缀重算基线从 21.87 提高至 149.32 tokens/s（6.83×）。
+>
+> 实现并接入 Triton RMSNorm，设计 eager / torch.compile / Triton 算子对照与独立端到端复测；FP32、B=1、输入 512 / 输出 32 时动态缓存推理吞吐从 49.28 提高至 53.43 tokens/s（+8.4%，10 次重复），保留原始测量、Profiler 摘要及 BF16 数值差异分析。
+
+先完成 [阅读路线](reading-guide.md)，能复现和解释上述两条后，再按自己实际负责的范围选用。“52 项测试”包含 GPU 条件测试，不是声称写了 52 个独立测试函数。缓存是集成 Transformers Cache，而非自行实现 PagedAttention；6.83× 的基线是无缓存，不能换写成“相对 vLLM 加速”。
+
 ## 归属与范围
 
 - 预训练模型：Qwen3；模型结构与 Cache 类：Transformers；参考学习：nano-vLLM、Triton 官方教程。

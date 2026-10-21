@@ -15,7 +15,13 @@
 
 **范围：** 单 GPU、等长无 padding、固定输出长度、忽略 EOS。尚未实现生产服务、在线调度、多卡训练或多租户隔离。StaticCache / DynamicCache 来自 Transformers；本项目的工作在于推理执行、策略集成、实验设计、算子和验证。
 
-真实结果会收录到 [实验目录](docs/experiments/README.md)。数字只适用于报告中列明的模型、设备与工作负载。
+真实结果已收录到 [实验目录](docs/experiments/README.md)。在 RTX 4090 / Qwen3-0.6B 上：
+
+- FP32、B=4、输入 1024 / 输出 32：动态缓存吞吐 **21.87 → 149.32 tokens/s（6.83×）**，基线为完整前缀重复计算。
+- FP32、B=1、输入 512 / 输出 32：接入 Triton RMSNorm 后，独立十次复测吞吐 **49.28 → 53.43 tokens/s（+8.4%）**。
+- 保存 180 次正式推理测量、40 次复测、36 组算子结果；服务器 **52 项测试通过**。BF16 指定逐元素校验失败，诊断如实保留。
+
+数字只适用于上述精度、模型与工作负载。算子更快不等于完整推理同比例加速；静态缓存也不保证更快。[查看完整证据与局限](docs/experiments/20261021-4090/README.md)。
 
 ## 快速开始
 
@@ -97,6 +103,9 @@ python -m inference_lab check --cache-mode static --input-length 128 --steps 8 -
 # 收集 BF16 数值差异；diagnostic 保留失败结果但允许命令完成
 python -m inference_lab check --dtype bfloat16 --batch-size 4 --input-length 512 --diagnostic --output results/bf16-diagnostic.json
 
+# 隔离 Prefill：记录 SDPA 的 mask/GQA/布局，再进行受控干预
+python scripts/attention_layout_probe.py --output results/attention-layout.json
+
 # 只测缓存策略
 python -m inference_lab benchmark --batch-sizes 1 4 --input-lengths 128 512 --new-tokens 32 --output results/cache.json
 
@@ -139,6 +148,8 @@ src/inference_lab/
 ├── report.py              # 性能曲线
 └── cli.py                 # 参数和模型加载
 ```
+
+`scripts/attention_layout_probe.py` 是独立诊断程序，临时截获 SDPA，仅用于单独进程中的 Prefill 对照，不是正式推理实现或低精度修复。
 
 建议按 [阅读路线](docs/reading-guide.md) 一点点阅读，再按 [面试讲解与简历边界](docs/interview-guide.md) 练习复述。
 

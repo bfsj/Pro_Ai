@@ -1,0 +1,471 @@
+{
+  "environment": {
+    "python": "3.11.16",
+    "platform": "Linux-5.15.0-198-generic-x86_64-with-glibc2.35",
+    "torch": "2.11.0+cu128",
+    "transformers": "4.57.6",
+    "cuda_runtime": "12.8",
+    "cuda_available": true,
+    "cuda_visible_devices": "1",
+    "float32_matmul_precision": "highest",
+    "cpu_threads": 2,
+    "triton": "3.6.0",
+    "gpu_index": 0,
+    "gpu": "NVIDIA GeForce RTX 4090",
+    "gpu_memory_mib": 24082.875,
+    "gpu_uuid": "525e2e74-7f40-caf7-ad9f-bf067ed324b4",
+    "gpu_snapshot": [
+      {
+        "physical_index": "0",
+        "uuid": "GPU-4a162cf8-b89c-c762-3ead-a0646cf6b020",
+        "name": "NVIDIA GeForce RTX 4090",
+        "memory_used_mib": "23834",
+        "memory_total_mib": "24564",
+        "utilization_percent": "0",
+        "driver_version": "595.99.02"
+      },
+      {
+        "physical_index": "1",
+        "uuid": "GPU-525e2e74-7f40-caf7-ad9f-bf067ed324b4",
+        "name": "NVIDIA GeForce RTX 4090",
+        "memory_used_mib": "2829",
+        "memory_total_mib": "24564",
+        "utilization_percent": "25",
+        "driver_version": "595.99.02"
+      },
+      {
+        "physical_index": "2",
+        "uuid": "GPU-f9c9454d-bdce-8faf-9c99-fe5c87f58e99",
+        "name": "NVIDIA GeForce RTX 4090",
+        "memory_used_mib": "5106",
+        "memory_total_mib": "24564",
+        "utilization_percent": "100",
+        "driver_version": "595.99.02"
+      }
+    ],
+    "source_commit": "6eb05740822544f35f477d27803b0f4785b229ab",
+    "source_dirty": false
+  },
+  "dtype": "float32",
+  "checks": {
+    "dynamic": {
+      "passed": true,
+      "comparisons": 9,
+      "max_abs_error": 3.147125244140625e-05,
+      "atol": 0.0001,
+      "rtol": 0.0001,
+      "cache_tokens": 136,
+      "cache_mode": "dynamic",
+      "steps": [
+        {
+          "sequence_length": 128,
+          "passed": true,
+          "max_abs_error": 1.8596649169921875e-05,
+          "mean_abs_error": 3.10075097331719e-06,
+          "rmse": 3.900143838109216e-06,
+          "mismatch_fraction": 0.0,
+          "top1_agreement": 1.0,
+          "cached_input_tokens": 128
+        },
+        {
+          "sequence_length": 129,
+          "passed": true,
+          "max_abs_error": 1.806020736694336e-05,
+          "mean_abs_error": 2.757565198407974e-06,
+          "rmse": 3.516715196383302e-06,
+          "mismatch_fraction": 0.0,
+          "top1_agreement": 1.0,
+          "cached_input_tokens": 1
+        },
+        {
+          "sequence_length": 130,
+          "passed": true,
+          "max_abs_error": 1.621246337890625e-05,
+          "mean_abs_error": 2.6189391064690426e-06,
+          "rmse": 3.3358269320160616e-06,
+          "mismatch_fraction": 0.0,
+          "top1_agreement": 1.0,
+          "cached_input_tokens": 1
+        },
+        {
+          "sequence_length": 131,
+          "passed": true,
+          "max_abs_error": 2.3245811462402344e-05,
+          "mean_abs_error": 3.1151985240285285e-06,
+          "rmse": 3.901352101820521e-06,
+          "mismatch_fraction": 0.0,
+          "top1_agreement": 1.0,
+          "cached_input_tokens": 1
+        },
+        {
+          "sequence_length": 132,
+          "passed": true,
+          "max_abs_error": 2.187490463256836e-05,
+          "mean_abs_error": 4.7522644308628514e-06,
+          "rmse": 5.720201897929655e-06,
+          "mismatch_fraction": 0.0,
+          "top1_agreement": 1.0,
+          "cached_input_tokens": 1
+        },
+        {
+          "sequence_length": 133,
+          "passed": true,
+          "max_abs_error": 1.2516975402832031e-05,
+          "mean_abs_error": 1.979369471882819e-06,
+          "rmse": 2.4892597139114514e-06,
+          "mismatch_fraction": 0.0,
+          "top1_agreement": 1.0,
+          "cached_input_tokens": 1
+        },
+        {
+          "sequence_length": 134,
+          "passed": true,
+          "max_abs_error": 1.4543533325195312e-05,
+          "mean_abs_error": 2.200700009780121e-06,
+          "rmse": 2.805764097502106e-06,
+          "mismatch_fraction": 0.0,
+          "top1_agreement": 1.0,
+          "cached_input_tokens": 1
+        },
+        {
+          "sequence_length": 135,
+          "passed": true,
+          "max_abs_error": 3.147125244140625e-05,
+          "mean_abs_error": 6.022869456501212e-06,
+          "rmse": 7.260874099301873e-06,
+          "mismatch_fraction": 0.0,
+          "top1_agreement": 1.0,
+          "cached_input_tokens": 1
+        },
+        {
+          "sequence_length": 136,
+          "passed": true,
+          "max_abs_error": 1.5974044799804688e-05,
+          "mean_abs_error": 2.6822378913493594e-06,
+          "rmse": 3.378586825419916e-06,
+          "mismatch_fraction": 0.0,
+          "top1_agreement": 1.0,
+          "cached_input_tokens": 1
+        }
+      ],
+      "interpretation": "Elementwise logits test; top1 agreement alone is not a correctness proof."
+    },
+    "static": {
+      "passed": true,
+      "comparisons": 9,
+      "max_abs_error": 2.3365020751953125e-05,
+      "atol": 0.0001,
+      "rtol": 0.0001,
+      "cache_tokens": 136,
+      "cache_mode": "static",
+      "steps": [
+        {
+          "sequence_length": 128,
+          "passed": true,
+          "max_abs_error": 0.0,
+          "mean_abs_error": 0.0,
+          "rmse": 0.0,
+          "mismatch_fraction": 0.0,
+          "top1_agreement": 1.0,
+          "cached_input_tokens": 128
+        },
+        {
+          "sequence_length": 129,
+          "passed": true,
+          "max_abs_error": 1.1086463928222656e-05,
+          "mean_abs_error": 1.9237993456044933e-06,
+          "rmse": 2.435408987366827e-06,
+          "mismatch_fraction": 0.0,
+          "top1_agreement": 1.0,
+          "cached_input_tokens": 1
+        },
+        {
+          "sequence_length": 130,
+          "passed": true,
+          "max_abs_error": 1.5735626220703125e-05,
+          "mean_abs_error": 2.6432167032908183e-06,
+          "rmse": 3.350410906932666e-06,
+          "mismatch_fraction": 0.0,
+          "top1_agreement": 1.0,
+          "cached_input_tokens": 1
+        },
+        {
+          "sequence_length": 131,
+          "passed": true,
+          "max_abs_error": 1.8477439880371094e-05,
+          "mean_abs_error": 2.3350532956101233e-06,
+          "rmse": 2.9502209599741036e-06,
+          "mismatch_fraction": 0.0,
+          "top1_agreement": 1.0,
+          "cached_input_tokens": 1
+        },
+        {
+          "sequence_length": 132,
+          "passed": true,
+          "max_abs_error": 1.4066696166992188e-05,
+          "mean_abs_error": 2.8053950700268615e-06,
+          "rmse": 3.402044512768043e-06,
+          "mismatch_fraction": 0.0,
+          "top1_agreement": 1.0,
+          "cached_input_tokens": 1
+        },
+        {
+          "sequence_length": 133,
+          "passed": true,
+          "max_abs_error": 9.074807167053223e-06,
+          "mean_abs_error": 1.6107433111756109e-06,
+          "rmse": 2.025413778028451e-06,
+          "mismatch_fraction": 0.0,
+          "top1_agreement": 1.0,
+          "cached_input_tokens": 1
+        },
+        {
+          "sequence_length": 134,
+          "passed": true,
+          "max_abs_error": 1.0251998901367188e-05,
+          "mean_abs_error": 1.8533373804530129e-06,
+          "rmse": 2.324856950508547e-06,
+          "mismatch_fraction": 0.0,
+          "top1_agreement": 1.0,
+          "cached_input_tokens": 1
+        },
+        {
+          "sequence_length": 135,
+          "passed": true,
+          "max_abs_error": 2.3365020751953125e-05,
+          "mean_abs_error": 4.0507966332370415e-06,
+          "rmse": 4.9789814511314034e-06,
+          "mismatch_fraction": 0.0,
+          "top1_agreement": 1.0,
+          "cached_input_tokens": 1
+        },
+        {
+          "sequence_length": 136,
+          "passed": true,
+          "max_abs_error": 1.537799835205078e-05,
+          "mean_abs_error": 2.594769739516778e-06,
+          "rmse": 3.2786947485874407e-06,
+          "mismatch_fraction": 0.0,
+          "top1_agreement": 1.0,
+          "cached_input_tokens": 1
+        }
+      ],
+      "interpretation": "Elementwise logits test; top1 agreement alone is not a correctness proof."
+    }
+  },
+  "triton_norm_integration": {
+    "passed": true,
+    "max_abs_error": 1.430511474609375e-05,
+    "mean_abs_error": 1.9056423070651363e-06,
+    "top1_agreement": 1.0,
+    "atol": 0.0001,
+    "rtol": 0.0001,
+    "replaced_modules": 113
+  },
+  "triton_cache_checks": {
+    "dynamic": {
+      "passed": true,
+      "comparisons": 9,
+      "max_abs_error": 2.6702880859375e-05,
+      "atol": 0.0001,
+      "rtol": 0.0001,
+      "cache_tokens": 136,
+      "cache_mode": "dynamic",
+      "steps": [
+        {
+          "sequence_length": 128,
+          "passed": true,
+          "max_abs_error": 1.9431114196777344e-05,
+          "mean_abs_error": 3.2368361644330435e-06,
+          "rmse": 4.097953933523968e-06,
+          "mismatch_fraction": 0.0,
+          "top1_agreement": 1.0,
+          "cached_input_tokens": 128
+        },
+        {
+          "sequence_length": 129,
+          "passed": true,
+          "max_abs_error": 1.9311904907226562e-05,
+          "mean_abs_error": 2.5118529265455436e-06,
+          "rmse": 3.2094842481456e-06,
+          "mismatch_fraction": 0.0,
+          "top1_agreement": 1.0,
+          "cached_input_tokens": 1
+        },
+        {
+          "sequence_length": 130,
+          "passed": true,
+          "max_abs_error": 1.4185905456542969e-05,
+          "mean_abs_error": 2.348143652852741e-06,
+          "rmse": 2.938182205980411e-06,
+          "mismatch_fraction": 0.0,
+          "top1_agreement": 1.0,
+          "cached_input_tokens": 1
+        },
+        {
+          "sequence_length": 131,
+          "passed": true,
+          "max_abs_error": 1.728534698486328e-05,
+          "mean_abs_error": 2.6875115963775897e-06,
+          "rmse": 3.388314780750079e-06,
+          "mismatch_fraction": 0.0,
+          "top1_agreement": 1.0,
+          "cached_input_tokens": 1
+        },
+        {
+          "sequence_length": 132,
+          "passed": true,
+          "max_abs_error": 1.2099742889404297e-05,
+          "mean_abs_error": 2.191627345382585e-06,
+          "rmse": 2.7642020086204866e-06,
+          "mismatch_fraction": 0.0,
+          "top1_agreement": 1.0,
+          "cached_input_tokens": 1
+        },
+        {
+          "sequence_length": 133,
+          "passed": true,
+          "max_abs_error": 1.3887882232666016e-05,
+          "mean_abs_error": 2.4760549877100857e-06,
+          "rmse": 3.06817355522071e-06,
+          "mismatch_fraction": 0.0,
+          "top1_agreement": 1.0,
+          "cached_input_tokens": 1
+        },
+        {
+          "sequence_length": 134,
+          "passed": true,
+          "max_abs_error": 1.5616416931152344e-05,
+          "mean_abs_error": 2.8076203761884244e-06,
+          "rmse": 3.560568075045012e-06,
+          "mismatch_fraction": 0.0,
+          "top1_agreement": 1.0,
+          "cached_input_tokens": 1
+        },
+        {
+          "sequence_length": 135,
+          "passed": true,
+          "max_abs_error": 2.6702880859375e-05,
+          "mean_abs_error": 4.874028491030913e-06,
+          "rmse": 6.038112587702926e-06,
+          "mismatch_fraction": 0.0,
+          "top1_agreement": 1.0,
+          "cached_input_tokens": 1
+        },
+        {
+          "sequence_length": 136,
+          "passed": true,
+          "max_abs_error": 1.4543533325195312e-05,
+          "mean_abs_error": 2.695821194720338e-06,
+          "rmse": 3.344218612255645e-06,
+          "mismatch_fraction": 0.0,
+          "top1_agreement": 1.0,
+          "cached_input_tokens": 1
+        }
+      ],
+      "interpretation": "Elementwise logits test; top1 agreement alone is not a correctness proof."
+    },
+    "static": {
+      "passed": true,
+      "comparisons": 9,
+      "max_abs_error": 2.193450927734375e-05,
+      "atol": 0.0001,
+      "rtol": 0.0001,
+      "cache_tokens": 136,
+      "cache_mode": "static",
+      "steps": [
+        {
+          "sequence_length": 128,
+          "passed": true,
+          "max_abs_error": 0.0,
+          "mean_abs_error": 0.0,
+          "rmse": 0.0,
+          "mismatch_fraction": 0.0,
+          "top1_agreement": 1.0,
+          "cached_input_tokens": 128
+        },
+        {
+          "sequence_length": 129,
+          "passed": true,
+          "max_abs_error": 2.002716064453125e-05,
+          "mean_abs_error": 3.168044486301369e-06,
+          "rmse": 3.902997832483379e-06,
+          "mismatch_fraction": 0.0,
+          "top1_agreement": 1.0,
+          "cached_input_tokens": 1
+        },
+        {
+          "sequence_length": 130,
+          "passed": true,
+          "max_abs_error": 1.430511474609375e-05,
+          "mean_abs_error": 2.1870168893656228e-06,
+          "rmse": 2.7660075829771813e-06,
+          "mismatch_fraction": 0.0,
+          "top1_agreement": 1.0,
+          "cached_input_tokens": 1
+        },
+        {
+          "sequence_length": 131,
+          "passed": true,
+          "max_abs_error": 2.193450927734375e-05,
+          "mean_abs_error": 2.392717306065606e-06,
+          "rmse": 3.0046815027162666e-06,
+          "mismatch_fraction": 0.0,
+          "top1_agreement": 1.0,
+          "cached_input_tokens": 1
+        },
+        {
+          "sequence_length": 132,
+          "passed": true,
+          "max_abs_error": 1.3113021850585938e-05,
+          "mean_abs_error": 2.188136932090856e-06,
+          "rmse": 2.752493173829862e-06,
+          "mismatch_fraction": 0.0,
+          "top1_agreement": 1.0,
+          "cached_input_tokens": 1
+        },
+        {
+          "sequence_length": 133,
+          "passed": true,
+          "max_abs_error": 1.2159347534179688e-05,
+          "mean_abs_error": 2.0105333078390686e-06,
+          "rmse": 2.520236876080162e-06,
+          "mismatch_fraction": 0.0,
+          "top1_agreement": 1.0,
+          "cached_input_tokens": 1
+        },
+        {
+          "sequence_length": 134,
+          "passed": true,
+          "max_abs_error": 1.823902130126953e-05,
+          "mean_abs_error": 2.758175014605513e-06,
+          "rmse": 3.5223147278884426e-06,
+          "mismatch_fraction": 0.0,
+          "top1_agreement": 1.0,
+          "cached_input_tokens": 1
+        },
+        {
+          "sequence_length": 135,
+          "passed": true,
+          "max_abs_error": 1.9550323486328125e-05,
+          "mean_abs_error": 3.238247245462844e-06,
+          "rmse": 4.065916073159315e-06,
+          "mismatch_fraction": 0.0,
+          "top1_agreement": 1.0,
+          "cached_input_tokens": 1
+        },
+        {
+          "sequence_length": 136,
+          "passed": true,
+          "max_abs_error": 1.430511474609375e-05,
+          "mean_abs_error": 2.802778453769861e-06,
+          "rmse": 3.4899051115644397e-06,
+          "mismatch_fraction": 0.0,
+          "top1_agreement": 1.0,
+          "cached_input_tokens": 1
+        }
+      ],
+      "interpretation": "Elementwise logits test; top1 agreement alone is not a correctness proof."
+    }
+  }
+}

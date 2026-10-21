@@ -1,0 +1,739 @@
+{
+  "environment": {
+    "python": "3.11.16",
+    "platform": "Linux-5.15.0-198-generic-x86_64-with-glibc2.35",
+    "torch": "2.11.0+cu128",
+    "transformers": "4.57.6",
+    "cuda_runtime": "12.8",
+    "cuda_available": true,
+    "cuda_visible_devices": "1",
+    "float32_matmul_precision": "highest",
+    "cpu_threads": 2,
+    "triton": "3.6.0",
+    "gpu_index": 0,
+    "gpu": "NVIDIA GeForce RTX 4090",
+    "gpu_memory_mib": 24082.875,
+    "gpu_uuid": "525e2e74-7f40-caf7-ad9f-bf067ed324b4",
+    "gpu_snapshot": [
+      {
+        "physical_index": "0",
+        "uuid": "GPU-4a162cf8-b89c-c762-3ead-a0646cf6b020",
+        "name": "NVIDIA GeForce RTX 4090",
+        "memory_used_mib": "23834",
+        "memory_total_mib": "24564",
+        "utilization_percent": "0",
+        "driver_version": "595.99.02"
+      },
+      {
+        "physical_index": "1",
+        "uuid": "GPU-525e2e74-7f40-caf7-ad9f-bf067ed324b4",
+        "name": "NVIDIA GeForce RTX 4090",
+        "memory_used_mib": "409",
+        "memory_total_mib": "24564",
+        "utilization_percent": "3",
+        "driver_version": "595.99.02"
+      },
+      {
+        "physical_index": "2",
+        "uuid": "GPU-f9c9454d-bdce-8faf-9c99-fe5c87f58e99",
+        "name": "NVIDIA GeForce RTX 4090",
+        "memory_used_mib": "3187",
+        "memory_total_mib": "24564",
+        "utilization_percent": "4",
+        "driver_version": "595.99.02"
+      }
+    ],
+    "source_commit": "6eb05740822544f35f477d27803b0f4785b229ab",
+    "source_dirty": false
+  },
+  "dtype": "bfloat16",
+  "seed": 42,
+  "method": "Triton do_bench, compilation/warmup excluded, repeated median, operator-only",
+  "records": [
+    {
+      "rows": 1,
+      "width": 128,
+      "backend": "torch_eager",
+      "milliseconds": [
+        0.015727215446531773,
+        0.015720094439777486,
+        0.014774106467726844
+      ],
+      "median_ms": 0.015720094439777486,
+      "logical_gbps": 0.04885466833180621,
+      "correctness": {
+        "passed": true,
+        "max_abs_error": 0.0,
+        "mean_abs_error": 0.0,
+        "atol": 0.02,
+        "rtol": 0.02
+      }
+    },
+    {
+      "rows": 1,
+      "width": 128,
+      "backend": "torch_compile",
+      "milliseconds": [
+        0.0037456866326553485,
+        0.003765925949444713,
+        0.003731692333220162
+      ],
+      "median_ms": 0.0037456866326553485,
+      "logical_gbps": 0.20503583863756333,
+      "correctness": {
+        "passed": true,
+        "max_abs_error": 0.015625,
+        "mean_abs_error": 0.0007305145263671875,
+        "atol": 0.02,
+        "rtol": 0.02
+      }
+    },
+    {
+      "rows": 1,
+      "width": 128,
+      "backend": "triton",
+      "milliseconds": [
+        0.0036368933423511036,
+        0.00392914286748107,
+        0.0036296491038197713
+      ],
+      "median_ms": 0.0036368933423511036,
+      "logical_gbps": 0.21116923915715363,
+      "correctness": {
+        "passed": true,
+        "max_abs_error": 0.0,
+        "mean_abs_error": 0.0,
+        "atol": 0.02,
+        "rtol": 0.02
+      }
+    },
+    {
+      "rows": 8,
+      "width": 128,
+      "backend": "torch_eager",
+      "milliseconds": [
+        0.01697519297493229,
+        0.016902741918047387,
+        0.016911360066797998
+      ],
+      "median_ms": 0.016911360066797998,
+      "logical_gbps": 0.3633060839419113,
+      "correctness": {
+        "passed": true,
+        "max_abs_error": 0.0,
+        "mean_abs_error": 0.0,
+        "atol": 0.02,
+        "rtol": 0.02
+      }
+    },
+    {
+      "rows": 8,
+      "width": 128,
+      "backend": "torch_compile",
+      "milliseconds": [
+        0.003791112394454978,
+        0.003768899025936024,
+        0.003775270678304624
+      ],
+      "median_ms": 0.003775270678304624,
+      "logical_gbps": 1.627432977271741,
+      "correctness": {
+        "passed": true,
+        "max_abs_error": 0.03125,
+        "mean_abs_error": 0.0009254701435565948,
+        "atol": 0.02,
+        "rtol": 0.02
+      }
+    },
+    {
+      "rows": 8,
+      "width": 128,
+      "backend": "triton",
+      "milliseconds": [
+        0.003848034058572024,
+        0.003511737559798483,
+        0.003532125391039541
+      ],
+      "median_ms": 0.003532125391039541,
+      "logical_gbps": 1.7394625954068286,
+      "correctness": {
+        "passed": true,
+        "max_abs_error": 0.0,
+        "mean_abs_error": 0.0,
+        "atol": 0.02,
+        "rtol": 0.02
+      }
+    },
+    {
+      "rows": 128,
+      "width": 128,
+      "backend": "torch_eager",
+      "milliseconds": [
+        0.01724586997335479,
+        0.01725430536877226,
+        0.017242682650022052
+      ],
+      "median_ms": 0.01724586997335479,
+      "logical_gbps": 5.700147348430762,
+      "correctness": {
+        "passed": true,
+        "max_abs_error": 0.0,
+        "mean_abs_error": 0.0,
+        "atol": 0.02,
+        "rtol": 0.02
+      }
+    },
+    {
+      "rows": 128,
+      "width": 128,
+      "backend": "torch_compile",
+      "milliseconds": [
+        0.0036022014460189546,
+        0.003944640005938709,
+        0.0036041143174017115
+      ],
+      "median_ms": 0.0036041143174017115,
+      "logical_gbps": 27.2754944329484,
+      "correctness": {
+        "passed": true,
+        "max_abs_error": 0.03125,
+        "mean_abs_error": 0.0009726760908961296,
+        "atol": 0.02,
+        "rtol": 0.02
+      }
+    },
+    {
+      "rows": 128,
+      "width": 128,
+      "backend": "triton",
+      "milliseconds": [
+        0.0036340198872597718,
+        0.003716193751811429,
+        0.003683373243136708
+      ],
+      "median_ms": 0.003683373243136708,
+      "logical_gbps": 26.688579601095686,
+      "correctness": {
+        "passed": true,
+        "max_abs_error": 0.0,
+        "mean_abs_error": 0.0,
+        "atol": 0.02,
+        "rtol": 0.02
+      }
+    },
+    {
+      "rows": 512,
+      "width": 128,
+      "backend": "torch_eager",
+      "milliseconds": [
+        0.018044177379602,
+        0.01803083893049646,
+        0.01801179357126157
+      ],
+      "median_ms": 0.01803083893049646,
+      "logical_gbps": 21.80797030663582,
+      "correctness": {
+        "passed": true,
+        "max_abs_error": 0.0,
+        "mean_abs_error": 0.0,
+        "atol": 0.02,
+        "rtol": 0.02
+      }
+    },
+    {
+      "rows": 512,
+      "width": 128,
+      "backend": "torch_compile",
+      "milliseconds": [
+        0.00391590382042308,
+        0.004263669023550675,
+        0.003925074281703148
+      ],
+      "median_ms": 0.003925074281703148,
+      "logical_gbps": 100.18052443822228,
+      "correctness": {
+        "passed": true,
+        "max_abs_error": 0.03125,
+        "mean_abs_error": 0.0009856000542640686,
+        "atol": 0.02,
+        "rtol": 0.02
+      }
+    },
+    {
+      "rows": 512,
+      "width": 128,
+      "backend": "triton",
+      "milliseconds": [
+        0.004288769421290179,
+        0.003925074287357607,
+        0.0043199999700300395
+      ],
+      "median_ms": 0.004288769421290179,
+      "logical_gbps": 91.68504094624649,
+      "correctness": {
+        "passed": true,
+        "max_abs_error": 0.0,
+        "mean_abs_error": 0.0,
+        "atol": 0.02,
+        "rtol": 0.02
+      }
+    },
+    {
+      "rows": 1,
+      "width": 1024,
+      "backend": "torch_eager",
+      "milliseconds": [
+        0.01620214508363494,
+        0.016240567962236746,
+        0.0162111524892626
+      ],
+      "median_ms": 0.0162111524892626,
+      "logical_gbps": 0.3789983472223494,
+      "correctness": {
+        "passed": true,
+        "max_abs_error": 0.0,
+        "mean_abs_error": 0.0,
+        "atol": 0.02,
+        "rtol": 0.02
+      }
+    },
+    {
+      "rows": 1,
+      "width": 1024,
+      "backend": "torch_compile",
+      "milliseconds": [
+        0.0037470865406835758,
+        0.0037788262244504997,
+        0.004017757484357214
+      ],
+      "median_ms": 0.0037788262244504997,
+      "logical_gbps": 1.6259017046737663,
+      "correctness": {
+        "passed": true,
+        "max_abs_error": 0.03125,
+        "mean_abs_error": 0.0008603706955909729,
+        "atol": 0.02,
+        "rtol": 0.02
+      }
+    },
+    {
+      "rows": 1,
+      "width": 1024,
+      "backend": "triton",
+      "milliseconds": [
+        0.0034807169750984625,
+        0.0035189971920803315,
+        0.0034936524634421977
+      ],
+      "median_ms": 0.0034936524634421977,
+      "logical_gbps": 1.75861796910002,
+      "correctness": {
+        "passed": true,
+        "max_abs_error": 0.0,
+        "mean_abs_error": 0.0,
+        "atol": 0.02,
+        "rtol": 0.02
+      }
+    },
+    {
+      "rows": 8,
+      "width": 1024,
+      "backend": "torch_eager",
+      "milliseconds": [
+        0.018119988431614362,
+        0.01812674030440169,
+        0.018105438676556188
+      ],
+      "median_ms": 0.018119988431614362,
+      "logical_gbps": 2.71258451325738,
+      "correctness": {
+        "passed": true,
+        "max_abs_error": 0.0,
+        "mean_abs_error": 0.0,
+        "atol": 0.02,
+        "rtol": 0.02
+      }
+    },
+    {
+      "rows": 8,
+      "width": 1024,
+      "backend": "torch_compile",
+      "milliseconds": [
+        0.004169572634951469,
+        0.00413637552185151,
+        0.004149196572280741
+      ],
+      "median_ms": 0.004149196572280741,
+      "logical_gbps": 11.84614880103933,
+      "correctness": {
+        "passed": true,
+        "max_abs_error": 0.03125,
+        "mean_abs_error": 0.0007240151753649116,
+        "atol": 0.02,
+        "rtol": 0.02
+      }
+    },
+    {
+      "rows": 8,
+      "width": 1024,
+      "backend": "triton",
+      "milliseconds": [
+        0.00334691943711426,
+        0.003386310150364618,
+        0.003374632526231542
+      ],
+      "median_ms": 0.003374632526231542,
+      "logical_gbps": 14.565141424416993,
+      "correctness": {
+        "passed": true,
+        "max_abs_error": 0.0,
+        "mean_abs_error": 0.0,
+        "atol": 0.02,
+        "rtol": 0.02
+      }
+    },
+    {
+      "rows": 128,
+      "width": 1024,
+      "backend": "torch_eager",
+      "milliseconds": [
+        0.02043562626949063,
+        0.020422409133825353,
+        0.02045776553452015
+      ],
+      "median_ms": 0.02043562626949063,
+      "logical_gbps": 38.48338140603519,
+      "correctness": {
+        "passed": true,
+        "max_abs_error": 0.0,
+        "mean_abs_error": 0.0,
+        "atol": 0.02,
+        "rtol": 0.02
+      }
+    },
+    {
+      "rows": 128,
+      "width": 1024,
+      "backend": "torch_compile",
+      "milliseconds": [
+        0.004019876051051411,
+        0.004050643868516186,
+        0.003991761012665218
+      ],
+      "median_ms": 0.004019876051051411,
+      "logical_gbps": 195.63588280148747,
+      "correctness": {
+        "passed": true,
+        "max_abs_error": 0.0625,
+        "mean_abs_error": 0.0008928505121730268,
+        "atol": 0.02,
+        "rtol": 0.02
+      }
+    },
+    {
+      "rows": 128,
+      "width": 1024,
+      "backend": "triton",
+      "milliseconds": [
+        0.004112607588580222,
+        0.0037563007268790445,
+        0.004086181816753445
+      ],
+      "median_ms": 0.004086181816753445,
+      "logical_gbps": 192.46133316329923,
+      "correctness": {
+        "passed": true,
+        "max_abs_error": 0.0,
+        "mean_abs_error": 0.0,
+        "atol": 0.02,
+        "rtol": 0.02
+      }
+    },
+    {
+      "rows": 512,
+      "width": 1024,
+      "backend": "torch_eager",
+      "milliseconds": [
+        0.02833791449115759,
+        0.028335153103313027,
+        0.02834616489160587
+      ],
+      "median_ms": 0.02833791449115759,
+      "logical_gbps": 111.0077455058161,
+      "correctness": {
+        "passed": true,
+        "max_abs_error": 0.0,
+        "mean_abs_error": 0.0,
+        "atol": 0.02,
+        "rtol": 0.02
+      }
+    },
+    {
+      "rows": 512,
+      "width": 1024,
+      "backend": "torch_compile",
+      "milliseconds": [
+        0.004358857105086956,
+        0.0043952701141717915,
+        0.004402492879349053
+      ],
+      "median_ms": 0.0043952701141717915,
+      "logical_gbps": 715.7075488619327,
+      "correctness": {
+        "passed": true,
+        "max_abs_error": 0.0625,
+        "mean_abs_error": 0.0008558218833059072,
+        "atol": 0.02,
+        "rtol": 0.02
+      }
+    },
+    {
+      "rows": 512,
+      "width": 1024,
+      "backend": "triton",
+      "milliseconds": [
+        0.004185591019554382,
+        0.004189769542679339,
+        0.0038975000015026044
+      ],
+      "median_ms": 0.004185591019554382,
+      "logical_gbps": 751.5612455454162,
+      "correctness": {
+        "passed": true,
+        "max_abs_error": 0.0,
+        "mean_abs_error": 0.0,
+        "atol": 0.02,
+        "rtol": 0.02
+      }
+    },
+    {
+      "rows": 1,
+      "width": 2048,
+      "backend": "torch_eager",
+      "milliseconds": [
+        0.016403124232352132,
+        0.016399170331380986,
+        0.016394017758925697
+      ],
+      "median_ms": 0.016399170331380986,
+      "logical_gbps": 0.7493061997463392,
+      "correctness": {
+        "passed": true,
+        "max_abs_error": 0.0,
+        "mean_abs_error": 0.0,
+        "atol": 0.02,
+        "rtol": 0.02
+      }
+    },
+    {
+      "rows": 1,
+      "width": 2048,
+      "backend": "torch_compile",
+      "milliseconds": [
+        0.004470153803276455,
+        0.004238171402498016,
+        0.004169754963567178
+      ],
+      "median_ms": 0.004238171402498016,
+      "logical_gbps": 2.8993636247834016,
+      "correctness": {
+        "passed": true,
+        "max_abs_error": 0.03125,
+        "mean_abs_error": 0.0010900991037487984,
+        "atol": 0.02,
+        "rtol": 0.02
+      }
+    },
+    {
+      "rows": 1,
+      "width": 2048,
+      "backend": "triton",
+      "milliseconds": [
+        0.0038276187943726524,
+        0.0035167133054309413,
+        0.0034699943437349803
+      ],
+      "median_ms": 0.0035167133054309413,
+      "logical_gbps": 3.4941716690477325,
+      "correctness": {
+        "passed": true,
+        "max_abs_error": 0.0,
+        "mean_abs_error": 0.0,
+        "atol": 0.02,
+        "rtol": 0.02
+      }
+    },
+    {
+      "rows": 8,
+      "width": 2048,
+      "backend": "torch_eager",
+      "milliseconds": [
+        0.0186732419696984,
+        0.018707696112475167,
+        0.018695153651312104
+      ],
+      "median_ms": 0.018695153651312104,
+      "logical_gbps": 5.258261142619741,
+      "correctness": {
+        "passed": true,
+        "max_abs_error": 0.0,
+        "mean_abs_error": 0.0,
+        "atol": 0.02,
+        "rtol": 0.02
+      }
+    },
+    {
+      "rows": 8,
+      "width": 2048,
+      "backend": "torch_compile",
+      "milliseconds": [
+        0.004812045381351543,
+        0.004503634235422526,
+        0.004535988370137216
+      ],
+      "median_ms": 0.004535988370137216,
+      "logical_gbps": 21.672013236891576,
+      "correctness": {
+        "passed": true,
+        "max_abs_error": 0.03125,
+        "mean_abs_error": 0.0008758247131481767,
+        "atol": 0.02,
+        "rtol": 0.02
+      }
+    },
+    {
+      "rows": 8,
+      "width": 2048,
+      "backend": "triton",
+      "milliseconds": [
+        0.003665405132335534,
+        0.0036646145393285016,
+        0.00334745459853862
+      ],
+      "median_ms": 0.0036646145393285016,
+      "logical_gbps": 26.82519510442511,
+      "correctness": {
+        "passed": true,
+        "max_abs_error": 0.0,
+        "mean_abs_error": 0.0,
+        "atol": 0.02,
+        "rtol": 0.02
+      }
+    },
+    {
+      "rows": 128,
+      "width": 2048,
+      "backend": "torch_eager",
+      "milliseconds": [
+        0.02423004178566567,
+        0.024236118837022747,
+        0.024247988636295
+      ],
+      "median_ms": 0.024236118837022747,
+      "logical_gbps": 64.89751971331795,
+      "correctness": {
+        "passed": true,
+        "max_abs_error": 0.0,
+        "mean_abs_error": 0.0,
+        "atol": 0.02,
+        "rtol": 0.02
+      }
+    },
+    {
+      "rows": 128,
+      "width": 2048,
+      "backend": "torch_compile",
+      "milliseconds": [
+        0.004864630031330005,
+        0.004601700364621343,
+        0.004636631520785614
+      ],
+      "median_ms": 0.004636631520785614,
+      "logical_gbps": 339.2255763583947,
+      "correctness": {
+        "passed": true,
+        "max_abs_error": 0.0625,
+        "mean_abs_error": 0.0008925209403969347,
+        "atol": 0.02,
+        "rtol": 0.02
+      }
+    },
+    {
+      "rows": 128,
+      "width": 2048,
+      "backend": "triton",
+      "milliseconds": [
+        0.004163316512970822,
+        0.0038379090977038936,
+        0.003853766391242183
+      ],
+      "median_ms": 0.003853766391242183,
+      "logical_gbps": 408.1368303938681,
+      "correctness": {
+        "passed": true,
+        "max_abs_error": 0.0,
+        "mean_abs_error": 0.0,
+        "atol": 0.02,
+        "rtol": 0.02
+      }
+    },
+    {
+      "rows": 512,
+      "width": 2048,
+      "backend": "torch_eager",
+      "milliseconds": [
+        0.037267634070905525,
+        0.03732816889502298,
+        0.03728489445402347
+      ],
+      "median_ms": 0.03728489445402347,
+      "logical_gbps": 168.7400780430821,
+      "correctness": {
+        "passed": true,
+        "max_abs_error": 0.0,
+        "mean_abs_error": 0.0,
+        "atol": 0.02,
+        "rtol": 0.02
+      }
+    },
+    {
+      "rows": 512,
+      "width": 2048,
+      "backend": "torch_compile",
+      "milliseconds": [
+        0.007017271533613676,
+        0.007046526991142219,
+        0.0067811859124307095
+      ],
+      "median_ms": 0.007017271533613676,
+      "logical_gbps": 896.5672726020474,
+      "correctness": {
+        "passed": true,
+        "max_abs_error": 0.0625,
+        "mean_abs_error": 0.0008935861987993121,
+        "atol": 0.02,
+        "rtol": 0.02
+      }
+    },
+    {
+      "rows": 512,
+      "width": 2048,
+      "backend": "triton",
+      "milliseconds": [
+        0.00454754552439503,
+        0.0045449103279752,
+        0.004886649575427914
+      ],
+      "median_ms": 0.00454754552439503,
+      "logical_gbps": 1383.483896147904,
+      "correctness": {
+        "passed": true,
+        "max_abs_error": 0.03125,
+        "mean_abs_error": 7.060589268803596e-08,
+        "atol": 0.02,
+        "rtol": 0.02
+      }
+    }
+  ],
+  "status": "completed"
+}

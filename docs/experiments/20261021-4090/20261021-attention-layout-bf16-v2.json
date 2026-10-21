@@ -1,0 +1,846 @@
+{
+  "environment": {
+    "python": "3.11.16",
+    "platform": "Linux-5.15.0-198-generic-x86_64-with-glibc2.35",
+    "torch": "2.11.0+cu128",
+    "transformers": "4.57.6",
+    "cuda_runtime": "12.8",
+    "cuda_available": true,
+    "cuda_visible_devices": "1",
+    "float32_matmul_precision": "highest",
+    "cpu_threads": 2,
+    "triton": "3.6.0",
+    "gpu_index": 0,
+    "gpu": "NVIDIA GeForce RTX 4090",
+    "gpu_memory_mib": 24082.875,
+    "gpu_uuid": "525e2e74-7f40-caf7-ad9f-bf067ed324b4",
+    "gpu_snapshot": [
+      {
+        "physical_index": "0",
+        "uuid": "GPU-4a162cf8-b89c-c762-3ead-a0646cf6b020",
+        "name": "NVIDIA GeForce RTX 4090",
+        "memory_used_mib": "23834",
+        "memory_total_mib": "24564",
+        "utilization_percent": "0",
+        "driver_version": "595.99.02"
+      },
+      {
+        "physical_index": "1",
+        "uuid": "GPU-525e2e74-7f40-caf7-ad9f-bf067ed324b4",
+        "name": "NVIDIA GeForce RTX 4090",
+        "memory_used_mib": "1569",
+        "memory_total_mib": "24564",
+        "utilization_percent": "0",
+        "driver_version": "595.99.02"
+      },
+      {
+        "physical_index": "2",
+        "uuid": "GPU-f9c9454d-bdce-8faf-9c99-fe5c87f58e99",
+        "name": "NVIDIA GeForce RTX 4090",
+        "memory_used_mib": "4013",
+        "memory_total_mib": "24564",
+        "utilization_percent": "77",
+        "driver_version": "595.99.02"
+      }
+    ],
+    "source_commit": "d12765dc7e6fc7556910b84e3600e35fffa18eba",
+    "source_dirty": false
+  },
+  "configuration": {
+    "model": "/data/optics/JD/SN/models/Qwen3-0.6B",
+    "device": "cuda",
+    "dtype": "bfloat16",
+    "attention": "sdpa",
+    "norm_backend": "torch",
+    "cpu_threads": 2,
+    "seed": 42,
+    "batch_size": 4,
+    "input_length": 512,
+    "extra_ids": 8,
+    "output": "results/20261021-attention-layout-bf16-v2.json"
+  },
+  "original_layout": {
+    "no_cache": {
+      "layout": {
+        "q": {
+          "shape": [
+            4,
+            16,
+            512,
+            128
+          ],
+          "stride": [
+            1048576,
+            128,
+            2048,
+            1
+          ],
+          "contiguous": false
+        },
+        "k": {
+          "shape": [
+            4,
+            16,
+            512,
+            128
+          ],
+          "stride": [
+            1048576,
+            65536,
+            128,
+            1
+          ],
+          "contiguous": true
+        },
+        "v": {
+          "shape": [
+            4,
+            16,
+            512,
+            128
+          ],
+          "stride": [
+            1048576,
+            65536,
+            128,
+            1
+          ],
+          "contiguous": true
+        }
+      },
+      "mask_shape": [
+        4,
+        1,
+        512,
+        512
+      ],
+      "mask_dtype": "torch.bool",
+      "is_causal": false,
+      "enable_gqa": false,
+      "max_abs_error": 0.0,
+      "mean_abs_error": 0.0,
+      "top1_agreement": 1.0,
+      "first_layer_qkv_equal": [
+        true,
+        true,
+        true
+      ]
+    },
+    "no_cache_repeat": {
+      "layout": {
+        "q": {
+          "shape": [
+            4,
+            16,
+            512,
+            128
+          ],
+          "stride": [
+            1048576,
+            128,
+            2048,
+            1
+          ],
+          "contiguous": false
+        },
+        "k": {
+          "shape": [
+            4,
+            16,
+            512,
+            128
+          ],
+          "stride": [
+            1048576,
+            65536,
+            128,
+            1
+          ],
+          "contiguous": true
+        },
+        "v": {
+          "shape": [
+            4,
+            16,
+            512,
+            128
+          ],
+          "stride": [
+            1048576,
+            65536,
+            128,
+            1
+          ],
+          "contiguous": true
+        }
+      },
+      "mask_shape": [
+        4,
+        1,
+        512,
+        512
+      ],
+      "mask_dtype": "torch.bool",
+      "is_causal": false,
+      "enable_gqa": false,
+      "max_abs_error": 0.0,
+      "mean_abs_error": 0.0,
+      "top1_agreement": 1.0,
+      "first_layer_qkv_equal": [
+        true,
+        true,
+        true
+      ]
+    },
+    "dynamic": {
+      "layout": {
+        "q": {
+          "shape": [
+            4,
+            16,
+            512,
+            128
+          ],
+          "stride": [
+            1048576,
+            128,
+            2048,
+            1
+          ],
+          "contiguous": false
+        },
+        "k": {
+          "shape": [
+            4,
+            8,
+            512,
+            128
+          ],
+          "stride": [
+            524288,
+            65536,
+            128,
+            1
+          ],
+          "contiguous": true
+        },
+        "v": {
+          "shape": [
+            4,
+            8,
+            512,
+            128
+          ],
+          "stride": [
+            524288,
+            65536,
+            128,
+            1
+          ],
+          "contiguous": true
+        }
+      },
+      "mask_shape": null,
+      "mask_dtype": null,
+      "is_causal": true,
+      "enable_gqa": true,
+      "max_abs_error": 0.21875,
+      "mean_abs_error": 0.03243900462985039,
+      "top1_agreement": 1.0,
+      "first_layer_qkv_equal": [
+        true,
+        false,
+        false
+      ]
+    },
+    "static": {
+      "layout": {
+        "q": {
+          "shape": [
+            4,
+            16,
+            512,
+            128
+          ],
+          "stride": [
+            1048576,
+            128,
+            2048,
+            1
+          ],
+          "contiguous": false
+        },
+        "k": {
+          "shape": [
+            4,
+            16,
+            512,
+            128
+          ],
+          "stride": [
+            1048576,
+            65536,
+            128,
+            1
+          ],
+          "contiguous": true
+        },
+        "v": {
+          "shape": [
+            4,
+            16,
+            512,
+            128
+          ],
+          "stride": [
+            1048576,
+            65536,
+            128,
+            1
+          ],
+          "contiguous": true
+        }
+      },
+      "mask_shape": [
+        4,
+        1,
+        512,
+        512
+      ],
+      "mask_dtype": "torch.bool",
+      "is_causal": false,
+      "enable_gqa": false,
+      "max_abs_error": 0.0,
+      "mean_abs_error": 0.0,
+      "top1_agreement": 1.0,
+      "first_layer_qkv_equal": [
+        true,
+        true,
+        true
+      ]
+    }
+  },
+  "force_contiguous_qkv": {
+    "no_cache": {
+      "layout": {
+        "q": {
+          "shape": [
+            4,
+            16,
+            512,
+            128
+          ],
+          "stride": [
+            1048576,
+            128,
+            2048,
+            1
+          ],
+          "contiguous": false
+        },
+        "k": {
+          "shape": [
+            4,
+            16,
+            512,
+            128
+          ],
+          "stride": [
+            1048576,
+            65536,
+            128,
+            1
+          ],
+          "contiguous": true
+        },
+        "v": {
+          "shape": [
+            4,
+            16,
+            512,
+            128
+          ],
+          "stride": [
+            1048576,
+            65536,
+            128,
+            1
+          ],
+          "contiguous": true
+        }
+      },
+      "mask_shape": [
+        4,
+        1,
+        512,
+        512
+      ],
+      "mask_dtype": "torch.bool",
+      "is_causal": false,
+      "enable_gqa": false,
+      "max_abs_error": 0.0,
+      "mean_abs_error": 0.0,
+      "top1_agreement": 1.0,
+      "first_layer_qkv_equal": [
+        true,
+        true,
+        true
+      ]
+    },
+    "no_cache_repeat": {
+      "layout": {
+        "q": {
+          "shape": [
+            4,
+            16,
+            512,
+            128
+          ],
+          "stride": [
+            1048576,
+            128,
+            2048,
+            1
+          ],
+          "contiguous": false
+        },
+        "k": {
+          "shape": [
+            4,
+            16,
+            512,
+            128
+          ],
+          "stride": [
+            1048576,
+            65536,
+            128,
+            1
+          ],
+          "contiguous": true
+        },
+        "v": {
+          "shape": [
+            4,
+            16,
+            512,
+            128
+          ],
+          "stride": [
+            1048576,
+            65536,
+            128,
+            1
+          ],
+          "contiguous": true
+        }
+      },
+      "mask_shape": [
+        4,
+        1,
+        512,
+        512
+      ],
+      "mask_dtype": "torch.bool",
+      "is_causal": false,
+      "enable_gqa": false,
+      "max_abs_error": 0.0,
+      "mean_abs_error": 0.0,
+      "top1_agreement": 1.0,
+      "first_layer_qkv_equal": [
+        true,
+        true,
+        true
+      ]
+    },
+    "dynamic": {
+      "layout": {
+        "q": {
+          "shape": [
+            4,
+            16,
+            512,
+            128
+          ],
+          "stride": [
+            1048576,
+            128,
+            2048,
+            1
+          ],
+          "contiguous": false
+        },
+        "k": {
+          "shape": [
+            4,
+            8,
+            512,
+            128
+          ],
+          "stride": [
+            524288,
+            65536,
+            128,
+            1
+          ],
+          "contiguous": true
+        },
+        "v": {
+          "shape": [
+            4,
+            8,
+            512,
+            128
+          ],
+          "stride": [
+            524288,
+            65536,
+            128,
+            1
+          ],
+          "contiguous": true
+        }
+      },
+      "mask_shape": null,
+      "mask_dtype": null,
+      "is_causal": true,
+      "enable_gqa": true,
+      "max_abs_error": 0.21875,
+      "mean_abs_error": 0.03243900462985039,
+      "top1_agreement": 1.0,
+      "first_layer_qkv_equal": [
+        true,
+        false,
+        false
+      ]
+    },
+    "static": {
+      "layout": {
+        "q": {
+          "shape": [
+            4,
+            16,
+            512,
+            128
+          ],
+          "stride": [
+            1048576,
+            128,
+            2048,
+            1
+          ],
+          "contiguous": false
+        },
+        "k": {
+          "shape": [
+            4,
+            16,
+            512,
+            128
+          ],
+          "stride": [
+            1048576,
+            65536,
+            128,
+            1
+          ],
+          "contiguous": true
+        },
+        "v": {
+          "shape": [
+            4,
+            16,
+            512,
+            128
+          ],
+          "stride": [
+            1048576,
+            65536,
+            128,
+            1
+          ],
+          "contiguous": true
+        }
+      },
+      "mask_shape": [
+        4,
+        1,
+        512,
+        512
+      ],
+      "mask_dtype": "torch.bool",
+      "is_causal": false,
+      "enable_gqa": false,
+      "max_abs_error": 0.0,
+      "mean_abs_error": 0.0,
+      "top1_agreement": 1.0,
+      "first_layer_qkv_equal": [
+        true,
+        true,
+        true
+      ]
+    }
+  },
+  "uniform_explicit_mask": {
+    "no_cache": {
+      "layout": {
+        "q": {
+          "shape": [
+            4,
+            16,
+            512,
+            128
+          ],
+          "stride": [
+            1048576,
+            128,
+            2048,
+            1
+          ],
+          "contiguous": false
+        },
+        "k": {
+          "shape": [
+            4,
+            16,
+            512,
+            128
+          ],
+          "stride": [
+            1048576,
+            65536,
+            128,
+            1
+          ],
+          "contiguous": true
+        },
+        "v": {
+          "shape": [
+            4,
+            16,
+            512,
+            128
+          ],
+          "stride": [
+            1048576,
+            65536,
+            128,
+            1
+          ],
+          "contiguous": true
+        }
+      },
+      "mask_shape": [
+        4,
+        1,
+        512,
+        512
+      ],
+      "mask_dtype": "torch.bool",
+      "is_causal": false,
+      "enable_gqa": false,
+      "max_abs_error": 0.0,
+      "mean_abs_error": 0.0,
+      "top1_agreement": 1.0,
+      "first_layer_qkv_equal": [
+        true,
+        true,
+        true
+      ]
+    },
+    "no_cache_repeat": {
+      "layout": {
+        "q": {
+          "shape": [
+            4,
+            16,
+            512,
+            128
+          ],
+          "stride": [
+            1048576,
+            128,
+            2048,
+            1
+          ],
+          "contiguous": false
+        },
+        "k": {
+          "shape": [
+            4,
+            16,
+            512,
+            128
+          ],
+          "stride": [
+            1048576,
+            65536,
+            128,
+            1
+          ],
+          "contiguous": true
+        },
+        "v": {
+          "shape": [
+            4,
+            16,
+            512,
+            128
+          ],
+          "stride": [
+            1048576,
+            65536,
+            128,
+            1
+          ],
+          "contiguous": true
+        }
+      },
+      "mask_shape": [
+        4,
+        1,
+        512,
+        512
+      ],
+      "mask_dtype": "torch.bool",
+      "is_causal": false,
+      "enable_gqa": false,
+      "max_abs_error": 0.0,
+      "mean_abs_error": 0.0,
+      "top1_agreement": 1.0,
+      "first_layer_qkv_equal": [
+        true,
+        true,
+        true
+      ]
+    },
+    "dynamic": {
+      "layout": {
+        "q": {
+          "shape": [
+            4,
+            16,
+            512,
+            128
+          ],
+          "stride": [
+            1048576,
+            128,
+            2048,
+            1
+          ],
+          "contiguous": false
+        },
+        "k": {
+          "shape": [
+            4,
+            8,
+            512,
+            128
+          ],
+          "stride": [
+            524288,
+            65536,
+            128,
+            1
+          ],
+          "contiguous": true
+        },
+        "v": {
+          "shape": [
+            4,
+            8,
+            512,
+            128
+          ],
+          "stride": [
+            524288,
+            65536,
+            128,
+            1
+          ],
+          "contiguous": true
+        }
+      },
+      "mask_shape": null,
+      "mask_dtype": null,
+      "is_causal": true,
+      "enable_gqa": true,
+      "max_abs_error": 0.0,
+      "mean_abs_error": 0.0,
+      "top1_agreement": 1.0,
+      "first_layer_qkv_equal": [
+        true,
+        false,
+        false
+      ]
+    },
+    "static": {
+      "layout": {
+        "q": {
+          "shape": [
+            4,
+            16,
+            512,
+            128
+          ],
+          "stride": [
+            1048576,
+            128,
+            2048,
+            1
+          ],
+          "contiguous": false
+        },
+        "k": {
+          "shape": [
+            4,
+            16,
+            512,
+            128
+          ],
+          "stride": [
+            1048576,
+            65536,
+            128,
+            1
+          ],
+          "contiguous": true
+        },
+        "v": {
+          "shape": [
+            4,
+            16,
+            512,
+            128
+          ],
+          "stride": [
+            1048576,
+            65536,
+            128,
+            1
+          ],
+          "contiguous": true
+        }
+      },
+      "mask_shape": [
+        4,
+        1,
+        512,
+        512
+      ],
+      "mask_dtype": "torch.bool",
+      "is_causal": false,
+      "enable_gqa": false,
+      "max_abs_error": 0.0,
+      "mean_abs_error": 0.0,
+      "top1_agreement": 1.0,
+      "first_layer_qkv_equal": [
+        true,
+        true,
+        true
+      ]
+    }
+  },
+  "scope": "Prefill only; layout intervention changes SDPA execution, not a production fix. Does not establish incremental BF16 correctness or isolate a specific hardware kernel."
+}
