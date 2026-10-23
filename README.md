@@ -1,6 +1,6 @@
 # Pro_Ai · Single-GPU LLM Inference Lab
 
-面向 AI Infra 实习准备的单卡推理实验项目。围绕同一个 dense Qwen3 模型，完成 **推理循环 → 缓存正确性 → 受控性能实验 → Triton 算子 → 端到端验证 → 可复现报告**。
+单卡 LLM 推理与性能分析实验项目。围绕同一个 dense Qwen3 模型，完成 **推理循环 → 缓存正确性 → 受控性能实验 → Triton 算子 → 端到端验证 → 可复现报告**。
 
 ## 核心成果
 
@@ -134,11 +134,11 @@ python -m inference_lab report --input results/cache.json --output-dir results/c
 - 普通 GQA 缓存理论字节数：`2 × 层数 × batch × 缓存容量 × KV头数 × head_dim × 每元素字节数`。
 - 重复测量保存原始值、中位数和 CV。GPU 快照保留在报告中；共享机器仍可能产生干扰。
 
-## 从哪里读代码
+## 代码结构
 
 ```text
 src/inference_lab/
-├── kv_cache_exercise.py   # 保留的个人学习练习
+├── kv_cache_exercise.py   # 最小生成循环参考实现
 ├── core.py                # 三种执行路径、位置/缓存管理、正确性诊断
 ├── benchmark.py           # 相同工作负载、交错重复、统计和环境记录
 ├── triton_ops.py          # RMSNorm GPU kernel
@@ -151,14 +151,12 @@ src/inference_lab/
 
 `scripts/attention_layout_probe.py` 是独立诊断程序，临时截获 SDPA，仅用于单独进程中的 Prefill 对照，不是正式推理实现或低精度修复。
 
-建议按 [阅读路线](docs/reading-guide.md) 一点点阅读，再按 [面试讲解与简历边界](docs/interview-guide.md) 练习复述。
-
 ## 设计资料与参考
 
 - [Transformers 缓存策略](https://huggingface.co/docs/transformers/v4.57.1/kv_cache)
 - [PyTorch 数值精度](https://docs.pytorch.org/docs/2.11/notes/numerical_accuracy.html)
 - [PyTorch Profiler](https://docs.pytorch.org/tutorials/recipes/recipes/profiler_recipe.html)
 - [Triton LayerNorm 教程](https://triton-lang.org/main/getting-started/tutorials/05-layer-norm.html)
-- [nano-vLLM](https://github.com/GeeeekExplorer/nano-vllm)：学习参考；本项目不将其已有功能列为自行实现。
+- [nano-vLLM](https://github.com/GeeeekExplorer/nano-vllm)：设计参考；本项目不将其已有功能列为自行实现。
 
-项目代码在 AI 辅助下整理。简历应描述你实际理解、验证和维护的工作；未独立完成的部分不要写成独立从零实现。
+项目代码包含 AI 辅助。预训练模型与 Cache 类来自第三方框架，项目的实现范围和验证边界见上述说明。

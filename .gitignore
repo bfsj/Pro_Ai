@@ -21,3 +21,10 @@ traces/*
 !traces/.gitkeep
 .DS_Store
 .local-qa/
+
+# Personal study / career material must remain local.
+/local-notes/
+/.local-notes/
+/docs/reading-guide.md
+/docs/interview-guide.md
+/docs/first-10-days.md

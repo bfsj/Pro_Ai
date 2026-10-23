@@ -72,7 +72,7 @@ Torch Norm 下，静态缓存相对动态缓存的整体吞吐在各配置约为
 
 正式扫描 36 个分组中有 1 组吞吐 CV > 10%（B=4、L=128、static/triton），数据没有删除。共享服务器上还有其他 GPU 作业；GPU 初始/结束快照保存在原始 JSON 中，不能排除主机负载、温度、功耗和时钟的影响。
 
-B=1、L=512 的独立十次复测中，dynamic/torch 与 dynamic/triton 吞吐 CV 分别约 0.73% 与 1.57%，中位数提升 8.42%。正式扫描同一配置为 +11.72%，这也说明不宜只挑最大数写简历。
+B=1、L=512 的独立十次复测中，dynamic/torch 与 dynamic/triton 吞吐 CV 分别约 0.73% 与 1.57%，中位数提升 8.42%。正式扫描同一配置为 +11.72%，说明结论应结合重复测量与波动范围，而非只报告最大增益。
 
 没有实现或验证在线调度、PagedAttention、Continuous Batching、CUDA Graph、多 GPU、生产负载或质量评测。输入等长无 padding，固定输出且忽略 EOS。缓存类和模型主体来自 Transformers，项目实现的是执行循环、集成、验证、实验与 RMSNorm 算子。
 
