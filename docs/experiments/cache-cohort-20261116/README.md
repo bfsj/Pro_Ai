@@ -1,5 +1,7 @@
 # RTX 4090 动态 KV Cache 配对实验
 
+[三精度对照实验：FP32、FP16、BF16 各 100 组](precision-comparison.md)。下文保留此前 208 组 FP32 的结果。
+
 Qwen3-0.6B、FP32、SDPA、Torch RMSNorm。8 种工作负载各用 26 组不同种子的合成输入，共 208 个输入批次。每批分别执行动态缓存及完整前缀重算，生成 32 个 token。两条路径的 token 序列在 208/208 批次完全相同。测速前预热，交替平衡两种执行顺序，计时边界同步 CUDA，计入整段生成耗时。
 
 | Batch | 输入长度 | 完整前缀重算 tokens/s | 动态缓存 tokens/s | 配对加速比中位数 |
