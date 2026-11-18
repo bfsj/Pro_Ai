@@ -20,8 +20,12 @@ def main():
     parser.add_argument("--model", required=True)
     parser.add_argument("--mode", choices=["bf16", "int4"], required=True)
     parser.add_argument("--device", choices=["cpu", "cuda"], required=True)
+    parser.add_argument("--group-size", type=int, choices=[32, 64, 128], default=128)
+    parser.add_argument("--mse-clip", action="store_true")
     parser.add_argument("--output", type=Path, required=True)
     args = parser.parse_args()
+    if args.mode == "bf16" and (args.group_size != 128 or args.mse_clip):
+        parser.error("Quantization settings require --mode int4")
     torch.set_num_threads(4)
     torch.manual_seed(18)
     if args.mode == "int4":
@@ -31,7 +35,9 @@ def main():
             torch.arange(128, device=args.device).remainder(16).sub(8).repeat(32, 1)
         )
         x = torch.eye(128, device=args.device, dtype=torch.bfloat16)
-        torch.testing.assert_close(PackedLinear(probe)(x), probe(x), atol=0, rtol=0)
+        packed = PackedLinear(probe, group_size=args.group_size, mse_clip=args.mse_clip)
+        torch.testing.assert_close(packed(x), probe(x), atol=0, rtol=0)
+        del packed
         del probe, x
     model = (
         AutoModelForCausalLM.from_pretrained(
@@ -44,7 +50,9 @@ def main():
         raise ValueError("Expected dense Qwen3")
     converted = 0
     if args.mode == "int4":
-        converted = quantize_decoder(model)
+        converted = quantize_decoder(
+            model, group_size=args.group_size, mse_clip=args.mse_clip
+        )
     tokenizer = AutoTokenizer.from_pretrained(args.model)
     corpus = Path(__file__).with_name("quantization_text.txt").read_bytes()
     nll_sum = 0.0
@@ -63,6 +71,8 @@ def main():
         del logits, ids
     report = dict(
         mode=args.mode,
+        group_size=args.group_size if converted else None,
+        mse_clip=args.mse_clip,
         device=args.device,
         torch=torch.__version__,
         threads=torch.get_num_threads(),
