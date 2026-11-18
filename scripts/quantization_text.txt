@@ -1,0 +1,12 @@
+Every autumn the town library moves its reading tables closer to the windows. The afternoon light lasts just long enough for the children to finish their stories before the bus arrives.
+The engineer copied the same set of inputs to both machines. After the tests finished, she compared the outputs one row at a time and recorded the first place where they differed.
+A small stream runs behind the station. When heavy rain fills the channel, the station master walks along the bank to check whether the footbridge is still safe to cross.
+The database accepted the order before the connection closed. To find out what happened, the client looked up the original order number after it connected again.
+A cook preparing dinner for six guests starts with a written list. The list helps her remember which dishes need the oven and which ones can wait until the guests arrive.
+At first the telescope showed only a faint circle. After adjusting the focus, the observer could see two bright stars near the edge of the field.
+清晨的菜市场刚开门，摊主把今天的价格写在小黑板上。常来的顾客先看一眼黑板，再决定要买哪几样菜。
+研究员用同一段文字测试了两种模型。为了让结果可以复查，她保存了输入、软件版本以及每次测试的原始记录。
+列车驶出隧道后，车窗外出现了一片稻田。坐在窗边的孩子数着远处的房屋，直到列车转过山脚。
+主库恢复写入后，工程师又查看了下游订阅者的记录。只有两侧都查到同一个事务序号，他才在检查表上打勾。
+周末的图书馆安排了一场小型讲座。听众提出问题后，讲者翻开笔记，找出实验记录中的一张表格来解释结果。
+这条山路在雨后容易积水。护林员沿路留下标记，并在入口处提醒游客选择较为平坦的路线。
