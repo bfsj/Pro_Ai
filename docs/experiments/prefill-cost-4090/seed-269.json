@@ -1,0 +1,1005 @@
+{
+  "device": "NVIDIA GeForce RTX 4090",
+  "torch": "2.11.0+cu128",
+  "dtype": "float16",
+  "transformers": "4.57.6",
+  "model": "Qwen3-0.6B",
+  "seed": 269,
+  "layers": 28,
+  "rounds": 24,
+  "online": true,
+  "shapes": [
+    {
+      "lengths": [
+        128,
+        128,
+        128,
+        128,
+        128,
+        128,
+        128,
+        128
+      ],
+      "ttft_ms": [
+        {
+          "padded": 33.486327971331775,
+          "online_with_view": 36.693702917546034,
+          "online_layout": 39.103970979340374,
+          "packed": 39.593404973857105
+        },
+        {
+          "online_layout": 39.23166205640882,
+          "packed": 39.63029501028359,
+          "padded": 33.97630201652646,
+          "online_with_view": 36.86544799711555
+        },
+        {
+          "online_layout": 38.9704949920997,
+          "online_with_view": 36.11839597579092,
+          "padded": 32.596059958450496,
+          "packed": 37.5120680546388
+        },
+        {
+          "online_with_view": 34.74154695868492,
+          "padded": 38.46219799015671,
+          "packed": 39.56438903696835,
+          "online_layout": 37.960578920319676
+        },
+        {
+          "online_with_view": 36.2251769984141,
+          "online_layout": 39.23353995196521,
+          "packed": 40.14079098124057,
+          "padded": 34.379828022792935
+        },
+        {
+          "padded": 34.11049803253263,
+          "packed": 39.0431999694556,
+          "online_layout": 38.51055505219847,
+          "online_with_view": 36.03166702669114
+        },
+        {
+          "packed": 37.99188800621778,
+          "online_layout": 36.87049099244177,
+          "online_with_view": 35.03342892508954,
+          "padded": 33.04625896271318
+        },
+        {
+          "packed": 37.43203997146338,
+          "padded": 32.55687793716788,
+          "online_with_view": 34.84334307722747,
+          "online_layout": 38.24899101164192
+        },
+        {
+          "online_with_view": 35.86432908196002,
+          "packed": 39.07077701296657,
+          "online_layout": 38.08415203820914,
+          "padded": 33.24532404076308
+        },
+        {
+          "packed": 39.408450946211815,
+          "online_with_view": 36.41803003847599,
+          "padded": 33.86823495384306,
+          "online_layout": 38.26365596614778
+        },
+        {
+          "online_with_view": 35.73740494903177,
+          "padded": 33.405070076696575,
+          "online_layout": 37.55515697412193,
+          "packed": 43.55761001352221
+        },
+        {
+          "online_layout": 37.22273907624185,
+          "padded": 32.909212983213365,
+          "online_with_view": 34.50399299617857,
+          "packed": 36.62372601684183
+        },
+        {
+          "packed": 36.37790400534868,
+          "online_layout": 36.59347805660218,
+          "padded": 32.509539974853396,
+          "online_with_view": 34.44256400689483
+        },
+        {
+          "padded": 32.52465801779181,
+          "online_layout": 36.55302000697702,
+          "packed": 37.087318021804094,
+          "online_with_view": 34.22304999548942
+        },
+        {
+          "online_layout": 36.593841039575636,
+          "packed": 36.44561592955142,
+          "online_with_view": 34.05982395634055,
+          "padded": 32.7585379127413
+        },
+        {
+          "padded": 32.15507906861603,
+          "online_with_view": 34.5625770278275,
+          "packed": 36.545236012898386,
+          "online_layout": 36.35671897791326
+        },
+        {
+          "online_layout": 36.00448998622596,
+          "online_with_view": 34.262827946804464,
+          "padded": 32.570800045505166,
+          "packed": 37.74253302253783
+        },
+        {
+          "packed": 37.95976494438946,
+          "padded": 32.939207972958684,
+          "online_with_view": 35.00836598686874,
+          "online_layout": 37.671667989343405
+        },
+        {
+          "padded": 33.31379301380366,
+          "online_with_view": 35.448324983008206,
+          "online_layout": 37.25142905022949,
+          "packed": 37.33812493737787
+        },
+        {
+          "online_with_view": 35.1196100236848,
+          "online_layout": 37.78965002857149,
+          "packed": 38.04313705768436,
+          "padded": 33.000505063682795
+        },
+        {
+          "online_with_view": 34.71668902784586,
+          "padded": 32.33127202838659,
+          "packed": 36.86762310098857,
+          "online_layout": 36.326757981441915
+        },
+        {
+          "padded": 32.317523029632866,
+          "packed": 37.05987299326807,
+          "online_layout": 36.97514196392149,
+          "online_with_view": 34.81838607694954
+        },
+        {
+          "packed": 36.35904099792242,
+          "online_layout": 35.85455799475312,
+          "online_with_view": 33.71923591475934,
+          "padded": 32.29564300272614
+        },
+        {
+          "online_layout": 35.405482980422676,
+          "packed": 35.65648093353957,
+          "padded": 31.438253936357796,
+          "online_with_view": 34.67732900753617
+        }
+      ],
+      "event_ms": {},
+      "correctness": [
+        {
+          "seed": 269,
+          "checks": {
+            "padded": {
+              "max_first_logit_difference": 0.0,
+              "matched_sequences": 8
+            },
+            "online_layout": {
+              "max_first_logit_difference": 0.0,
+              "matched_sequences": 8
+            },
+            "online_with_view": {
+              "max_first_logit_difference": 0.0,
+              "matched_sequences": 8
+            }
+          }
+        },
+        {
+          "seed": 270,
+          "checks": {
+            "padded": {
+              "max_first_logit_difference": 0.0,
+              "matched_sequences": 8
+            },
+            "online_layout": {
+              "max_first_logit_difference": 0.0,
+              "matched_sequences": 8
+            },
+            "online_with_view": {
+              "max_first_logit_difference": 0.0,
+              "matched_sequences": 8
+            }
+          }
+        },
+        {
+          "seed": 271,
+          "checks": {
+            "padded": {
+              "max_first_logit_difference": 0.0,
+              "matched_sequences": 8
+            },
+            "online_layout": {
+              "max_first_logit_difference": 0.0,
+              "matched_sequences": 8
+            },
+            "online_with_view": {
+              "max_first_logit_difference": 0.0,
+              "matched_sequences": 8
+            }
+          }
+        },
+        {
+          "seed": 272,
+          "checks": {
+            "padded": {
+              "max_first_logit_difference": 0.0,
+              "matched_sequences": 8
+            },
+            "online_layout": {
+              "max_first_logit_difference": 0.0,
+              "matched_sequences": 8
+            },
+            "online_with_view": {
+              "max_first_logit_difference": 0.0,
+              "matched_sequences": 8
+            }
+          }
+        },
+        {
+          "seed": 273,
+          "checks": {
+            "padded": {
+              "max_first_logit_difference": 0.0,
+              "matched_sequences": 8
+            },
+            "online_layout": {
+              "max_first_logit_difference": 0.0,
+              "matched_sequences": 8
+            },
+            "online_with_view": {
+              "max_first_logit_difference": 0.0,
+              "matched_sequences": 8
+            }
+          }
+        },
+        {
+          "seed": 274,
+          "checks": {
+            "padded": {
+              "max_first_logit_difference": 0.0,
+              "matched_sequences": 8
+            },
+            "online_layout": {
+              "max_first_logit_difference": 0.0,
+              "matched_sequences": 8
+            },
+            "online_with_view": {
+              "max_first_logit_difference": 0.0,
+              "matched_sequences": 8
+            }
+          }
+        }
+      ],
+      "before": [
+        "0, NVIDIA GeForce RTX 4090, 100 %, 1145 MiB",
+        "1, NVIDIA GeForce RTX 4090, 9 %, 2331 MiB",
+        "2, NVIDIA GeForce RTX 4090, 100 %, 5389 MiB"
+      ],
+      "after": [
+        "0, NVIDIA GeForce RTX 4090, 0 %, 441 MiB",
+        "1, NVIDIA GeForce RTX 4090, 40 %, 2529 MiB",
+        "2, NVIDIA GeForce RTX 4090, 100 %, 5389 MiB"
+      ]
+    },
+    {
+      "lengths": [
+        256,
+        256,
+        256,
+        256
+      ],
+      "ttft_ms": [
+        {
+          "padded": 33.10035401955247,
+          "online_with_view": 35.8163450146094,
+          "online_layout": 38.46623096615076,
+          "packed": 38.13976398669183
+        },
+        {
+          "online_layout": 36.44706204067916,
+          "packed": 36.28102201037109,
+          "padded": 32.285952009260654,
+          "online_with_view": 34.29209906607866
+        },
+        {
+          "online_layout": 36.35507507715374,
+          "online_with_view": 33.88181992340833,
+          "padded": 32.25884702987969,
+          "packed": 36.215196014381945
+        },
+        {
+          "online_with_view": 36.888712900690734,
+          "padded": 33.61291310284287,
+          "packed": 37.73110802285373,
+          "online_layout": 36.69678699225187
+        },
+        {
+          "online_with_view": 34.6661260118708,
+          "online_layout": 36.44473000895232,
+          "packed": 37.152064964175224,
+          "padded": 32.61983802076429
+        },
+        {
+          "padded": 32.23465208429843,
+          "packed": 36.34060197509825,
+          "online_layout": 36.31949005648494,
+          "online_with_view": 34.29927001707256
+        },
+        {
+          "packed": 36.9973280467093,
+          "online_layout": 36.79710300639272,
+          "online_with_view": 34.4102899543941,
+          "padded": 32.44552400428802
+        },
+        {
+          "packed": 37.20035101287067,
+          "padded": 32.415820052847266,
+          "online_with_view": 34.63791706599295,
+          "online_layout": 36.57246404327452
+        },
+        {
+          "online_with_view": 34.685475984588265,
+          "packed": 37.99096099101007,
+          "online_layout": 37.72175998892635,
+          "padded": 32.67701109871268
+        },
+        {
+          "packed": 37.401729030534625,
+          "online_with_view": 36.07018804177642,
+          "padded": 33.85727200657129,
+          "online_layout": 37.87769703194499
+        },
+        {
+          "online_with_view": 35.40460509248078,
+          "padded": 33.42499700374901,
+          "online_layout": 38.64880895707756,
+          "packed": 38.03817508742213
+        },
+        {
+          "online_layout": 37.23481798078865,
+          "padded": 32.66969101969153,
+          "online_with_view": 35.58042703662068,
+          "packed": 37.75167593266815
+        },
+        {
+          "packed": 38.02279301453382,
+          "online_layout": 37.443322013132274,
+          "padded": 33.25827210210264,
+          "online_with_view": 35.75726295821369
+        },
+        {
+          "padded": 34.123703953810036,
+          "online_layout": 39.71773094963282,
+          "packed": 40.28067702893168,
+          "online_with_view": 36.96062997914851
+        },
+        {
+          "online_layout": 40.156900067813694,
+          "packed": 39.652945939451456,
+          "online_with_view": 37.19974297564477,
+          "padded": 34.088316024281085
+        },
+        {
+          "padded": 34.035088028758764,
+          "online_with_view": 36.37480305042118,
+          "packed": 38.513595005497336,
+          "online_layout": 37.5929829897359
+        },
+        {
+          "online_layout": 37.54872502759099,
+          "online_with_view": 35.11262498795986,
+          "padded": 32.563184038735926,
+          "packed": 36.39355895575136
+        },
+        {
+          "packed": 36.844830960035324,
+          "padded": 32.42845507338643,
+          "online_with_view": 34.65515607967973,
+          "online_layout": 35.96998401917517
+        },
+        {
+          "padded": 32.50006807502359,
+          "online_with_view": 36.746656987816095,
+          "online_layout": 37.96044900082052,
+          "packed": 37.435367004945874
+        },
+        {
+          "online_with_view": 35.409194068051875,
+          "online_layout": 37.53799095284194,
+          "packed": 37.89788403082639,
+          "padded": 38.12367399223149
+        },
+        {
+          "online_with_view": 42.387473047710955,
+          "padded": 40.37807497661561,
+          "packed": 48.41593699529767,
+          "online_layout": 47.19106201082468
+        },
+        {
+          "padded": 39.31504301726818,
+          "packed": 47.288785921409726,
+          "online_layout": 48.22672193404287,
+          "online_with_view": 43.639756040647626
+        },
+        {
+          "packed": 46.58077307976782,
+          "online_layout": 44.60848600137979,
+          "online_with_view": 42.244551004841924,
+          "padded": 38.92846207600087
+        },
+        {
+          "online_layout": 44.287394965067506,
+          "packed": 43.774815974757075,
+          "padded": 36.600589053705335,
+          "online_with_view": 39.17710192035884
+        }
+      ],
+      "event_ms": {},
+      "correctness": [
+        {
+          "seed": 269,
+          "checks": {
+            "padded": {
+              "max_first_logit_difference": 0.0,
+              "matched_sequences": 4
+            },
+            "online_layout": {
+              "max_first_logit_difference": 0.0,
+              "matched_sequences": 4
+            },
+            "online_with_view": {
+              "max_first_logit_difference": 0.0,
+              "matched_sequences": 4
+            }
+          }
+        },
+        {
+          "seed": 270,
+          "checks": {
+            "padded": {
+              "max_first_logit_difference": 0.0,
+              "matched_sequences": 4
+            },
+            "online_layout": {
+              "max_first_logit_difference": 0.0,
+              "matched_sequences": 4
+            },
+            "online_with_view": {
+              "max_first_logit_difference": 0.0,
+              "matched_sequences": 4
+            }
+          }
+        },
+        {
+          "seed": 271,
+          "checks": {
+            "padded": {
+              "max_first_logit_difference": 0.0,
+              "matched_sequences": 4
+            },
+            "online_layout": {
+              "max_first_logit_difference": 0.0,
+              "matched_sequences": 4
+            },
+            "online_with_view": {
+              "max_first_logit_difference": 0.0,
+              "matched_sequences": 4
+            }
+          }
+        },
+        {
+          "seed": 272,
+          "checks": {
+            "padded": {
+              "max_first_logit_difference": 0.0,
+              "matched_sequences": 4
+            },
+            "online_layout": {
+              "max_first_logit_difference": 0.0,
+              "matched_sequences": 4
+            },
+            "online_with_view": {
+              "max_first_logit_difference": 0.0,
+              "matched_sequences": 4
+            }
+          }
+        },
+        {
+          "seed": 273,
+          "checks": {
+            "padded": {
+              "max_first_logit_difference": 0.0,
+              "matched_sequences": 4
+            },
+            "online_layout": {
+              "max_first_logit_difference": 0.0,
+              "matched_sequences": 4
+            },
+            "online_with_view": {
+              "max_first_logit_difference": 0.0,
+              "matched_sequences": 4
+            }
+          }
+        },
+        {
+          "seed": 274,
+          "checks": {
+            "padded": {
+              "max_first_logit_difference": 0.0,
+              "matched_sequences": 4
+            },
+            "online_layout": {
+              "max_first_logit_difference": 0.0,
+              "matched_sequences": 4
+            },
+            "online_with_view": {
+              "max_first_logit_difference": 0.0,
+              "matched_sequences": 4
+            }
+          }
+        }
+      ],
+      "before": [
+        "0, NVIDIA GeForce RTX 4090, 0 %, 441 MiB",
+        "1, NVIDIA GeForce RTX 4090, 8 %, 2529 MiB",
+        "2, NVIDIA GeForce RTX 4090, 100 %, 5389 MiB"
+      ],
+      "after": [
+        "0, NVIDIA GeForce RTX 4090, 0 %, 443 MiB",
+        "1, NVIDIA GeForce RTX 4090, 18 %, 2529 MiB",
+        "2, NVIDIA GeForce RTX 4090, 100 %, 5389 MiB"
+      ]
+    },
+    {
+      "lengths": [
+        96,
+        96,
+        112,
+        112,
+        144,
+        144,
+        160,
+        160
+      ],
+      "ttft_ms": [
+        {
+          "packed": 45.58461892884225,
+          "online_layout": 47.86591196898371,
+          "padded": 53.66025900002569
+        },
+        {
+          "packed": 50.16758292913437,
+          "padded": 53.49936697166413,
+          "online_layout": 47.722963034175336
+        },
+        {
+          "padded": 51.764146075583994,
+          "packed": 52.21350700594485,
+          "online_layout": 54.12865208927542
+        },
+        {
+          "online_layout": 52.022101008333266,
+          "packed": 51.84681399259716,
+          "padded": 55.479045026004314
+        },
+        {
+          "online_layout": 47.19224199652672,
+          "padded": 53.78398601897061,
+          "packed": 49.344922066666186
+        },
+        {
+          "padded": 55.47231901437044,
+          "online_layout": 52.23219201434404,
+          "packed": 49.78886398021132
+        },
+        {
+          "padded": 58.037393959239125,
+          "packed": 51.97681300342083,
+          "online_layout": 54.45552698802203
+        },
+        {
+          "online_layout": 54.46322693023831,
+          "padded": 60.31444598920643,
+          "packed": 51.75991298165172
+        },
+        {
+          "packed": 52.053402992896736,
+          "online_layout": 47.354305046610534,
+          "padded": 55.9588260948658
+        },
+        {
+          "padded": 57.60696204379201,
+          "online_layout": 51.97350401431322,
+          "packed": 51.89832195173949
+        },
+        {
+          "online_layout": 51.860265084542334,
+          "packed": 49.420716939494014,
+          "padded": 57.891062926501036
+        },
+        {
+          "packed": 51.93675099872053,
+          "padded": 58.157096966169775,
+          "online_layout": 54.48037397582084
+        },
+        {
+          "padded": 60.21960196085274,
+          "online_layout": 51.75927304662764,
+          "packed": 54.21492294408381
+        },
+        {
+          "online_layout": 54.47678500786424,
+          "packed": 54.46515290532261,
+          "padded": 60.25354296434671
+        },
+        {
+          "padded": 57.99911101348698,
+          "packed": 49.79990306310356,
+          "online_layout": 51.92978505510837
+        },
+        {
+          "packed": 56.819223100319505,
+          "padded": 65.95533806830645,
+          "online_layout": 54.68148004729301
+        },
+        {
+          "packed": 57.14370391797274,
+          "online_layout": 54.35854394454509,
+          "padded": 62.96061794273555
+        },
+        {
+          "online_layout": 54.79903693776578,
+          "padded": 60.37068506702781,
+          "packed": 52.03488701954484
+        },
+        {
+          "padded": 58.373279054649174,
+          "packed": 52.41818504873663,
+          "online_layout": 57.1526630083099
+        },
+        {
+          "packed": 52.32656700536609,
+          "online_layout": 55.03755109384656,
+          "padded": 63.01623198669404
+        },
+        {
+          "online_layout": 52.061617956496775,
+          "padded": 63.19930194877088,
+          "packed": 54.61054597981274
+        },
+        {
+          "padded": 65.4935899656266,
+          "online_layout": 57.07886698655784,
+          "packed": 54.71070401836187
+        },
+        {
+          "packed": 54.04665193054825,
+          "padded": 67.75461102370173,
+          "online_layout": 54.24812808632851
+        },
+        {
+          "online_layout": 57.05312197096646,
+          "packed": 54.66426198836416,
+          "padded": 55.49274699296802
+        }
+      ],
+      "event_ms": {},
+      "correctness": [
+        {
+          "seed": 269,
+          "checks": {
+            "padded": {
+              "max_first_logit_difference": 0.0361328125,
+              "matched_sequences": 7
+            },
+            "online_layout": {
+              "max_first_logit_difference": 0.0,
+              "matched_sequences": 8
+            }
+          }
+        },
+        {
+          "seed": 270,
+          "checks": {
+            "padded": {
+              "max_first_logit_difference": 0.03515625,
+              "matched_sequences": 8
+            },
+            "online_layout": {
+              "max_first_logit_difference": 0.0,
+              "matched_sequences": 8
+            }
+          }
+        },
+        {
+          "seed": 271,
+          "checks": {
+            "padded": {
+              "max_first_logit_difference": 0.046875,
+              "matched_sequences": 8
+            },
+            "online_layout": {
+              "max_first_logit_difference": 0.0,
+              "matched_sequences": 8
+            }
+          }
+        },
+        {
+          "seed": 272,
+          "checks": {
+            "padded": {
+              "max_first_logit_difference": 0.06640625,
+              "matched_sequences": 8
+            },
+            "online_layout": {
+              "max_first_logit_difference": 0.0,
+              "matched_sequences": 8
+            }
+          }
+        },
+        {
+          "seed": 273,
+          "checks": {
+            "padded": {
+              "max_first_logit_difference": 0.033203125,
+              "matched_sequences": 8
+            },
+            "online_layout": {
+              "max_first_logit_difference": 0.0,
+              "matched_sequences": 8
+            }
+          }
+        },
+        {
+          "seed": 274,
+          "checks": {
+            "padded": {
+              "max_first_logit_difference": 0.0361328125,
+              "matched_sequences": 8
+            },
+            "online_layout": {
+              "max_first_logit_difference": 0.0,
+              "matched_sequences": 8
+            }
+          }
+        }
+      ],
+      "before": [
+        "0, NVIDIA GeForce RTX 4090, 0 %, 443 MiB",
+        "1, NVIDIA GeForce RTX 4090, 18 %, 2529 MiB",
+        "2, NVIDIA GeForce RTX 4090, 100 %, 5389 MiB"
+      ],
+      "after": [
+        "0, NVIDIA GeForce RTX 4090, 0 %, 447 MiB",
+        "1, NVIDIA GeForce RTX 4090, 100 %, 3289 MiB",
+        "2, NVIDIA GeForce RTX 4090, 100 %, 5389 MiB"
+      ]
+    },
+    {
+      "lengths": [
+        8,
+        16,
+        24,
+        32,
+        40,
+        48,
+        88,
+        768
+      ],
+      "ttft_ms": [
+        {
+          "packed": 45.81065208185464,
+          "online_layout": 45.78395397402346,
+          "padded": 192.61213904246688
+        },
+        {
+          "packed": 45.718717970885336,
+          "padded": 194.99713904224336,
+          "online_layout": 59.64482401032001
+        },
+        {
+          "padded": 201.51315198745579,
+          "packed": 57.28039506357163,
+          "online_layout": 59.75255905650556
+        },
+        {
+          "online_layout": 59.51379192993045,
+          "packed": 48.02878701593727,
+          "padded": 192.61461996939033
+        },
+        {
+          "online_layout": 47.89849801454693,
+          "padded": 192.21859995741397,
+          "packed": 47.87398409098387
+        },
+        {
+          "padded": 192.29172600898892,
+          "online_layout": 47.95069503597915,
+          "packed": 47.88814706262201
+        },
+        {
+          "padded": 192.46119598392397,
+          "packed": 48.10244799591601,
+          "online_layout": 48.02239895798266
+        },
+        {
+          "online_layout": 48.00899396650493,
+          "padded": 192.533613066189,
+          "packed": 45.798477018252015
+        },
+        {
+          "packed": 45.68991903215647,
+          "online_layout": 48.009898979216814,
+          "padded": 192.5566290738061
+        },
+        {
+          "padded": 192.64038000255823,
+          "online_layout": 47.97641793265939,
+          "packed": 47.97556495759636
+        },
+        {
+          "online_layout": 47.9210369521752,
+          "packed": 47.879868070594966,
+          "padded": 192.15546897612512
+        },
+        {
+          "packed": 47.839147970080376,
+          "padded": 192.0430479804054,
+          "online_layout": 47.97979909926653
+        },
+        {
+          "padded": 192.3205410130322,
+          "online_layout": 50.22190301679075,
+          "packed": 48.07850590441376
+        },
+        {
+          "online_layout": 48.004265991039574,
+          "packed": 45.62887502834201,
+          "padded": 192.19221407547593
+        },
+        {
+          "padded": 191.93564297165722,
+          "packed": 45.61251506675035,
+          "online_layout": 45.58059701230377
+        },
+        {
+          "packed": 45.626889914274216,
+          "padded": 192.11623398587108,
+          "online_layout": 45.63439101912081
+        },
+        {
+          "packed": 45.60433293227106,
+          "online_layout": 45.60085793491453,
+          "padded": 191.877344972454
+        },
+        {
+          "online_layout": 45.68375903181732,
+          "padded": 191.95454299915582,
+          "packed": 48.01665688864887
+        },
+        {
+          "padded": 191.96910096798092,
+          "packed": 45.672814012505114,
+          "online_layout": 45.70328106638044
+        },
+        {
+          "packed": 45.61845597345382,
+          "online_layout": 45.586042921058834,
+          "padded": 192.14018899947405
+        },
+        {
+          "online_layout": 45.712420949712396,
+          "padded": 191.98362005408853,
+          "packed": 45.79308908432722
+        },
+        {
+          "padded": 192.25468789227307,
+          "online_layout": 45.633488916791975,
+          "packed": 45.70649203378707
+        },
+        {
+          "packed": 45.5697460565716,
+          "padded": 192.34459393192083,
+          "online_layout": 48.073685029521585
+        },
+        {
+          "online_layout": 48.07087394874543,
+          "packed": 45.73143506422639,
+          "padded": 192.05394200980663
+        }
+      ],
+      "event_ms": {},
+      "correctness": [
+        {
+          "seed": 269,
+          "checks": {
+            "padded": {
+              "max_first_logit_difference": 0.03125,
+              "matched_sequences": 8
+            },
+            "online_layout": {
+              "max_first_logit_difference": 0.0,
+              "matched_sequences": 8
+            }
+          }
+        },
+        {
+          "seed": 270,
+          "checks": {
+            "padded": {
+              "max_first_logit_difference": 0.04296875,
+              "matched_sequences": 8
+            },
+            "online_layout": {
+              "max_first_logit_difference": 0.0,
+              "matched_sequences": 8
+            }
+          }
+        },
+        {
+          "seed": 271,
+          "checks": {
+            "padded": {
+              "max_first_logit_difference": 0.0283203125,
+              "matched_sequences": 8
+            },
+            "online_layout": {
+              "max_first_logit_difference": 0.0,
+              "matched_sequences": 8
+            }
+          }
+        },
+        {
+          "seed": 272,
+          "checks": {
+            "padded": {
+              "max_first_logit_difference": 0.031982421875,
+              "matched_sequences": 8
+            },
+            "online_layout": {
+              "max_first_logit_difference": 0.0,
+              "matched_sequences": 8
+            }
+          }
+        },
+        {
+          "seed": 273,
+          "checks": {
+            "padded": {
+              "max_first_logit_difference": 0.03271484375,
+              "matched_sequences": 8
+            },
+            "online_layout": {
+              "max_first_logit_difference": 0.0,
+              "matched_sequences": 8
+            }
+          }
+        },
+        {
+          "seed": 274,
+          "checks": {
+            "padded": {
+              "max_first_logit_difference": 0.02734375,
+              "matched_sequences": 8
+            },
+            "online_layout": {
+              "max_first_logit_difference": 0.0,
+              "matched_sequences": 8
+            }
+          }
+        }
+      ],
+      "before": [
+        "0, NVIDIA GeForce RTX 4090, 0 %, 447 MiB",
+        "1, NVIDIA GeForce RTX 4090, 100 %, 3289 MiB",
+        "2, NVIDIA GeForce RTX 4090, 100 %, 5389 MiB"
+      ],
+      "after": [
+        "0, NVIDIA GeForce RTX 4090, 0 %, 733 MiB",
+        "1, NVIDIA GeForce RTX 4090, 100 %, 4661 MiB",
+        "2, NVIDIA GeForce RTX 4090, 100 %, 5389 MiB"
+      ]
+    }
+  ]
+}

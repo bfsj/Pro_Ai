@@ -1,0 +1,1464 @@
+{
+  "device": "NVIDIA GeForce RTX 4090",
+  "torch": "2.11.0+cu128",
+  "dtype": "float16",
+  "transformers": "4.57.6",
+  "model": "Qwen3-0.6B",
+  "seed": 227,
+  "layers": 28,
+  "rounds": 30,
+  "shapes": [
+    {
+      "lengths": [
+        128,
+        128,
+        128,
+        128,
+        128,
+        128,
+        128,
+        128
+      ],
+      "ttft_ms": [
+        {
+          "prepared_input": 45.380071038380265,
+          "cache_view": 45.01760704442859,
+          "dense_attention": 45.303208054974675,
+          "packed": 49.92515908088535,
+          "padded": 40.2614320628345
+        },
+        {
+          "dense_attention": 45.177467982284725,
+          "cache_view": 44.81753008440137,
+          "prepared_input": 45.37518392316997,
+          "padded": 40.18373508006334,
+          "packed": 45.374609995633364
+        },
+        {
+          "padded": 40.055603021755815,
+          "packed": 47.56884800735861,
+          "dense_attention": 45.27032491751015,
+          "cache_view": 44.8557639028877,
+          "prepared_input": 45.33886595163494
+        },
+        {
+          "dense_attention": 45.347840059548616,
+          "packed": 47.650648979470134,
+          "padded": 40.25984508916736,
+          "prepared_input": 45.14748801011592,
+          "cache_view": 44.95057603344321
+        },
+        {
+          "packed": 45.33374297898263,
+          "dense_attention": 42.962917941622436,
+          "cache_view": 42.65681398101151,
+          "prepared_input": 42.94009506702423,
+          "padded": 40.20826506894082
+        },
+        {
+          "padded": 44.51750300358981,
+          "prepared_input": 45.24553602095693,
+          "cache_view": 44.95604999829084,
+          "dense_attention": 42.76907094754279,
+          "packed": 47.61245695408434
+        },
+        {
+          "packed": 47.56783996708691,
+          "padded": 40.117643075063825,
+          "prepared_input": 45.29678903054446,
+          "cache_view": 44.660447048954666,
+          "dense_attention": 45.2471369644627
+        },
+        {
+          "cache_view": 44.90028496365994,
+          "dense_attention": 45.204900903627276,
+          "packed": 47.63161204755306,
+          "padded": 39.907632977701724,
+          "prepared_input": 45.27330701239407
+        },
+        {
+          "cache_view": 44.92431797552854,
+          "prepared_input": 45.19773193169385,
+          "padded": 40.154819027520716,
+          "packed": 47.547922004014254,
+          "dense_attention": 45.21097207907587
+        },
+        {
+          "prepared_input": 45.32304406166077,
+          "padded": 40.14200496021658,
+          "packed": 47.657794086262584,
+          "dense_attention": 45.134907006286085,
+          "cache_view": 44.948062975890934
+        },
+        {
+          "packed": 47.57317597977817,
+          "padded": 44.5265140151605,
+          "prepared_input": 47.637150972150266,
+          "dense_attention": 45.2508149901405,
+          "cache_view": 44.90641294978559
+        },
+        {
+          "padded": 40.16781598329544,
+          "packed": 47.5828240159899,
+          "cache_view": 45.042422018013895,
+          "dense_attention": 45.275691081769764,
+          "prepared_input": 45.320446020923555
+        },
+        {
+          "cache_view": 44.72068208269775,
+          "dense_attention": 42.985665961168706,
+          "prepared_input": 45.18171597737819,
+          "padded": 40.004965965636075,
+          "packed": 47.61593695729971
+        },
+        {
+          "prepared_input": 45.22852995432913,
+          "padded": 40.18318094313145,
+          "packed": 47.65557101927698,
+          "cache_view": 44.87562901340425,
+          "dense_attention": 42.9937579901889
+        },
+        {
+          "packed": 45.34687101840973,
+          "cache_view": 44.956192024983466,
+          "dense_attention": 42.829534970223904,
+          "prepared_input": 42.84678597468883,
+          "padded": 40.19350605085492
+        },
+        {
+          "dense_attention": 47.513837926089764,
+          "cache_view": 44.95592997409403,
+          "packed": 47.565578017383814,
+          "padded": 39.93752098176628,
+          "prepared_input": 45.33489898312837
+        },
+        {
+          "dense_attention": 45.41874199640006,
+          "prepared_input": 45.329439104534686,
+          "padded": 40.34728102851659,
+          "packed": 45.34506797790527,
+          "cache_view": 42.690892005339265
+        },
+        {
+          "cache_view": 42.51598508562893,
+          "packed": 45.43596599251032,
+          "padded": 37.820113939233124,
+          "prepared_input": 43.022974976338446,
+          "dense_attention": 43.07365498971194
+        },
+        {
+          "prepared_input": 42.983075021766126,
+          "dense_attention": 45.33439106307924,
+          "cache_view": 44.79554109275341,
+          "packed": 47.65192000195384,
+          "padded": 40.11926695238799
+        },
+        {
+          "padded": 40.22243805229664,
+          "prepared_input": 43.107251985929906,
+          "dense_attention": 42.93432703707367,
+          "cache_view": 45.004909043200314,
+          "packed": 47.51324804965407
+        },
+        {
+          "packed": 47.65675391536206,
+          "padded": 40.24086496792734,
+          "prepared_input": 45.272123999893665,
+          "cache_view": 45.07004306651652,
+          "dense_attention": 45.218585059046745
+        },
+        {
+          "cache_view": 47.34558891505003,
+          "dense_attention": 45.404122909531,
+          "packed": 47.70387802273035,
+          "padded": 40.18818505574018,
+          "prepared_input": 45.3641670756042
+        },
+        {
+          "dense_attention": 45.110060018487275,
+          "packed": 49.94497890584171,
+          "padded": 40.37581093143672,
+          "prepared_input": 47.48071602080017,
+          "cache_view": 45.05782702472061
+        },
+        {
+          "dense_attention": 45.1623109402135,
+          "cache_view": 44.98955002054572,
+          "prepared_input": 45.24465394206345,
+          "padded": 40.253577986732125,
+          "packed": 47.66640602611005
+        },
+        {
+          "padded": 40.116650983691216,
+          "packed": 47.68965998664498,
+          "dense_attention": 45.3230639686808,
+          "cache_view": 44.99024199321866,
+          "prepared_input": 47.47773497365415
+        },
+        {
+          "packed": 49.983458942733705,
+          "dense_attention": 47.59824997745454,
+          "cache_view": 47.2823369782418,
+          "prepared_input": 47.536886064335704,
+          "padded": 42.50446998048574
+        },
+        {
+          "padded": 40.27538700029254,
+          "prepared_input": 45.243771048262715,
+          "cache_view": 45.06183904595673,
+          "dense_attention": 45.32821197062731,
+          "packed": 47.69630800001323
+        },
+        {
+          "prepared_input": 47.42494295351207,
+          "cache_view": 47.1846810542047,
+          "dense_attention": 47.59880399797112,
+          "packed": 50.00472906976938,
+          "padded": 40.272395010106266
+        },
+        {
+          "cache_view": 44.98166299890727,
+          "prepared_input": 45.2881840756163,
+          "padded": 40.154832997359335,
+          "packed": 47.67783707939088,
+          "dense_attention": 45.282734907232225
+        },
+        {
+          "prepared_input": 47.63149993959814,
+          "padded": 40.04870099015534,
+          "packed": 47.60862700641155,
+          "dense_attention": 45.3052680240944,
+          "cache_view": 44.78652297984809
+        }
+      ],
+      "event_ms": {
+        "padded": [
+          {
+            "cache_update": 2.7595840003341436,
+            "attention": 0.3628480061888695
+          },
+          {
+            "cache_update": 2.671615890227258,
+            "attention": 2.6503041237592697
+          },
+          {
+            "cache_update": 0.4517119973897934,
+            "attention": 4.928928001783788
+          },
+          {
+            "cache_update": 2.733471897430718,
+            "attention": 2.648511914536357
+          },
+          {
+            "cache_update": 2.7482559829950333,
+            "attention": 2.67686399910599
+          }
+        ],
+        "packed": [
+          {
+            "cache_update": 0.4487359970808029,
+            "pack_inputs": 2.3296000957489014,
+            "cache_rows": 0.4574080016463995,
+            "attention": 20.95427180174738
+          },
+          {
+            "cache_update": 0.4452479975298047,
+            "pack_inputs": 2.3175039291381836,
+            "cache_rows": 0.46064000064507127,
+            "attention": 18.797567973844707
+          },
+          {
+            "cache_update": 5.031360046938062,
+            "pack_inputs": 2.269184112548828,
+            "cache_rows": 2.7558081187307835,
+            "attention": 2.7219840260222554
+          },
+          {
+            "cache_update": 0.45081599801778793,
+            "pack_inputs": 2.318336009979248,
+            "cache_rows": 2.7383999694138765,
+            "attention": 7.26937597617507
+          },
+          {
+            "cache_update": 0.45164799503982067,
+            "pack_inputs": 2.3019518852233887,
+            "cache_rows": 0.47702400386333466,
+            "attention": 9.605120019987226
+          }
+        ]
+      },
+      "correctness": [
+        {
+          "seed": 227,
+          "checks": {
+            "padded": {
+              "max_first_logit_difference": 0.0,
+              "matched_sequences": 8
+            },
+            "prepared_input": {
+              "max_first_logit_difference": 0.0,
+              "matched_sequences": 8
+            },
+            "cache_view": {
+              "max_first_logit_difference": 0.0,
+              "matched_sequences": 8
+            },
+            "dense_attention": {
+              "max_first_logit_difference": 0.0,
+              "matched_sequences": 8
+            }
+          }
+        },
+        {
+          "seed": 228,
+          "checks": {
+            "padded": {
+              "max_first_logit_difference": 0.0,
+              "matched_sequences": 8
+            },
+            "prepared_input": {
+              "max_first_logit_difference": 0.0,
+              "matched_sequences": 8
+            },
+            "cache_view": {
+              "max_first_logit_difference": 0.0,
+              "matched_sequences": 8
+            },
+            "dense_attention": {
+              "max_first_logit_difference": 0.0,
+              "matched_sequences": 8
+            }
+          }
+        },
+        {
+          "seed": 229,
+          "checks": {
+            "padded": {
+              "max_first_logit_difference": 0.0,
+              "matched_sequences": 8
+            },
+            "prepared_input": {
+              "max_first_logit_difference": 0.0,
+              "matched_sequences": 8
+            },
+            "cache_view": {
+              "max_first_logit_difference": 0.0,
+              "matched_sequences": 8
+            },
+            "dense_attention": {
+              "max_first_logit_difference": 0.0,
+              "matched_sequences": 8
+            }
+          }
+        },
+        {
+          "seed": 230,
+          "checks": {
+            "padded": {
+              "max_first_logit_difference": 0.0,
+              "matched_sequences": 8
+            },
+            "prepared_input": {
+              "max_first_logit_difference": 0.0,
+              "matched_sequences": 8
+            },
+            "cache_view": {
+              "max_first_logit_difference": 0.0,
+              "matched_sequences": 8
+            },
+            "dense_attention": {
+              "max_first_logit_difference": 0.0,
+              "matched_sequences": 8
+            }
+          }
+        },
+        {
+          "seed": 231,
+          "checks": {
+            "padded": {
+              "max_first_logit_difference": 0.0,
+              "matched_sequences": 8
+            },
+            "prepared_input": {
+              "max_first_logit_difference": 0.0,
+              "matched_sequences": 8
+            },
+            "cache_view": {
+              "max_first_logit_difference": 0.0,
+              "matched_sequences": 8
+            },
+            "dense_attention": {
+              "max_first_logit_difference": 0.0,
+              "matched_sequences": 8
+            }
+          }
+        },
+        {
+          "seed": 232,
+          "checks": {
+            "padded": {
+              "max_first_logit_difference": 0.0,
+              "matched_sequences": 8
+            },
+            "prepared_input": {
+              "max_first_logit_difference": 0.0,
+              "matched_sequences": 8
+            },
+            "cache_view": {
+              "max_first_logit_difference": 0.0,
+              "matched_sequences": 8
+            },
+            "dense_attention": {
+              "max_first_logit_difference": 0.0,
+              "matched_sequences": 8
+            }
+          }
+        }
+      ],
+      "before": [
+        "0, NVIDIA GeForce RTX 4090, 100 %, 1145 MiB",
+        "1, NVIDIA GeForce RTX 4090, 100 %, 2991 MiB",
+        "2, NVIDIA GeForce RTX 4090, 100 %, 5389 MiB"
+      ],
+      "after": [
+        "0, NVIDIA GeForce RTX 4090, 100 %, 1145 MiB",
+        "1, NVIDIA GeForce RTX 4090, 100 %, 3249 MiB",
+        "2, NVIDIA GeForce RTX 4090, 100 %, 6294 MiB"
+      ]
+    },
+    {
+      "lengths": [
+        256,
+        256,
+        256,
+        256
+      ],
+      "ttft_ms": [
+        {
+          "prepared_input": 45.548222959041595,
+          "cache_view": 45.21489189937711,
+          "dense_attention": 45.436377986334264,
+          "packed": 47.645198996178806,
+          "padded": 40.33219499979168
+        },
+        {
+          "dense_attention": 45.52618192974478,
+          "cache_view": 45.007335022091866,
+          "prepared_input": 47.77647205628455,
+          "padded": 40.45127297285944,
+          "packed": 47.788982978090644
+        },
+        {
+          "padded": 40.4696079203859,
+          "packed": 47.780674998648465,
+          "dense_attention": 45.47775303944945,
+          "cache_view": 44.96892495080829,
+          "prepared_input": 45.48312199767679
+        },
+        {
+          "dense_attention": 43.17709698807448,
+          "packed": 47.762169037014246,
+          "padded": 40.4020759742707,
+          "prepared_input": 45.24944303557277,
+          "cache_view": 45.15883093699813
+        },
+        {
+          "packed": 47.80922003556043,
+          "dense_attention": 45.39987992029637,
+          "cache_view": 45.14447401743382,
+          "prepared_input": 45.45116506051272,
+          "padded": 40.45004001818597
+        },
+        {
+          "padded": 38.139634067192674,
+          "prepared_input": 43.19299291819334,
+          "cache_view": 45.09216104634106,
+          "dense_attention": 43.085123994387686,
+          "packed": 45.55547202471644
+        },
+        {
+          "packed": 45.43371498584747,
+          "padded": 40.381707018241286,
+          "prepared_input": 46.072056982666254,
+          "cache_view": 49.0875500254333,
+          "dense_attention": 46.993853989988565
+        },
+        {
+          "cache_view": 44.108000001870096,
+          "dense_attention": 44.53595296945423,
+          "packed": 47.163013950921595,
+          "padded": 41.53729695826769,
+          "prepared_input": 44.540188973769546
+        },
+        {
+          "cache_view": 44.55502703785896,
+          "prepared_input": 44.68344594351947,
+          "padded": 39.53107993584126,
+          "packed": 46.33721092250198,
+          "dense_attention": 43.12177002429962
+        },
+        {
+          "prepared_input": 43.17321896087378,
+          "padded": 40.30823695939034,
+          "packed": 45.531796058639884,
+          "dense_attention": 45.19718803931028,
+          "cache_view": 42.79527603648603
+        },
+        {
+          "packed": 45.60547391884029,
+          "padded": 37.985061993822455,
+          "prepared_input": 43.21914701722562,
+          "dense_attention": 43.197827064432204,
+          "cache_view": 42.82959899865091
+        },
+        {
+          "padded": 38.105059997178614,
+          "packed": 45.413666986860335,
+          "cache_view": 42.834825930185616,
+          "dense_attention": 45.25227891281247,
+          "prepared_input": 43.176221079193056
+        },
+        {
+          "cache_view": 42.84492204897106,
+          "dense_attention": 43.107061996124685,
+          "prepared_input": 43.20983693469316,
+          "padded": 40.393015020526946,
+          "packed": 47.760310932062566
+        },
+        {
+          "prepared_input": 45.501198968850076,
+          "padded": 40.326012996956706,
+          "packed": 47.758887987583876,
+          "cache_view": 45.149829937145114,
+          "dense_attention": 43.148359982296824
+        },
+        {
+          "packed": 45.48307799268514,
+          "cache_view": 42.80529893003404,
+          "dense_attention": 43.136021005921066,
+          "prepared_input": 43.173011974431574,
+          "padded": 38.083313032984734
+        },
+        {
+          "dense_attention": 43.11307508032769,
+          "cache_view": 44.936639023944736,
+          "packed": 47.831855015829206,
+          "padded": 40.23368691559881,
+          "prepared_input": 45.35845294594765
+        },
+        {
+          "dense_attention": 43.1918230606243,
+          "prepared_input": 45.15014903154224,
+          "padded": 40.36978504154831,
+          "packed": 45.55610101670027,
+          "cache_view": 42.797276051715016
+        },
+        {
+          "cache_view": 45.09234300348908,
+          "packed": 47.76256694458425,
+          "padded": 40.392991970293224,
+          "prepared_input": 46.744009014219046,
+          "dense_attention": 51.7263759393245
+        },
+        {
+          "prepared_input": 49.40234194509685,
+          "dense_attention": 46.867500990629196,
+          "cache_view": 49.23420399427414,
+          "packed": 51.569628063589334,
+          "padded": 41.725669987499714
+        },
+        {
+          "padded": 41.82265105191618,
+          "prepared_input": 47.297421959228814,
+          "dense_attention": 47.52067802473903,
+          "cache_view": 49.39229495357722,
+          "packed": 51.7313169548288
+        },
+        {
+          "packed": 52.03819798771292,
+          "padded": 43.92902401741594,
+          "prepared_input": 50.18684105016291,
+          "cache_view": 48.98736497852951,
+          "dense_attention": 47.51532105728984
+        },
+        {
+          "cache_view": 49.58888306282461,
+          "dense_attention": 47.337612020783126,
+          "packed": 51.740959053859115,
+          "padded": 41.00481397472322,
+          "prepared_input": 45.28044397011399
+        },
+        {
+          "dense_attention": 43.12245501205325,
+          "packed": 47.91583004407585,
+          "padded": 40.17520498018712,
+          "prepared_input": 45.58575095143169,
+          "cache_view": 47.250998904928565
+        },
+        {
+          "dense_attention": 45.47977296169847,
+          "cache_view": 45.06008303724229,
+          "prepared_input": 45.33440200611949,
+          "padded": 40.438444004394114,
+          "packed": 49.00938691571355
+        },
+        {
+          "padded": 44.31514604948461,
+          "packed": 51.961638033390045,
+          "dense_attention": 47.5491969846189,
+          "cache_view": 49.74853608291596,
+          "prepared_input": 50.144191016443074
+        },
+        {
+          "packed": 52.45213198941201,
+          "dense_attention": 47.82887001056224,
+          "cache_view": 53.68024006020278,
+          "prepared_input": 50.170534988865256,
+          "padded": 44.67900900635868
+        },
+        {
+          "padded": 44.42261508665979,
+          "prepared_input": 50.22218101657927,
+          "cache_view": 47.29944700375199,
+          "dense_attention": 47.10996290668845,
+          "packed": 50.27979100123048
+        },
+        {
+          "prepared_input": 47.82443994190544,
+          "cache_view": 47.46275895740837,
+          "dense_attention": 47.933975933119655,
+          "packed": 52.88499197922647,
+          "padded": 42.587926029227674
+        },
+        {
+          "cache_view": 47.25165094714612,
+          "prepared_input": 51.92898691166192,
+          "padded": 44.849073980003595,
+          "packed": 52.43706190958619,
+          "dense_attention": 49.812993966042995
+        },
+        {
+          "prepared_input": 52.48673202004284,
+          "padded": 41.65632091462612,
+          "packed": 50.64879707060754,
+          "dense_attention": 50.03959406167269,
+          "cache_view": 52.23631800618023
+        }
+      ],
+      "event_ms": {
+        "padded": [
+          {
+            "cache_update": 0.45196799747645855,
+            "attention": 2.969760062173009
+          },
+          {
+            "cache_update": 5.269696000032127,
+            "attention": 5.456159947440028
+          },
+          {
+            "cache_update": 0.4516479978337884,
+            "attention": 5.409151999279857
+          },
+          {
+            "cache_update": 0.4422719953581691,
+            "attention": 5.482495855540037
+          },
+          {
+            "cache_update": 0.4617599966004491,
+            "attention": 0.5509759932756424
+          }
+        ],
+        "packed": [
+          {
+            "cache_update": 2.716703957878053,
+            "pack_inputs": 2.5036799907684326,
+            "cache_rows": 2.942944025620818,
+            "attention": 12.837888162583113
+          },
+          {
+            "cache_update": 2.8989119213074446,
+            "pack_inputs": 2.453792095184326,
+            "cache_rows": 10.450367933139205,
+            "attention": 8.005632016807795
+          },
+          {
+            "cache_update": 2.9177600322291255,
+            "pack_inputs": 2.4443519115448,
+            "cache_rows": 2.924576096702367,
+            "attention": 7.946239992976189
+          },
+          {
+            "cache_update": 2.8744959952309728,
+            "pack_inputs": 2.446336030960083,
+            "cache_rows": 5.4364800420589745,
+            "attention": 12.922879856079817
+          },
+          {
+            "cache_update": 0.445503992959857,
+            "pack_inputs": 2.4739840030670166,
+            "cache_rows": 5.459295982960612,
+            "attention": 12.835839891806245
+          }
+        ]
+      },
+      "correctness": [
+        {
+          "seed": 227,
+          "checks": {
+            "padded": {
+              "max_first_logit_difference": 0.0,
+              "matched_sequences": 4
+            },
+            "prepared_input": {
+              "max_first_logit_difference": 0.0,
+              "matched_sequences": 4
+            },
+            "cache_view": {
+              "max_first_logit_difference": 0.0,
+              "matched_sequences": 4
+            },
+            "dense_attention": {
+              "max_first_logit_difference": 0.0,
+              "matched_sequences": 4
+            }
+          }
+        },
+        {
+          "seed": 228,
+          "checks": {
+            "padded": {
+              "max_first_logit_difference": 0.0,
+              "matched_sequences": 4
+            },
+            "prepared_input": {
+              "max_first_logit_difference": 0.0,
+              "matched_sequences": 4
+            },
+            "cache_view": {
+              "max_first_logit_difference": 0.0,
+              "matched_sequences": 4
+            },
+            "dense_attention": {
+              "max_first_logit_difference": 0.0,
+              "matched_sequences": 4
+            }
+          }
+        },
+        {
+          "seed": 229,
+          "checks": {
+            "padded": {
+              "max_first_logit_difference": 0.0,
+              "matched_sequences": 4
+            },
+            "prepared_input": {
+              "max_first_logit_difference": 0.0,
+              "matched_sequences": 4
+            },
+            "cache_view": {
+              "max_first_logit_difference": 0.0,
+              "matched_sequences": 4
+            },
+            "dense_attention": {
+              "max_first_logit_difference": 0.0,
+              "matched_sequences": 4
+            }
+          }
+        },
+        {
+          "seed": 230,
+          "checks": {
+            "padded": {
+              "max_first_logit_difference": 0.0,
+              "matched_sequences": 4
+            },
+            "prepared_input": {
+              "max_first_logit_difference": 0.0,
+              "matched_sequences": 4
+            },
+            "cache_view": {
+              "max_first_logit_difference": 0.0,
+              "matched_sequences": 4
+            },
+            "dense_attention": {
+              "max_first_logit_difference": 0.0,
+              "matched_sequences": 4
+            }
+          }
+        },
+        {
+          "seed": 231,
+          "checks": {
+            "padded": {
+              "max_first_logit_difference": 0.0,
+              "matched_sequences": 4
+            },
+            "prepared_input": {
+              "max_first_logit_difference": 0.0,
+              "matched_sequences": 4
+            },
+            "cache_view": {
+              "max_first_logit_difference": 0.0,
+              "matched_sequences": 4
+            },
+            "dense_attention": {
+              "max_first_logit_difference": 0.0,
+              "matched_sequences": 4
+            }
+          }
+        },
+        {
+          "seed": 232,
+          "checks": {
+            "padded": {
+              "max_first_logit_difference": 0.0,
+              "matched_sequences": 4
+            },
+            "prepared_input": {
+              "max_first_logit_difference": 0.0,
+              "matched_sequences": 4
+            },
+            "cache_view": {
+              "max_first_logit_difference": 0.0,
+              "matched_sequences": 4
+            },
+            "dense_attention": {
+              "max_first_logit_difference": 0.0,
+              "matched_sequences": 4
+            }
+          }
+        }
+      ],
+      "before": [
+        "0, NVIDIA GeForce RTX 4090, 100 %, 1145 MiB",
+        "1, NVIDIA GeForce RTX 4090, 100 %, 3249 MiB",
+        "2, NVIDIA GeForce RTX 4090, 100 %, 6294 MiB"
+      ],
+      "after": [
+        "0, NVIDIA GeForce RTX 4090, 100 %, 1145 MiB",
+        "1, NVIDIA GeForce RTX 4090, 100 %, 3249 MiB",
+        "2, NVIDIA GeForce RTX 4090, 100 %, 7014 MiB"
+      ]
+    },
+    {
+      "lengths": [
+        96,
+        96,
+        112,
+        112,
+        144,
+        144,
+        160,
+        160
+      ],
+      "ttft_ms": [
+        {
+          "padded": 60.1735080126673,
+          "prepared_input": 52.47662297915667,
+          "packed": 54.29675802588463
+        },
+        {
+          "packed": 54.88647299353033,
+          "prepared_input": 54.91250997874886,
+          "padded": 58.315690024755895
+        },
+        {
+          "prepared_input": 52.07878595683724,
+          "packed": 51.956112030893564,
+          "padded": 58.093240950256586
+        },
+        {
+          "packed": 49.41841296385974,
+          "padded": 55.4411499761045,
+          "prepared_input": 49.22149493359029
+        },
+        {
+          "padded": 55.30489794909954,
+          "packed": 49.05897006392479,
+          "prepared_input": 46.60615709144622
+        },
+        {
+          "prepared_input": 46.787283034063876,
+          "padded": 55.00205606222153,
+          "packed": 49.106525955721736
+        },
+        {
+          "prepared_input": 46.90313804894686,
+          "padded": 54.765305016189814,
+          "packed": 49.6017059776932
+        },
+        {
+          "packed": 49.63475000113249,
+          "prepared_input": 46.48283193819225,
+          "padded": 57.78745003044605
+        },
+        {
+          "padded": 57.680075988173485,
+          "packed": 51.3514099875465,
+          "prepared_input": 46.854640007950366
+        },
+        {
+          "prepared_input": 46.97300889529288,
+          "packed": 49.331933027133346,
+          "padded": 55.19867199473083
+        },
+        {
+          "padded": 52.41813091561198,
+          "prepared_input": 44.55429490189999,
+          "packed": 48.978912993334234
+        },
+        {
+          "packed": 49.27274596411735,
+          "padded": 57.691472000442445,
+          "prepared_input": 47.219787957146764
+        },
+        {
+          "padded": 55.39330199826509,
+          "prepared_input": 47.2070979885757,
+          "packed": 49.59712899290025
+        },
+        {
+          "packed": 49.65680604800582,
+          "prepared_input": 47.36228508409113,
+          "padded": 57.68798908684403
+        },
+        {
+          "prepared_input": 47.05387097783387,
+          "padded": 55.38347200490534,
+          "packed": 49.62684400379658
+        },
+        {
+          "prepared_input": 47.05249902326614,
+          "packed": 46.927339979447424,
+          "padded": 52.63778904918581
+        },
+        {
+          "padded": 52.68766998779029,
+          "packed": 46.65569693315774,
+          "prepared_input": 47.38246195483953
+        },
+        {
+          "packed": 49.70074899028987,
+          "padded": 52.912065060809255,
+          "prepared_input": 44.693466974422336
+        },
+        {
+          "packed": 47.259981045499444,
+          "padded": 53.43980295583606,
+          "prepared_input": 44.45058899000287
+        },
+        {
+          "prepared_input": 45.07232108153403,
+          "packed": 47.165269032120705,
+          "padded": 55.47289305832237
+        },
+        {
+          "padded": 53.22631204035133,
+          "packed": 49.605680047534406,
+          "prepared_input": 46.99138703290373
+        },
+        {
+          "padded": 53.493610001169145,
+          "prepared_input": 46.90210404805839,
+          "packed": 47.19404492061585
+        },
+        {
+          "prepared_input": 46.269526006653905,
+          "padded": 55.65989902243018,
+          "packed": 49.44602004252374
+        },
+        {
+          "packed": 47.5100859766826,
+          "prepared_input": 54.74969104398042,
+          "padded": 58.06878802832216
+        },
+        {
+          "prepared_input": 49.90835103671998,
+          "packed": 52.35749599523842,
+          "padded": 57.72536899894476
+        },
+        {
+          "padded": 57.80872004106641,
+          "prepared_input": 50.20010005682707,
+          "packed": 49.93781691882759
+        },
+        {
+          "padded": 58.28495300374925,
+          "packed": 52.11863003205508,
+          "prepared_input": 52.31211392674595
+        },
+        {
+          "packed": 54.05247304588556,
+          "prepared_input": 52.5238550035283,
+          "padded": 63.17339895758778
+        },
+        {
+          "prepared_input": 55.04175100941211,
+          "padded": 60.709491022862494,
+          "packed": 54.844378028064966
+        },
+        {
+          "packed": 54.76429301779717,
+          "padded": 58.444101945497096,
+          "prepared_input": 49.92828005924821
+        }
+      ],
+      "event_ms": {
+        "padded": [
+          {
+            "cache_update": 2.959488043561578,
+            "attention": 11.257312003523111
+          },
+          {
+            "cache_update": 10.17344013787806,
+            "attention": 6.187103949487209
+          },
+          {
+            "cache_update": 0.5380800012499094,
+            "attention": 13.497439991682768
+          },
+          {
+            "cache_update": 0.5252480041235685,
+            "attention": 11.075775880366564
+          },
+          {
+            "cache_update": 5.448479872196913,
+            "attention": 8.682656109333038
+          }
+        ],
+        "packed": [
+          {
+            "cache_update": 5.346304187551141,
+            "pack_inputs": 2.495487928390503,
+            "cache_rows": 0.5011520055122674,
+            "attention": 10.353664141148329
+          },
+          {
+            "cache_update": 5.448959972709417,
+            "pack_inputs": 2.4739840030670166,
+            "cache_rows": 7.771520188078284,
+            "attention": 7.953471830114722
+          },
+          {
+            "cache_update": 9.94928009621799,
+            "pack_inputs": 2.4483840465545654,
+            "cache_rows": 0.49420800479128957,
+            "attention": 8.059904152527452
+          },
+          {
+            "cache_update": 0.5151680130511522,
+            "pack_inputs": 2.3613440990448,
+            "cache_rows": 5.386079977732152,
+            "attention": 12.837887842208147
+          },
+          {
+            "cache_update": 0.5222400147467852,
+            "pack_inputs": 2.466815948486328,
+            "cache_rows": 2.9201598949730396,
+            "attention": 12.784639650955796
+          }
+        ]
+      },
+      "correctness": [
+        {
+          "seed": 227,
+          "checks": {
+            "padded": {
+              "max_first_logit_difference": 0.03125,
+              "matched_sequences": 8
+            },
+            "prepared_input": {
+              "max_first_logit_difference": 0.0,
+              "matched_sequences": 8
+            }
+          }
+        },
+        {
+          "seed": 228,
+          "checks": {
+            "padded": {
+              "max_first_logit_difference": 0.09375,
+              "matched_sequences": 8
+            },
+            "prepared_input": {
+              "max_first_logit_difference": 0.0,
+              "matched_sequences": 8
+            }
+          }
+        },
+        {
+          "seed": 229,
+          "checks": {
+            "padded": {
+              "max_first_logit_difference": 0.0498046875,
+              "matched_sequences": 8
+            },
+            "prepared_input": {
+              "max_first_logit_difference": 0.0,
+              "matched_sequences": 8
+            }
+          }
+        },
+        {
+          "seed": 230,
+          "checks": {
+            "padded": {
+              "max_first_logit_difference": 0.078125,
+              "matched_sequences": 8
+            },
+            "prepared_input": {
+              "max_first_logit_difference": 0.0,
+              "matched_sequences": 8
+            }
+          }
+        },
+        {
+          "seed": 231,
+          "checks": {
+            "padded": {
+              "max_first_logit_difference": 0.04296875,
+              "matched_sequences": 8
+            },
+            "prepared_input": {
+              "max_first_logit_difference": 0.0,
+              "matched_sequences": 8
+            }
+          }
+        },
+        {
+          "seed": 232,
+          "checks": {
+            "padded": {
+              "max_first_logit_difference": 0.0390625,
+              "matched_sequences": 8
+            },
+            "prepared_input": {
+              "max_first_logit_difference": 0.0,
+              "matched_sequences": 8
+            }
+          }
+        }
+      ],
+      "before": [
+        "0, NVIDIA GeForce RTX 4090, 100 %, 1145 MiB",
+        "1, NVIDIA GeForce RTX 4090, 100 %, 3249 MiB",
+        "2, NVIDIA GeForce RTX 4090, 100 %, 7014 MiB"
+      ],
+      "after": [
+        "0, NVIDIA GeForce RTX 4090, 0 %, 461 MiB",
+        "1, NVIDIA GeForce RTX 4090, 100 %, 3289 MiB",
+        "2, NVIDIA GeForce RTX 4090, 100 %, 7016 MiB"
+      ]
+    },
+    {
+      "lengths": [
+        8,
+        16,
+        24,
+        32,
+        40,
+        48,
+        88,
+        768
+      ],
+      "ttft_ms": [
+        {
+          "padded": 198.9048538962379,
+          "prepared_input": 54.99693599995226,
+          "packed": 55.38686201907694
+        },
+        {
+          "packed": 55.11610093526542,
+          "prepared_input": 52.76539991609752,
+          "padded": 199.1373630007729
+        },
+        {
+          "prepared_input": 47.59659699629992,
+          "packed": 50.193735980428755,
+          "padded": 199.49166104197502
+        },
+        {
+          "packed": 52.846102975308895,
+          "padded": 195.15981094446033,
+          "prepared_input": 45.84050294943154
+        },
+        {
+          "padded": 192.22973694559187,
+          "packed": 48.08954300824553,
+          "prepared_input": 45.79099710099399
+        },
+        {
+          "prepared_input": 45.83940003067255,
+          "padded": 196.59071194473654,
+          "packed": 52.137737977318466
+        },
+        {
+          "prepared_input": 49.817416933365166,
+          "padded": 197.74944009259343,
+          "packed": 51.81046202778816
+        },
+        {
+          "packed": 52.09687096066773,
+          "prepared_input": 49.809621064923704,
+          "padded": 197.08818197250366
+        },
+        {
+          "padded": 197.0057669095695,
+          "packed": 54.56737999338657,
+          "prepared_input": 52.133994991891086
+        },
+        {
+          "prepared_input": 49.830108997412026,
+          "packed": 51.82710103690624,
+          "padded": 197.52595201134682
+        },
+        {
+          "padded": 193.96686798427254,
+          "prepared_input": 43.355791945941746,
+          "packed": 45.77910096850246
+        },
+        {
+          "packed": 45.615738024935126,
+          "padded": 192.5788070075214,
+          "prepared_input": 43.517149053514004
+        },
+        {
+          "padded": 192.0019870158285,
+          "prepared_input": 43.48213702905923,
+          "packed": 45.804015011526644
+        },
+        {
+          "packed": 45.831108931452036,
+          "prepared_input": 43.41341101098806,
+          "padded": 192.27292900905013
+        },
+        {
+          "prepared_input": 43.36676490493119,
+          "padded": 192.19564099330455,
+          "packed": 45.74077692814171
+        },
+        {
+          "prepared_input": 43.459467007778585,
+          "packed": 45.81602395046502,
+          "padded": 192.14922399260104
+        },
+        {
+          "padded": 192.2386809019372,
+          "packed": 47.987583093345165,
+          "prepared_input": 45.84663896821439
+        },
+        {
+          "packed": 48.00129006616771,
+          "padded": 191.90974300727248,
+          "prepared_input": 47.935546026565135
+        },
+        {
+          "packed": 50.519793992862105,
+          "padded": 192.1177669428289,
+          "prepared_input": 45.79276393633336
+        },
+        {
+          "prepared_input": 45.77708907891065,
+          "packed": 48.115122015587986,
+          "padded": 191.9739730656147
+        },
+        {
+          "padded": 192.49741698149592,
+          "packed": 48.09893306810409,
+          "prepared_input": 43.52333699353039
+        },
+        {
+          "padded": 192.40165001247078,
+          "prepared_input": 43.47196908202022,
+          "packed": 45.70259596221149
+        },
+        {
+          "prepared_input": 43.44326094724238,
+          "padded": 192.18495103996247,
+          "packed": 48.076794017106295
+        },
+        {
+          "packed": 48.01032005343586,
+          "prepared_input": 45.65810097847134,
+          "padded": 192.38511892035604
+        },
+        {
+          "prepared_input": 43.23293000925332,
+          "packed": 48.07245801202953,
+          "padded": 191.9840530026704
+        },
+        {
+          "padded": 192.48299696482718,
+          "prepared_input": 45.67585396580398,
+          "packed": 48.11592202167958
+        },
+        {
+          "padded": 192.21712194848806,
+          "packed": 48.052249010652304,
+          "prepared_input": 45.828039990738034
+        },
+        {
+          "packed": 47.907504020258784,
+          "prepared_input": 48.07020595762879,
+          "padded": 192.57762096822262
+        },
+        {
+          "prepared_input": 45.74692796450108,
+          "padded": 192.03123601619154,
+          "packed": 48.07782301213592
+        },
+        {
+          "packed": 47.9292559903115,
+          "padded": 192.35407805535942,
+          "prepared_input": 45.69202603306621
+        }
+      ],
+      "event_ms": {
+        "padded": [
+          {
+            "cache_update": 1.9376640319824219,
+            "attention": 31.423391938209534
+          },
+          {
+            "cache_update": 6.787744075059891,
+            "attention": 31.347232043743134
+          },
+          {
+            "cache_update": 1.9397760331630707,
+            "attention": 33.85129624605179
+          },
+          {
+            "cache_update": 6.578559949994087,
+            "attention": 29.0356804728508
+          },
+          {
+            "cache_update": 1.9407360330224037,
+            "attention": 33.59136015176773
+          }
+        ],
+        "packed": [
+          {
+            "cache_update": 6.362207926809788,
+            "pack_inputs": 2.3265280723571777,
+            "cache_rows": 0.8518080106005073,
+            "attention": 1.363968014717102
+          },
+          {
+            "cache_update": 1.7810239642858505,
+            "pack_inputs": 2.3152639865875244,
+            "cache_rows": 5.439391848631203,
+            "attention": 1.3578240163624287
+          },
+          {
+            "cache_update": 1.759711965918541,
+            "pack_inputs": 2.332672119140625,
+            "cache_rows": 3.168320116586983,
+            "attention": 3.6423679031431675
+          },
+          {
+            "cache_update": 4.054207995533943,
+            "pack_inputs": 2.3255040645599365,
+            "cache_rows": 0.8678080104291439,
+            "attention": 3.650559987872839
+          },
+          {
+            "cache_update": 4.08383996784687,
+            "pack_inputs": 2.3244800567626953,
+            "cache_rows": 5.44745584577322,
+            "attention": 3.665919955819845
+          }
+        ]
+      },
+      "correctness": [
+        {
+          "seed": 227,
+          "checks": {
+            "padded": {
+              "max_first_logit_difference": 0.03125,
+              "matched_sequences": 7
+            },
+            "prepared_input": {
+              "max_first_logit_difference": 0.0,
+              "matched_sequences": 8
+            }
+          }
+        },
+        {
+          "seed": 228,
+          "checks": {
+            "padded": {
+              "max_first_logit_difference": 0.03125,
+              "matched_sequences": 8
+            },
+            "prepared_input": {
+              "max_first_logit_difference": 0.0,
+              "matched_sequences": 8
+            }
+          }
+        },
+        {
+          "seed": 229,
+          "checks": {
+            "padded": {
+              "max_first_logit_difference": 0.03515625,
+              "matched_sequences": 8
+            },
+            "prepared_input": {
+              "max_first_logit_difference": 0.0,
+              "matched_sequences": 8
+            }
+          }
+        },
+        {
+          "seed": 230,
+          "checks": {
+            "padded": {
+              "max_first_logit_difference": 0.046875,
+              "matched_sequences": 8
+            },
+            "prepared_input": {
+              "max_first_logit_difference": 0.0,
+              "matched_sequences": 8
+            }
+          }
+        },
+        {
+          "seed": 231,
+          "checks": {
+            "padded": {
+              "max_first_logit_difference": 0.03125,
+              "matched_sequences": 8
+            },
+            "prepared_input": {
+              "max_first_logit_difference": 0.0,
+              "matched_sequences": 8
+            }
+          }
+        },
+        {
+          "seed": 232,
+          "checks": {
+            "padded": {
+              "max_first_logit_difference": 0.0400390625,
+              "matched_sequences": 8
+            },
+            "prepared_input": {
+              "max_first_logit_difference": 0.0,
+              "matched_sequences": 8
+            }
+          }
+        }
+      ],
+      "before": [
+        "0, NVIDIA GeForce RTX 4090, 0 %, 461 MiB",
+        "1, NVIDIA GeForce RTX 4090, 100 %, 3289 MiB",
+        "2, NVIDIA GeForce RTX 4090, 100 %, 7016 MiB"
+      ],
+      "after": [
+        "0, NVIDIA GeForce RTX 4090, 0 %, 443 MiB",
+        "1, NVIDIA GeForce RTX 4090, 100 %, 4661 MiB",
+        "2, NVIDIA GeForce RTX 4090, 100 %, 7016 MiB"
+      ]
+    }
+  ]
+}
