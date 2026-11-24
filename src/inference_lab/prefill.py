@@ -20,21 +20,27 @@ def _padded(model, sequences):
     return model.lm_head(hidden[torch.arange(len(sequences), device=ids.device), ends])
 
 
-def _packed(model, sequences, cache=None, *, flash=False):
+def _pack_inputs(sequences, need_slots):
     lengths = [s.numel() for s in sequences]
     ids = torch.cat(sequences)
     positions = torch.cat([torch.arange(n, device=ids.device) for n in lengths])
     width = max(lengths)
     offsets = ids.new_tensor([0, *accumulate(lengths)], dtype=torch.int32)
+    slots = None
+    if need_slots:
+        # Decode uses a left-padded HF cache. Map each packed token exactly once.
+        slots = torch.cat([torch.arange((i + 1) * width - n, (i + 1) * width,
+                                        device=ids.device) for i, n in enumerate(lengths)])
+    return lengths, ids, positions, width, offsets, slots
+
+
+def _packed(model, sequences, cache=None, *, flash=False):
+    lengths, ids, positions, width, offsets, slots = _pack_inputs(sequences, cache is not None)
     if flash:
         try:
             from torch.nn.attention.varlen import varlen_attn
         except ImportError as exc:
             raise RuntimeError("Packed CUDA requires torch.nn.attention.varlen (tested on torch 2.11)") from exc
-    if cache is not None:
-        # Decode uses a left-padded HF cache. Map each packed token exactly once.
-        slots = torch.cat([torch.arange((i + 1) * width - n, (i + 1) * width,
-                                        device=ids.device) for i, n in enumerate(lengths)])
     base = model.model
     hidden = base.embed_tokens(ids)[None]
     cos, sin = base.rotary_emb(hidden, positions[None])
