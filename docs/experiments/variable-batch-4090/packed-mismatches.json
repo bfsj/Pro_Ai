@@ -1,0 +1,100 @@
+[
+  {
+    "lengths": [
+      256,
+      256,
+      256,
+      256
+    ],
+    "seed": 49,
+    "row": 2,
+    "reference": [
+      198,
+      198,
+      198,
+      198
+    ],
+    "packed": [
+      271,
+      2,
+      220,
+      16
+    ],
+    "neighbor_change_tokens_equal": true,
+    "neighbor_change_first_logits_equal": true,
+    "first_different_step": 1,
+    "solo_top_two": {
+      "ids": [
+        271,
+        198
+      ],
+      "scores": [
+        9.296875,
+        9.296875
+      ],
+      "margin": 0.0
+    },
+    "packed_top_two": {
+      "ids": [
+        271,
+        198
+      ],
+      "scores": [
+        9.296875,
+        9.2890625
+      ],
+      "margin": 0.0078125
+    }
+  },
+  {
+    "lengths": [
+      128,
+      128,
+      128,
+      128,
+      128,
+      128,
+      128,
+      128
+    ],
+    "seed": 44,
+    "row": 6,
+    "reference": [
+      198,
+      1316,
+      1208,
+      198
+    ],
+    "packed": [
+      198,
+      13874,
+      3989,
+      13874
+    ],
+    "neighbor_change_tokens_equal": true,
+    "neighbor_change_first_logits_equal": true,
+    "first_different_step": 2,
+    "solo_top_two": {
+      "ids": [
+        1316,
+        13874
+      ],
+      "scores": [
+        11.8359375,
+        11.828125
+      ],
+      "margin": 0.0078125
+    },
+    "packed_top_two": {
+      "ids": [
+        13874,
+        1316
+      ],
+      "scores": [
+        11.8515625,
+        11.8359375
+      ],
+      "margin": 0.015625
+    }
+  }
+]

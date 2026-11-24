@@ -118,20 +118,32 @@ class BatchGeneration:
     first_token_ms: float
     total_ms: float
     prefill_backend: str
+    method: str
 
 
 @torch.inference_mode()
-def generate_batch(model, sequences, method, new_tokens):
+def generate_batch(model, sequences, method, new_tokens, *, pack_at_padding=None):
     """Fixed-length greedy generation. TTFT measures readiness of the whole batch."""
     _validate(model, sequences, new_tokens)
+    device = sequences[0].device
+    synchronize(device)
+    start = perf_counter()
+    if method == "auto":
+        if pack_at_padding is None or not 0 < pack_at_padding <= 1:
+            raise ValueError("Auto requires an explicit pack_at_padding threshold in (0, 1]")
+        lengths = [s.numel() for s in sequences]
+        capacity = len(lengths) * max(lengths)
+        wasted = capacity - sum(lengths)
+        flash_dtype = model.dtype in (torch.float16, torch.bfloat16)
+        pack = device.type == "cuda" and flash_dtype and wasted >= capacity * pack_at_padding
+        method = "packed" if pack else "padded"
+    elif pack_at_padding is not None:
+        raise ValueError("pack_at_padding is only used with the auto method")
     if method not in ("padded", "bucketed", "packed"):
         raise ValueError(f"Unknown generation method: {method}")
-    device = sequences[0].device
     flash = method == "packed" and device.type == "cuda"
     if flash and model.dtype not in (torch.float16, torch.bfloat16):
         raise ValueError("Packed CUDA requires float16 or bfloat16")
-    synchronize(device)
-    start = perf_counter()
     groups = _buckets(sequences) if method == "bucketed" else [range(len(sequences))]
     states = []
     first_rows = [None] * len(sequences)
@@ -172,4 +184,5 @@ def generate_batch(model, sequences, method, new_tokens):
     synchronize(device)
     end = perf_counter()
     backend = ("torch-varlen-flash" if flash else "segmented-sdpa") if method == "packed" else model.config._attn_implementation
-    return BatchGeneration(generated, torch.stack(first_rows), (first - start) * 1000, (end - start) * 1000, backend)
+    return BatchGeneration(generated, torch.stack(first_rows), (first - start) * 1000,
+                           (end - start) * 1000, backend, method)

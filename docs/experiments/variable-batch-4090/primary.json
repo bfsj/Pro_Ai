@@ -1,0 +1,3772 @@
+{
+  "torch": "2.11.0+cu128",
+  "transformers": "4.57.6",
+  "dtype": "float16",
+  "device": "NVIDIA GeForce RTX 4090",
+  "model": "Qwen3-0.6B",
+  "new_tokens": 4,
+  "seeds": 9,
+  "repeats": 12,
+  "timing_columns": [
+    "batch_first_token_ms",
+    "total_ms"
+  ],
+  "shapes": [
+    {
+      "lengths": [
+        256,
+        256,
+        256,
+        256
+      ],
+      "checks": [
+        {
+          "seed": 42,
+          "method": "padded",
+          "backend": "sdpa",
+          "sequences_equal": [
+            true,
+            true,
+            true,
+            true
+          ],
+          "tokens_equal": 16,
+          "first_token_equal": 4,
+          "max_first_logit_error": 0.0390625
+        },
+        {
+          "seed": 42,
+          "method": "bucketed",
+          "backend": "sdpa",
+          "sequences_equal": [
+            true,
+            true,
+            true,
+            true
+          ],
+          "tokens_equal": 16,
+          "first_token_equal": 4,
+          "max_first_logit_error": 0.0390625
+        },
+        {
+          "seed": 42,
+          "method": "packed",
+          "backend": "torch-varlen-flash",
+          "sequences_equal": [
+            true,
+            true,
+            true,
+            true
+          ],
+          "tokens_equal": 16,
+          "first_token_equal": 4,
+          "max_first_logit_error": 0.0390625
+        },
+        {
+          "seed": 43,
+          "method": "padded",
+          "backend": "sdpa",
+          "sequences_equal": [
+            true,
+            true,
+            true,
+            true
+          ],
+          "tokens_equal": 16,
+          "first_token_equal": 4,
+          "max_first_logit_error": 0.03515625
+        },
+        {
+          "seed": 43,
+          "method": "bucketed",
+          "backend": "sdpa",
+          "sequences_equal": [
+            true,
+            true,
+            true,
+            true
+          ],
+          "tokens_equal": 16,
+          "first_token_equal": 4,
+          "max_first_logit_error": 0.03515625
+        },
+        {
+          "seed": 43,
+          "method": "packed",
+          "backend": "torch-varlen-flash",
+          "sequences_equal": [
+            true,
+            true,
+            true,
+            true
+          ],
+          "tokens_equal": 16,
+          "first_token_equal": 4,
+          "max_first_logit_error": 0.03515625
+        },
+        {
+          "seed": 44,
+          "method": "padded",
+          "backend": "sdpa",
+          "sequences_equal": [
+            true,
+            true,
+            true,
+            true
+          ],
+          "tokens_equal": 16,
+          "first_token_equal": 4,
+          "max_first_logit_error": 0.0302734375
+        },
+        {
+          "seed": 44,
+          "method": "bucketed",
+          "backend": "sdpa",
+          "sequences_equal": [
+            true,
+            true,
+            true,
+            true
+          ],
+          "tokens_equal": 16,
+          "first_token_equal": 4,
+          "max_first_logit_error": 0.0302734375
+        },
+        {
+          "seed": 44,
+          "method": "packed",
+          "backend": "torch-varlen-flash",
+          "sequences_equal": [
+            true,
+            true,
+            true,
+            true
+          ],
+          "tokens_equal": 16,
+          "first_token_equal": 4,
+          "max_first_logit_error": 0.0302734375
+        },
+        {
+          "seed": 45,
+          "method": "padded",
+          "backend": "sdpa",
+          "sequences_equal": [
+            true,
+            true,
+            true,
+            true
+          ],
+          "tokens_equal": 16,
+          "first_token_equal": 4,
+          "max_first_logit_error": 0.025390625
+        },
+        {
+          "seed": 45,
+          "method": "bucketed",
+          "backend": "sdpa",
+          "sequences_equal": [
+            true,
+            true,
+            true,
+            true
+          ],
+          "tokens_equal": 16,
+          "first_token_equal": 4,
+          "max_first_logit_error": 0.025390625
+        },
+        {
+          "seed": 45,
+          "method": "packed",
+          "backend": "torch-varlen-flash",
+          "sequences_equal": [
+            true,
+            true,
+            true,
+            true
+          ],
+          "tokens_equal": 16,
+          "first_token_equal": 4,
+          "max_first_logit_error": 0.025390625
+        },
+        {
+          "seed": 46,
+          "method": "padded",
+          "backend": "sdpa",
+          "sequences_equal": [
+            true,
+            true,
+            true,
+            true
+          ],
+          "tokens_equal": 16,
+          "first_token_equal": 4,
+          "max_first_logit_error": 0.06640625
+        },
+        {
+          "seed": 46,
+          "method": "bucketed",
+          "backend": "sdpa",
+          "sequences_equal": [
+            true,
+            true,
+            true,
+            true
+          ],
+          "tokens_equal": 16,
+          "first_token_equal": 4,
+          "max_first_logit_error": 0.06640625
+        },
+        {
+          "seed": 46,
+          "method": "packed",
+          "backend": "torch-varlen-flash",
+          "sequences_equal": [
+            true,
+            true,
+            true,
+            true
+          ],
+          "tokens_equal": 16,
+          "first_token_equal": 4,
+          "max_first_logit_error": 0.06640625
+        },
+        {
+          "seed": 47,
+          "method": "padded",
+          "backend": "sdpa",
+          "sequences_equal": [
+            true,
+            true,
+            true,
+            true
+          ],
+          "tokens_equal": 16,
+          "first_token_equal": 4,
+          "max_first_logit_error": 0.03125
+        },
+        {
+          "seed": 47,
+          "method": "bucketed",
+          "backend": "sdpa",
+          "sequences_equal": [
+            true,
+            true,
+            true,
+            true
+          ],
+          "tokens_equal": 16,
+          "first_token_equal": 4,
+          "max_first_logit_error": 0.03125
+        },
+        {
+          "seed": 47,
+          "method": "packed",
+          "backend": "torch-varlen-flash",
+          "sequences_equal": [
+            true,
+            true,
+            true,
+            true
+          ],
+          "tokens_equal": 16,
+          "first_token_equal": 4,
+          "max_first_logit_error": 0.03125
+        },
+        {
+          "seed": 48,
+          "method": "padded",
+          "backend": "sdpa",
+          "sequences_equal": [
+            true,
+            true,
+            true,
+            true
+          ],
+          "tokens_equal": 16,
+          "first_token_equal": 4,
+          "max_first_logit_error": 0.03125
+        },
+        {
+          "seed": 48,
+          "method": "bucketed",
+          "backend": "sdpa",
+          "sequences_equal": [
+            true,
+            true,
+            true,
+            true
+          ],
+          "tokens_equal": 16,
+          "first_token_equal": 4,
+          "max_first_logit_error": 0.03125
+        },
+        {
+          "seed": 48,
+          "method": "packed",
+          "backend": "torch-varlen-flash",
+          "sequences_equal": [
+            true,
+            true,
+            true,
+            true
+          ],
+          "tokens_equal": 16,
+          "first_token_equal": 4,
+          "max_first_logit_error": 0.03125
+        },
+        {
+          "seed": 49,
+          "method": "padded",
+          "backend": "sdpa",
+          "sequences_equal": [
+            true,
+            true,
+            false,
+            true
+          ],
+          "tokens_equal": 12,
+          "first_token_equal": 3,
+          "max_first_logit_error": 0.0234375
+        },
+        {
+          "seed": 49,
+          "method": "bucketed",
+          "backend": "sdpa",
+          "sequences_equal": [
+            true,
+            true,
+            false,
+            true
+          ],
+          "tokens_equal": 12,
+          "first_token_equal": 3,
+          "max_first_logit_error": 0.0234375
+        },
+        {
+          "seed": 49,
+          "method": "packed",
+          "backend": "torch-varlen-flash",
+          "sequences_equal": [
+            true,
+            true,
+            false,
+            true
+          ],
+          "tokens_equal": 12,
+          "first_token_equal": 3,
+          "max_first_logit_error": 0.0234375
+        },
+        {
+          "seed": 50,
+          "method": "padded",
+          "backend": "sdpa",
+          "sequences_equal": [
+            true,
+            true,
+            true,
+            true
+          ],
+          "tokens_equal": 16,
+          "first_token_equal": 4,
+          "max_first_logit_error": 0.021484375
+        },
+        {
+          "seed": 50,
+          "method": "bucketed",
+          "backend": "sdpa",
+          "sequences_equal": [
+            true,
+            true,
+            true,
+            true
+          ],
+          "tokens_equal": 16,
+          "first_token_equal": 4,
+          "max_first_logit_error": 0.021484375
+        },
+        {
+          "seed": 50,
+          "method": "packed",
+          "backend": "torch-varlen-flash",
+          "sequences_equal": [
+            true,
+            true,
+            true,
+            true
+          ],
+          "tokens_equal": 16,
+          "first_token_equal": 4,
+          "max_first_logit_error": 0.021484375
+        }
+      ],
+      "timings_ms": {
+        "padded": [
+          [
+            44.63047697208822,
+            156.4330259570852
+          ],
+          [
+            41.63967992644757,
+            145.7969769835472
+          ],
+          [
+            42.00649296399206,
+            148.19714904297143
+          ],
+          [
+            38.12133602332324,
+            130.2087149815634
+          ],
+          [
+            38.02202793303877,
+            130.05399599205703
+          ],
+          [
+            37.934672087430954,
+            132.38197506871074
+          ],
+          [
+            38.05791889317334,
+            132.3602629126981
+          ],
+          [
+            38.10562298167497,
+            132.5279950397089
+          ],
+          [
+            38.132634945213795,
+            132.59972294326872
+          ],
+          [
+            42.09655604790896,
+            147.62457506731153
+          ],
+          [
+            39.3853789428249,
+            137.46798899956048
+          ],
+          [
+            39.26346998196095,
+            128.92910605296493
+          ]
+        ],
+        "bucketed": [
+          [
+            47.034726943820715,
+            177.64186894055456
+          ],
+          [
+            41.936332010664046,
+            150.59137891512364
+          ],
+          [
+            44.69775303732604,
+            153.2417139969766
+          ],
+          [
+            44.502575998194516,
+            140.2765610255301
+          ],
+          [
+            35.82338499836624,
+            127.95043201185763
+          ],
+          [
+            38.03267003968358,
+            134.67024406418204
+          ],
+          [
+            38.16522692795843,
+            134.81044489890337
+          ],
+          [
+            38.12224289868027,
+            132.56699696648866
+          ],
+          [
+            38.1713539827615,
+            132.5558590469882
+          ],
+          [
+            38.14790502656251,
+            130.22474898025393
+          ],
+          [
+            39.269039989449084,
+            139.33906890451908
+          ],
+          [
+            39.439601940102875,
+            137.08265696186572
+          ]
+        ],
+        "packed": [
+          [
+            52.610532962717116,
+            163.44742197543383
+          ],
+          [
+            49.65529800392687,
+            153.54659606236964
+          ],
+          [
+            47.537331003695726,
+            153.9465900277719
+          ],
+          [
+            45.504629029892385,
+            137.45616702362895
+          ],
+          [
+            43.21693803649396,
+            135.21870004478842
+          ],
+          [
+            45.54132395423949,
+            140.0055979611352
+          ],
+          [
+            45.412289910018444,
+            139.79643397033215
+          ],
+          [
+            45.535398996435106,
+            139.88847192376852
+          ],
+          [
+            45.47046299558133,
+            139.80694499332458
+          ],
+          [
+            45.8978220121935,
+            145.95575805287808
+          ],
+          [
+            49.31379505433142,
+            152.14821801055223
+          ],
+          [
+            44.715014984831214,
+            139.5272039808333
+          ]
+        ]
+      },
+      "summary": {
+        "padded": {
+          "batch_ttft_p50_ms": 38.69805246358737,
+          "batch_ttft_p95_ms": 44.63047697208822,
+          "end_to_end_p50_ms": 132.56385899148881,
+          "useful_prefill_tokens_per_s": 26461.27995623358
+        },
+        "bucketed": {
+          "batch_ttft_p50_ms": 38.72019698610529,
+          "batch_ttft_p95_ms": 47.034726943820715,
+          "end_to_end_p50_ms": 135.94655093038455,
+          "useful_prefill_tokens_per_s": 26446.146448259584
+        },
+        "packed": {
+          "batch_ttft_p50_ms": 45.5383614753373,
+          "batch_ttft_p95_ms": 52.610532962717116,
+          "end_to_end_p50_ms": 139.94703494245186,
+          "useful_prefill_tokens_per_s": 22486.535896874084
+        }
+      },
+      "gpus_before": [
+        "0, NVIDIA GeForce RTX 4090, 100 %, 1145 MiB",
+        "1, NVIDIA GeForce RTX 4090, 100 %, 2671 MiB",
+        "2, NVIDIA GeForce RTX 4090, 100 %, 2913 MiB"
+      ],
+      "gpus_after": [
+        "0, NVIDIA GeForce RTX 4090, 100 %, 1145 MiB",
+        "1, NVIDIA GeForce RTX 4090, 100 %, 2917 MiB",
+        "2, NVIDIA GeForce RTX 4090, 100 %, 2913 MiB"
+      ]
+    },
+    {
+      "lengths": [
+        192,
+        224,
+        288,
+        320
+      ],
+      "checks": [
+        {
+          "seed": 42,
+          "method": "padded",
+          "backend": "sdpa",
+          "sequences_equal": [
+            true,
+            true,
+            true,
+            true
+          ],
+          "tokens_equal": 16,
+          "first_token_equal": 4,
+          "max_first_logit_error": 0.046875
+        },
+        {
+          "seed": 42,
+          "method": "bucketed",
+          "backend": "sdpa",
+          "sequences_equal": [
+            true,
+            true,
+            true,
+            true
+          ],
+          "tokens_equal": 16,
+          "first_token_equal": 4,
+          "max_first_logit_error": 0.0673828125
+        },
+        {
+          "seed": 42,
+          "method": "packed",
+          "backend": "torch-varlen-flash",
+          "sequences_equal": [
+            true,
+            true,
+            true,
+            true
+          ],
+          "tokens_equal": 16,
+          "first_token_equal": 4,
+          "max_first_logit_error": 0.0546875
+        },
+        {
+          "seed": 43,
+          "method": "padded",
+          "backend": "sdpa",
+          "sequences_equal": [
+            true,
+            true,
+            true,
+            true
+          ],
+          "tokens_equal": 16,
+          "first_token_equal": 4,
+          "max_first_logit_error": 0.03125
+        },
+        {
+          "seed": 43,
+          "method": "bucketed",
+          "backend": "sdpa",
+          "sequences_equal": [
+            true,
+            true,
+            true,
+            true
+          ],
+          "tokens_equal": 16,
+          "first_token_equal": 4,
+          "max_first_logit_error": 0.0234375
+        },
+        {
+          "seed": 43,
+          "method": "packed",
+          "backend": "torch-varlen-flash",
+          "sequences_equal": [
+            true,
+            true,
+            true,
+            true
+          ],
+          "tokens_equal": 16,
+          "first_token_equal": 4,
+          "max_first_logit_error": 0.02734375
+        },
+        {
+          "seed": 44,
+          "method": "padded",
+          "backend": "sdpa",
+          "sequences_equal": [
+            true,
+            true,
+            false,
+            true
+          ],
+          "tokens_equal": 15,
+          "first_token_equal": 4,
+          "max_first_logit_error": 0.03515625
+        },
+        {
+          "seed": 44,
+          "method": "bucketed",
+          "backend": "sdpa",
+          "sequences_equal": [
+            true,
+            true,
+            true,
+            true
+          ],
+          "tokens_equal": 16,
+          "first_token_equal": 4,
+          "max_first_logit_error": 0.03125
+        },
+        {
+          "seed": 44,
+          "method": "packed",
+          "backend": "torch-varlen-flash",
+          "sequences_equal": [
+            true,
+            true,
+            true,
+            true
+          ],
+          "tokens_equal": 16,
+          "first_token_equal": 4,
+          "max_first_logit_error": 0.03515625
+        },
+        {
+          "seed": 45,
+          "method": "padded",
+          "backend": "sdpa",
+          "sequences_equal": [
+            true,
+            true,
+            true,
+            true
+          ],
+          "tokens_equal": 16,
+          "first_token_equal": 4,
+          "max_first_logit_error": 0.026611328125
+        },
+        {
+          "seed": 45,
+          "method": "bucketed",
+          "backend": "sdpa",
+          "sequences_equal": [
+            true,
+            true,
+            true,
+            true
+          ],
+          "tokens_equal": 16,
+          "first_token_equal": 4,
+          "max_first_logit_error": 0.021484375
+        },
+        {
+          "seed": 45,
+          "method": "packed",
+          "backend": "torch-varlen-flash",
+          "sequences_equal": [
+            true,
+            true,
+            true,
+            true
+          ],
+          "tokens_equal": 16,
+          "first_token_equal": 4,
+          "max_first_logit_error": 0.025390625
+        },
+        {
+          "seed": 46,
+          "method": "padded",
+          "backend": "sdpa",
+          "sequences_equal": [
+            true,
+            true,
+            true,
+            true
+          ],
+          "tokens_equal": 16,
+          "first_token_equal": 4,
+          "max_first_logit_error": 0.02734375
+        },
+        {
+          "seed": 46,
+          "method": "bucketed",
+          "backend": "sdpa",
+          "sequences_equal": [
+            true,
+            true,
+            true,
+            true
+          ],
+          "tokens_equal": 16,
+          "first_token_equal": 4,
+          "max_first_logit_error": 0.025390625
+        },
+        {
+          "seed": 46,
+          "method": "packed",
+          "backend": "torch-varlen-flash",
+          "sequences_equal": [
+            true,
+            true,
+            true,
+            true
+          ],
+          "tokens_equal": 16,
+          "first_token_equal": 4,
+          "max_first_logit_error": 0.03125
+        },
+        {
+          "seed": 47,
+          "method": "padded",
+          "backend": "sdpa",
+          "sequences_equal": [
+            true,
+            true,
+            true,
+            true
+          ],
+          "tokens_equal": 16,
+          "first_token_equal": 4,
+          "max_first_logit_error": 0.025390625
+        },
+        {
+          "seed": 47,
+          "method": "bucketed",
+          "backend": "sdpa",
+          "sequences_equal": [
+            true,
+            true,
+            true,
+            true
+          ],
+          "tokens_equal": 16,
+          "first_token_equal": 4,
+          "max_first_logit_error": 0.0234375
+        },
+        {
+          "seed": 47,
+          "method": "packed",
+          "backend": "torch-varlen-flash",
+          "sequences_equal": [
+            true,
+            true,
+            true,
+            true
+          ],
+          "tokens_equal": 16,
+          "first_token_equal": 4,
+          "max_first_logit_error": 0.021484375
+        },
+        {
+          "seed": 48,
+          "method": "padded",
+          "backend": "sdpa",
+          "sequences_equal": [
+            true,
+            true,
+            true,
+            true
+          ],
+          "tokens_equal": 16,
+          "first_token_equal": 4,
+          "max_first_logit_error": 0.033203125
+        },
+        {
+          "seed": 48,
+          "method": "bucketed",
+          "backend": "sdpa",
+          "sequences_equal": [
+            true,
+            true,
+            true,
+            true
+          ],
+          "tokens_equal": 16,
+          "first_token_equal": 4,
+          "max_first_logit_error": 0.03515625
+        },
+        {
+          "seed": 48,
+          "method": "packed",
+          "backend": "torch-varlen-flash",
+          "sequences_equal": [
+            true,
+            true,
+            true,
+            true
+          ],
+          "tokens_equal": 16,
+          "first_token_equal": 4,
+          "max_first_logit_error": 0.04296875
+        },
+        {
+          "seed": 49,
+          "method": "padded",
+          "backend": "sdpa",
+          "sequences_equal": [
+            true,
+            true,
+            true,
+            true
+          ],
+          "tokens_equal": 16,
+          "first_token_equal": 4,
+          "max_first_logit_error": 0.025390625
+        },
+        {
+          "seed": 49,
+          "method": "bucketed",
+          "backend": "sdpa",
+          "sequences_equal": [
+            true,
+            true,
+            true,
+            true
+          ],
+          "tokens_equal": 16,
+          "first_token_equal": 4,
+          "max_first_logit_error": 0.03125
+        },
+        {
+          "seed": 49,
+          "method": "packed",
+          "backend": "torch-varlen-flash",
+          "sequences_equal": [
+            true,
+            true,
+            true,
+            true
+          ],
+          "tokens_equal": 16,
+          "first_token_equal": 4,
+          "max_first_logit_error": 0.0234375
+        },
+        {
+          "seed": 50,
+          "method": "padded",
+          "backend": "sdpa",
+          "sequences_equal": [
+            false,
+            true,
+            true,
+            true
+          ],
+          "tokens_equal": 15,
+          "first_token_equal": 4,
+          "max_first_logit_error": 0.0400390625
+        },
+        {
+          "seed": 50,
+          "method": "bucketed",
+          "backend": "sdpa",
+          "sequences_equal": [
+            false,
+            true,
+            true,
+            true
+          ],
+          "tokens_equal": 15,
+          "first_token_equal": 4,
+          "max_first_logit_error": 0.02734375
+        },
+        {
+          "seed": 50,
+          "method": "packed",
+          "backend": "torch-varlen-flash",
+          "sequences_equal": [
+            true,
+            true,
+            true,
+            true
+          ],
+          "tokens_equal": 16,
+          "first_token_equal": 4,
+          "max_first_logit_error": 0.0234375
+        }
+      ],
+      "timings_ms": {
+        "padded": [
+          [
+            59.926026966422796,
+            205.6523310020566
+          ],
+          [
+            59.26859099417925,
+            203.02999299019575
+          ],
+          [
+            50.072322017513216,
+            186.78581400308758
+          ],
+          [
+            66.17055798415095,
+            264.9565249448642
+          ],
+          [
+            66.4960079593584,
+            219.32112600188702
+          ],
+          [
+            56.203574989922345,
+            201.37864898424596
+          ],
+          [
+            56.54555791988969,
+            207.7341569820419
+          ],
+          [
+            59.27058996167034,
+            213.21816905401647
+          ],
+          [
+            61.697868979536,
+            197.39033898804337
+          ],
+          [
+            49.953556968830526,
+            172.0843119546771
+          ],
+          [
+            50.13624799903482,
+            174.2100730771199
+          ],
+          [
+            39.16744398884475,
+            153.15626899246126
+          ]
+        ],
+        "bucketed": [
+          [
+            113.07485890574753,
+            403.5482589388266
+          ],
+          [
+            110.79505807720125,
+            410.98146699368954
+          ],
+          [
+            93.13374699559063,
+            347.0509829930961
+          ],
+          [
+            108.61388803459704,
+            424.6857330435887
+          ],
+          [
+            111.55367305036634,
+            406.7182970466092
+          ],
+          [
+            109.0973069658503,
+            406.5233849687502
+          ],
+          [
+            133.4093570476398,
+            497.3847010405734
+          ],
+          [
+            97.69031195901334,
+            344.6666719391942
+          ],
+          [
+            105.4521449841559,
+            419.443221995607
+          ],
+          [
+            93.15323608461767,
+            337.8592589870095
+          ],
+          [
+            89.6122450940311,
+            315.2485830942169
+          ],
+          [
+            75.98418393172324,
+            298.0548139894381
+          ]
+        ],
+        "packed": [
+          [
+            50.169760012067854,
+            199.0258740261197
+          ],
+          [
+            47.758353990502656,
+            193.91606689896435
+          ],
+          [
+            50.14551093336195,
+            196.78177195601165
+          ],
+          [
+            60.170286102220416,
+            241.12043308559805
+          ],
+          [
+            60.29300601221621,
+            245.541529962793
+          ],
+          [
+            52.67495498992503,
+            197.58227607235312
+          ],
+          [
+            57.21099302172661,
+            233.39090298395604
+          ],
+          [
+            49.78097497951239,
+            181.1938639730215
+          ],
+          [
+            43.400398921221495,
+            167.63816389720887
+          ],
+          [
+            43.40080707333982,
+            167.6384850870818
+          ],
+          [
+            45.68954405840486,
+            172.44948900770396
+          ],
+          [
+            35.30112700536847,
+            148.3720700489357
+          ]
+        ]
+      },
+      "summary": {
+        "padded": {
+          "batch_ttft_p50_ms": 57.90707445703447,
+          "batch_ttft_p95_ms": 66.4960079593584,
+          "end_to_end_p50_ms": 202.20432098722085,
+          "useful_prefill_tokens_per_s": 17683.504297212963
+        },
+        "bucketed": {
+          "batch_ttft_p50_ms": 107.03301650937647,
+          "batch_ttft_p95_ms": 133.4093570476398,
+          "end_to_end_p50_ms": 405.0358219537884,
+          "useful_prefill_tokens_per_s": 9567.141368105738
+        },
+        "packed": {
+          "batch_ttft_p50_ms": 49.96324295643717,
+          "batch_ttft_p95_ms": 60.29300601221621,
+          "end_to_end_p50_ms": 195.348919427488,
+          "useful_prefill_tokens_per_s": 20495.066761235317
+        }
+      },
+      "gpus_before": [
+        "0, NVIDIA GeForce RTX 4090, 100 %, 1145 MiB",
+        "1, NVIDIA GeForce RTX 4090, 100 %, 2917 MiB",
+        "2, NVIDIA GeForce RTX 4090, 100 %, 2913 MiB"
+      ],
+      "gpus_after": [
+        "0, NVIDIA GeForce RTX 4090, 0 %, 443 MiB",
+        "1, NVIDIA GeForce RTX 4090, 20 %, 2369 MiB",
+        "2, NVIDIA GeForce RTX 4090, 100 %, 2913 MiB"
+      ]
+    },
+    {
+      "lengths": [
+        16,
+        32,
+        80,
+        896
+      ],
+      "checks": [
+        {
+          "seed": 42,
+          "method": "padded",
+          "backend": "sdpa",
+          "sequences_equal": [
+            true,
+            true,
+            true,
+            true
+          ],
+          "tokens_equal": 16,
+          "first_token_equal": 4,
+          "max_first_logit_error": 0.046875
+        },
+        {
+          "seed": 42,
+          "method": "bucketed",
+          "backend": "sdpa",
+          "sequences_equal": [
+            true,
+            true,
+            true,
+            true
+          ],
+          "tokens_equal": 16,
+          "first_token_equal": 4,
+          "max_first_logit_error": 0.04296875
+        },
+        {
+          "seed": 42,
+          "method": "packed",
+          "backend": "torch-varlen-flash",
+          "sequences_equal": [
+            true,
+            true,
+            true,
+            true
+          ],
+          "tokens_equal": 16,
+          "first_token_equal": 4,
+          "max_first_logit_error": 0.048828125
+        },
+        {
+          "seed": 43,
+          "method": "padded",
+          "backend": "sdpa",
+          "sequences_equal": [
+            true,
+            true,
+            true,
+            true
+          ],
+          "tokens_equal": 16,
+          "first_token_equal": 4,
+          "max_first_logit_error": 0.025390625
+        },
+        {
+          "seed": 43,
+          "method": "bucketed",
+          "backend": "sdpa",
+          "sequences_equal": [
+            true,
+            true,
+            true,
+            true
+          ],
+          "tokens_equal": 16,
+          "first_token_equal": 4,
+          "max_first_logit_error": 0.029296875
+        },
+        {
+          "seed": 43,
+          "method": "packed",
+          "backend": "torch-varlen-flash",
+          "sequences_equal": [
+            true,
+            true,
+            true,
+            true
+          ],
+          "tokens_equal": 16,
+          "first_token_equal": 4,
+          "max_first_logit_error": 0.033203125
+        },
+        {
+          "seed": 44,
+          "method": "padded",
+          "backend": "sdpa",
+          "sequences_equal": [
+            true,
+            true,
+            true,
+            true
+          ],
+          "tokens_equal": 16,
+          "first_token_equal": 4,
+          "max_first_logit_error": 0.037109375
+        },
+        {
+          "seed": 44,
+          "method": "bucketed",
+          "backend": "sdpa",
+          "sequences_equal": [
+            true,
+            true,
+            true,
+            true
+          ],
+          "tokens_equal": 16,
+          "first_token_equal": 4,
+          "max_first_logit_error": 0.048828125
+        },
+        {
+          "seed": 44,
+          "method": "packed",
+          "backend": "torch-varlen-flash",
+          "sequences_equal": [
+            true,
+            true,
+            true,
+            true
+          ],
+          "tokens_equal": 16,
+          "first_token_equal": 4,
+          "max_first_logit_error": 0.033203125
+        },
+        {
+          "seed": 45,
+          "method": "padded",
+          "backend": "sdpa",
+          "sequences_equal": [
+            true,
+            true,
+            true,
+            true
+          ],
+          "tokens_equal": 16,
+          "first_token_equal": 4,
+          "max_first_logit_error": 0.052734375
+        },
+        {
+          "seed": 45,
+          "method": "bucketed",
+          "backend": "sdpa",
+          "sequences_equal": [
+            true,
+            true,
+            true,
+            true
+          ],
+          "tokens_equal": 16,
+          "first_token_equal": 4,
+          "max_first_logit_error": 0.046875
+        },
+        {
+          "seed": 45,
+          "method": "packed",
+          "backend": "torch-varlen-flash",
+          "sequences_equal": [
+            true,
+            true,
+            true,
+            true
+          ],
+          "tokens_equal": 16,
+          "first_token_equal": 4,
+          "max_first_logit_error": 0.046875
+        },
+        {
+          "seed": 46,
+          "method": "padded",
+          "backend": "sdpa",
+          "sequences_equal": [
+            true,
+            true,
+            true,
+            true
+          ],
+          "tokens_equal": 16,
+          "first_token_equal": 4,
+          "max_first_logit_error": 0.029296875
+        },
+        {
+          "seed": 46,
+          "method": "bucketed",
+          "backend": "sdpa",
+          "sequences_equal": [
+            true,
+            true,
+            true,
+            true
+          ],
+          "tokens_equal": 16,
+          "first_token_equal": 4,
+          "max_first_logit_error": 0.025390625
+        },
+        {
+          "seed": 46,
+          "method": "packed",
+          "backend": "torch-varlen-flash",
+          "sequences_equal": [
+            true,
+            true,
+            true,
+            true
+          ],
+          "tokens_equal": 16,
+          "first_token_equal": 4,
+          "max_first_logit_error": 0.02734375
+        },
+        {
+          "seed": 47,
+          "method": "padded",
+          "backend": "sdpa",
+          "sequences_equal": [
+            true,
+            true,
+            true,
+            true
+          ],
+          "tokens_equal": 16,
+          "first_token_equal": 4,
+          "max_first_logit_error": 0.029296875
+        },
+        {
+          "seed": 47,
+          "method": "bucketed",
+          "backend": "sdpa",
+          "sequences_equal": [
+            true,
+            true,
+            true,
+            true
+          ],
+          "tokens_equal": 16,
+          "first_token_equal": 4,
+          "max_first_logit_error": 0.0263671875
+        },
+        {
+          "seed": 47,
+          "method": "packed",
+          "backend": "torch-varlen-flash",
+          "sequences_equal": [
+            true,
+            true,
+            true,
+            true
+          ],
+          "tokens_equal": 16,
+          "first_token_equal": 4,
+          "max_first_logit_error": 0.03125
+        },
+        {
+          "seed": 48,
+          "method": "padded",
+          "backend": "sdpa",
+          "sequences_equal": [
+            true,
+            true,
+            true,
+            true
+          ],
+          "tokens_equal": 16,
+          "first_token_equal": 4,
+          "max_first_logit_error": 0.037109375
+        },
+        {
+          "seed": 48,
+          "method": "bucketed",
+          "backend": "sdpa",
+          "sequences_equal": [
+            true,
+            true,
+            true,
+            true
+          ],
+          "tokens_equal": 16,
+          "first_token_equal": 4,
+          "max_first_logit_error": 0.0390625
+        },
+        {
+          "seed": 48,
+          "method": "packed",
+          "backend": "torch-varlen-flash",
+          "sequences_equal": [
+            true,
+            true,
+            true,
+            true
+          ],
+          "tokens_equal": 16,
+          "first_token_equal": 4,
+          "max_first_logit_error": 0.02734375
+        },
+        {
+          "seed": 49,
+          "method": "padded",
+          "backend": "sdpa",
+          "sequences_equal": [
+            true,
+            true,
+            true,
+            true
+          ],
+          "tokens_equal": 16,
+          "first_token_equal": 4,
+          "max_first_logit_error": 0.02734375
+        },
+        {
+          "seed": 49,
+          "method": "bucketed",
+          "backend": "sdpa",
+          "sequences_equal": [
+            true,
+            true,
+            true,
+            true
+          ],
+          "tokens_equal": 16,
+          "first_token_equal": 4,
+          "max_first_logit_error": 0.04108428955078125
+        },
+        {
+          "seed": 49,
+          "method": "packed",
+          "backend": "torch-varlen-flash",
+          "sequences_equal": [
+            true,
+            true,
+            true,
+            true
+          ],
+          "tokens_equal": 16,
+          "first_token_equal": 4,
+          "max_first_logit_error": 0.03515625
+        },
+        {
+          "seed": 50,
+          "method": "padded",
+          "backend": "sdpa",
+          "sequences_equal": [
+            true,
+            true,
+            true,
+            true
+          ],
+          "tokens_equal": 16,
+          "first_token_equal": 4,
+          "max_first_logit_error": 0.0341796875
+        },
+        {
+          "seed": 50,
+          "method": "bucketed",
+          "backend": "sdpa",
+          "sequences_equal": [
+            true,
+            true,
+            true,
+            true
+          ],
+          "tokens_equal": 16,
+          "first_token_equal": 4,
+          "max_first_logit_error": 0.02783203125
+        },
+        {
+          "seed": 50,
+          "method": "packed",
+          "backend": "torch-varlen-flash",
+          "sequences_equal": [
+            true,
+            true,
+            true,
+            true
+          ],
+          "tokens_equal": 16,
+          "first_token_equal": 4,
+          "max_first_logit_error": 0.03125
+        }
+      ],
+      "timings_ms": {
+        "padded": [
+          [
+            54.449684103019536,
+            169.45975203998387
+          ],
+          [
+            57.55998403765261,
+            178.79528098274022
+          ],
+          [
+            56.20637093670666,
+            179.9529769923538
+          ],
+          [
+            57.321351021528244,
+            177.84959508571774
+          ],
+          [
+            56.67260196059942,
+            176.12937896046788
+          ],
+          [
+            56.62222707178444,
+            169.94070902001113
+          ],
+          [
+            56.36755900923163,
+            172.5063509074971
+          ],
+          [
+            55.7624880457297,
+            169.30780198890716
+          ],
+          [
+            55.410263943485916,
+            174.5466300053522
+          ],
+          [
+            65.85301703307778,
+            228.98816596716642
+          ],
+          [
+            66.06847303919494,
+            216.62408206611872
+          ],
+          [
+            57.70277394913137,
+            178.06035093963146
+          ]
+        ],
+        "bucketed": [
+          [
+            125.78893697354943,
+            470.81295400857925
+          ],
+          [
+            130.01772097777575,
+            483.6261159507558
+          ],
+          [
+            132.17622297815979,
+            485.9903120668605
+          ],
+          [
+            129.76928101852536,
+            482.0150750456378
+          ],
+          [
+            126.42018694896251,
+            473.34234695881605
+          ],
+          [
+            126.66710501071066,
+            472.9919550009072
+          ],
+          [
+            123.92858101520687,
+            467.1566750621423
+          ],
+          [
+            124.33009198866785,
+            464.9257679702714
+          ],
+          [
+            125.56404597125947,
+            471.610059030354
+          ],
+          [
+            140.8415880287066,
+            545.1056939782575
+          ],
+          [
+            129.39078803174198,
+            469.48091697413474
+          ],
+          [
+            123.91429801937193,
+            470.1640639686957
+          ]
+        ],
+        "packed": [
+          [
+            36.454415996558964,
+            155.78414394985884
+          ],
+          [
+            37.40151901729405,
+            157.64133899938315
+          ],
+          [
+            36.9958330411464,
+            156.78746602497995
+          ],
+          [
+            37.848278996534646,
+            159.74488900974393
+          ],
+          [
+            38.49015501327813,
+            160.16919096000493
+          ],
+          [
+            35.263266996480525,
+            155.50061396788806
+          ],
+          [
+            34.88248900976032,
+            147.92654500342906
+          ],
+          [
+            35.49935994669795,
+            152.82586601097137
+          ],
+          [
+            36.036052042618394,
+            163.35054102819413
+          ],
+          [
+            42.284014984034,
+            191.07395794708282
+          ],
+          [
+            44.02925609610975,
+            200.3842060221359
+          ],
+          [
+            35.50232504494488,
+            152.73853694088757
+          ]
+        ]
+      },
+      "summary": {
+        "padded": {
+          "batch_ttft_p50_ms": 56.64741451619193,
+          "batch_ttft_p95_ms": 66.06847303919494,
+          "end_to_end_p50_ms": 176.9894870230928,
+          "useful_prefill_tokens_per_s": 18076.729692708268
+        },
+        "bucketed": {
+          "batch_ttft_p50_ms": 126.54364597983658,
+          "batch_ttft_p95_ms": 140.8415880287066,
+          "end_to_end_p50_ms": 472.3010070156306,
+          "useful_prefill_tokens_per_s": 8092.069673440291
+        },
+        "packed": {
+          "batch_ttft_p50_ms": 36.72512451885268,
+          "batch_ttft_p95_ms": 44.02925609610975,
+          "end_to_end_p50_ms": 157.21440251218155,
+          "useful_prefill_tokens_per_s": 27882.81900785208
+        }
+      },
+      "gpus_before": [
+        "0, NVIDIA GeForce RTX 4090, 0 %, 443 MiB",
+        "1, NVIDIA GeForce RTX 4090, 20 %, 2369 MiB",
+        "2, NVIDIA GeForce RTX 4090, 100 %, 2913 MiB"
+      ],
+      "gpus_after": [
+        "0, NVIDIA GeForce RTX 4090, 0 %, 733 MiB",
+        "1, NVIDIA GeForce RTX 4090, 55 %, 2433 MiB",
+        "2, NVIDIA GeForce RTX 4090, 100 %, 2913 MiB"
+      ]
+    },
+    {
+      "lengths": [
+        128,
+        128,
+        128,
+        128,
+        128,
+        128,
+        128,
+        128
+      ],
+      "checks": [
+        {
+          "seed": 42,
+          "method": "padded",
+          "backend": "sdpa",
+          "sequences_equal": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true
+          ],
+          "tokens_equal": 32,
+          "first_token_equal": 8,
+          "max_first_logit_error": 0.0546875
+        },
+        {
+          "seed": 42,
+          "method": "bucketed",
+          "backend": "sdpa",
+          "sequences_equal": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true
+          ],
+          "tokens_equal": 32,
+          "first_token_equal": 8,
+          "max_first_logit_error": 0.0546875
+        },
+        {
+          "seed": 42,
+          "method": "packed",
+          "backend": "torch-varlen-flash",
+          "sequences_equal": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true
+          ],
+          "tokens_equal": 32,
+          "first_token_equal": 8,
+          "max_first_logit_error": 0.0546875
+        },
+        {
+          "seed": 43,
+          "method": "padded",
+          "backend": "sdpa",
+          "sequences_equal": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true
+          ],
+          "tokens_equal": 32,
+          "first_token_equal": 8,
+          "max_first_logit_error": 0.046875
+        },
+        {
+          "seed": 43,
+          "method": "bucketed",
+          "backend": "sdpa",
+          "sequences_equal": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true
+          ],
+          "tokens_equal": 32,
+          "first_token_equal": 8,
+          "max_first_logit_error": 0.046875
+        },
+        {
+          "seed": 43,
+          "method": "packed",
+          "backend": "torch-varlen-flash",
+          "sequences_equal": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true
+          ],
+          "tokens_equal": 32,
+          "first_token_equal": 8,
+          "max_first_logit_error": 0.046875
+        },
+        {
+          "seed": 44,
+          "method": "padded",
+          "backend": "sdpa",
+          "sequences_equal": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            false,
+            true
+          ],
+          "tokens_equal": 29,
+          "first_token_equal": 8,
+          "max_first_logit_error": 0.0615234375
+        },
+        {
+          "seed": 44,
+          "method": "bucketed",
+          "backend": "sdpa",
+          "sequences_equal": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            false,
+            true
+          ],
+          "tokens_equal": 29,
+          "first_token_equal": 8,
+          "max_first_logit_error": 0.0615234375
+        },
+        {
+          "seed": 44,
+          "method": "packed",
+          "backend": "torch-varlen-flash",
+          "sequences_equal": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            false,
+            true
+          ],
+          "tokens_equal": 29,
+          "first_token_equal": 8,
+          "max_first_logit_error": 0.0615234375
+        },
+        {
+          "seed": 45,
+          "method": "padded",
+          "backend": "sdpa",
+          "sequences_equal": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true
+          ],
+          "tokens_equal": 32,
+          "first_token_equal": 8,
+          "max_first_logit_error": 0.033203125
+        },
+        {
+          "seed": 45,
+          "method": "bucketed",
+          "backend": "sdpa",
+          "sequences_equal": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true
+          ],
+          "tokens_equal": 32,
+          "first_token_equal": 8,
+          "max_first_logit_error": 0.033203125
+        },
+        {
+          "seed": 45,
+          "method": "packed",
+          "backend": "torch-varlen-flash",
+          "sequences_equal": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true
+          ],
+          "tokens_equal": 32,
+          "first_token_equal": 8,
+          "max_first_logit_error": 0.033203125
+        },
+        {
+          "seed": 46,
+          "method": "padded",
+          "backend": "sdpa",
+          "sequences_equal": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true
+          ],
+          "tokens_equal": 32,
+          "first_token_equal": 8,
+          "max_first_logit_error": 0.0625
+        },
+        {
+          "seed": 46,
+          "method": "bucketed",
+          "backend": "sdpa",
+          "sequences_equal": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true
+          ],
+          "tokens_equal": 32,
+          "first_token_equal": 8,
+          "max_first_logit_error": 0.0625
+        },
+        {
+          "seed": 46,
+          "method": "packed",
+          "backend": "torch-varlen-flash",
+          "sequences_equal": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true
+          ],
+          "tokens_equal": 32,
+          "first_token_equal": 8,
+          "max_first_logit_error": 0.0625
+        },
+        {
+          "seed": 47,
+          "method": "padded",
+          "backend": "sdpa",
+          "sequences_equal": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true
+          ],
+          "tokens_equal": 32,
+          "first_token_equal": 8,
+          "max_first_logit_error": 0.03369140625
+        },
+        {
+          "seed": 47,
+          "method": "bucketed",
+          "backend": "sdpa",
+          "sequences_equal": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true
+          ],
+          "tokens_equal": 32,
+          "first_token_equal": 8,
+          "max_first_logit_error": 0.03369140625
+        },
+        {
+          "seed": 47,
+          "method": "packed",
+          "backend": "torch-varlen-flash",
+          "sequences_equal": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true
+          ],
+          "tokens_equal": 32,
+          "first_token_equal": 8,
+          "max_first_logit_error": 0.03369140625
+        },
+        {
+          "seed": 48,
+          "method": "padded",
+          "backend": "sdpa",
+          "sequences_equal": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true
+          ],
+          "tokens_equal": 32,
+          "first_token_equal": 8,
+          "max_first_logit_error": 0.048828125
+        },
+        {
+          "seed": 48,
+          "method": "bucketed",
+          "backend": "sdpa",
+          "sequences_equal": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true
+          ],
+          "tokens_equal": 32,
+          "first_token_equal": 8,
+          "max_first_logit_error": 0.048828125
+        },
+        {
+          "seed": 48,
+          "method": "packed",
+          "backend": "torch-varlen-flash",
+          "sequences_equal": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true
+          ],
+          "tokens_equal": 32,
+          "first_token_equal": 8,
+          "max_first_logit_error": 0.048828125
+        },
+        {
+          "seed": 49,
+          "method": "padded",
+          "backend": "sdpa",
+          "sequences_equal": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true
+          ],
+          "tokens_equal": 32,
+          "first_token_equal": 8,
+          "max_first_logit_error": 0.052734375
+        },
+        {
+          "seed": 49,
+          "method": "bucketed",
+          "backend": "sdpa",
+          "sequences_equal": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true
+          ],
+          "tokens_equal": 32,
+          "first_token_equal": 8,
+          "max_first_logit_error": 0.052734375
+        },
+        {
+          "seed": 49,
+          "method": "packed",
+          "backend": "torch-varlen-flash",
+          "sequences_equal": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true
+          ],
+          "tokens_equal": 32,
+          "first_token_equal": 8,
+          "max_first_logit_error": 0.052734375
+        },
+        {
+          "seed": 50,
+          "method": "padded",
+          "backend": "sdpa",
+          "sequences_equal": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true
+          ],
+          "tokens_equal": 32,
+          "first_token_equal": 8,
+          "max_first_logit_error": 0.02490234375
+        },
+        {
+          "seed": 50,
+          "method": "bucketed",
+          "backend": "sdpa",
+          "sequences_equal": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true
+          ],
+          "tokens_equal": 32,
+          "first_token_equal": 8,
+          "max_first_logit_error": 0.02490234375
+        },
+        {
+          "seed": 50,
+          "method": "packed",
+          "backend": "torch-varlen-flash",
+          "sequences_equal": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true
+          ],
+          "tokens_equal": 32,
+          "first_token_equal": 8,
+          "max_first_logit_error": 0.02490234375
+        }
+      ],
+      "timings_ms": {
+        "padded": [
+          [
+            30.851633986458182,
+            118.78577002789825
+          ],
+          [
+            30.784944887273014,
+            118.82417998276651
+          ],
+          [
+            30.351325985975564,
+            117.77687398716807
+          ],
+          [
+            30.683233053423464,
+            118.37654409464449
+          ],
+          [
+            30.414797947742045,
+            118.89912490732968
+          ],
+          [
+            31.13905491773039,
+            119.39130490645766
+          ],
+          [
+            30.468625016510487,
+            118.33778908476233
+          ],
+          [
+            31.470916932448745,
+            121.53268500696868
+          ],
+          [
+            31.813543988391757,
+            122.27704108227044
+          ],
+          [
+            32.54722792189568,
+            124.05168800614774
+          ],
+          [
+            32.47628302779049,
+            126.73490797169507
+          ],
+          [
+            31.89910389482975,
+            124.0193189587444
+          ]
+        ],
+        "bucketed": [
+          [
+            30.59816302265972,
+            118.93703404348344
+          ],
+          [
+            31.24130703508854,
+            119.78976905811578
+          ],
+          [
+            30.245583038777113,
+            118.00302902702242
+          ],
+          [
+            30.71488405112177,
+            119.31728501804173
+          ],
+          [
+            30.50968295428902,
+            119.69430895987898
+          ],
+          [
+            31.0835640411824,
+            120.6272360868752
+          ],
+          [
+            30.633207061327994,
+            119.39294403418899
+          ],
+          [
+            32.14725700672716,
+            123.10397601686418
+          ],
+          [
+            31.633617007173598,
+            123.38709307368845
+          ],
+          [
+            31.056874082423747,
+            120.50168809946626
+          ],
+          [
+            32.97650895547122,
+            126.70601392164826
+          ],
+          [
+            32.43001701775938,
+            124.73769101779908
+          ]
+        ],
+        "packed": [
+          [
+            34.56140297930688,
+            123.51398402824998
+          ],
+          [
+            34.61851191241294,
+            123.39103897102177
+          ],
+          [
+            34.94949091691524,
+            122.61911190580577
+          ],
+          [
+            34.96601094957441,
+            124.13164100144058
+          ],
+          [
+            34.48615001980215,
+            122.35892994794995
+          ],
+          [
+            35.04007798619568,
+            123.94733098335564
+          ],
+          [
+            35.713247023522854,
+            125.10862399358302
+          ],
+          [
+            37.27100801188499,
+            128.3961560111493
+          ],
+          [
+            36.25552903395146,
+            125.95736002549529
+          ],
+          [
+            37.119481014087796,
+            128.24946700129658
+          ],
+          [
+            37.90270700119436,
+            130.5768929887563
+          ],
+          [
+            38.13470795284957,
+            130.678690969944
+          ]
+        ]
+      },
+      "summary": {
+        "padded": {
+          "batch_ttft_p50_ms": 30.995344452094287,
+          "batch_ttft_p95_ms": 32.54722792189568,
+          "end_to_end_p50_ms": 119.14521490689367,
+          "useful_prefill_tokens_per_s": 33037.21955994622
+        },
+        "bucketed": {
+          "batch_ttft_p50_ms": 31.070219061803073,
+          "batch_ttft_p95_ms": 32.97650895547122,
+          "end_to_end_p50_ms": 120.14572857879102,
+          "useful_prefill_tokens_per_s": 32957.60477140888
+        },
+        "packed": {
+          "batch_ttft_p50_ms": 35.37666250485927,
+          "batch_ttft_p95_ms": 38.13470795284957,
+          "end_to_end_p50_ms": 124.6201324975118,
+          "useful_prefill_tokens_per_s": 28945.63611983876
+        }
+      },
+      "gpus_before": [
+        "0, NVIDIA GeForce RTX 4090, 0 %, 733 MiB",
+        "1, NVIDIA GeForce RTX 4090, 55 %, 2433 MiB",
+        "2, NVIDIA GeForce RTX 4090, 100 %, 2913 MiB"
+      ],
+      "gpus_after": [
+        "0, NVIDIA GeForce RTX 4090, 100 %, 1145 MiB",
+        "1, NVIDIA GeForce RTX 4090, 27 %, 2433 MiB",
+        "2, NVIDIA GeForce RTX 4090, 100 %, 2913 MiB"
+      ]
+    },
+    {
+      "lengths": [
+        96,
+        96,
+        112,
+        112,
+        144,
+        144,
+        160,
+        160
+      ],
+      "checks": [
+        {
+          "seed": 42,
+          "method": "padded",
+          "backend": "sdpa",
+          "sequences_equal": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true
+          ],
+          "tokens_equal": 32,
+          "first_token_equal": 8,
+          "max_first_logit_error": 0.0517578125
+        },
+        {
+          "seed": 42,
+          "method": "bucketed",
+          "backend": "sdpa",
+          "sequences_equal": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true
+          ],
+          "tokens_equal": 32,
+          "first_token_equal": 8,
+          "max_first_logit_error": 0.0400390625
+        },
+        {
+          "seed": 42,
+          "method": "packed",
+          "backend": "torch-varlen-flash",
+          "sequences_equal": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true
+          ],
+          "tokens_equal": 32,
+          "first_token_equal": 8,
+          "max_first_logit_error": 0.0390625
+        },
+        {
+          "seed": 43,
+          "method": "padded",
+          "backend": "sdpa",
+          "sequences_equal": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true
+          ],
+          "tokens_equal": 32,
+          "first_token_equal": 8,
+          "max_first_logit_error": 0.029296875
+        },
+        {
+          "seed": 43,
+          "method": "bucketed",
+          "backend": "sdpa",
+          "sequences_equal": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true
+          ],
+          "tokens_equal": 32,
+          "first_token_equal": 8,
+          "max_first_logit_error": 0.0284423828125
+        },
+        {
+          "seed": 43,
+          "method": "packed",
+          "backend": "torch-varlen-flash",
+          "sequences_equal": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true
+          ],
+          "tokens_equal": 32,
+          "first_token_equal": 8,
+          "max_first_logit_error": 0.033203125
+        },
+        {
+          "seed": 44,
+          "method": "padded",
+          "backend": "sdpa",
+          "sequences_equal": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true
+          ],
+          "tokens_equal": 32,
+          "first_token_equal": 8,
+          "max_first_logit_error": 0.0859375
+        },
+        {
+          "seed": 44,
+          "method": "bucketed",
+          "backend": "sdpa",
+          "sequences_equal": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true
+          ],
+          "tokens_equal": 32,
+          "first_token_equal": 8,
+          "max_first_logit_error": 0.05859375
+        },
+        {
+          "seed": 44,
+          "method": "packed",
+          "backend": "torch-varlen-flash",
+          "sequences_equal": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true
+          ],
+          "tokens_equal": 32,
+          "first_token_equal": 8,
+          "max_first_logit_error": 0.052734375
+        },
+        {
+          "seed": 45,
+          "method": "padded",
+          "backend": "sdpa",
+          "sequences_equal": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true
+          ],
+          "tokens_equal": 32,
+          "first_token_equal": 8,
+          "max_first_logit_error": 0.03515625
+        },
+        {
+          "seed": 45,
+          "method": "bucketed",
+          "backend": "sdpa",
+          "sequences_equal": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true
+          ],
+          "tokens_equal": 32,
+          "first_token_equal": 8,
+          "max_first_logit_error": 0.0400390625
+        },
+        {
+          "seed": 45,
+          "method": "packed",
+          "backend": "torch-varlen-flash",
+          "sequences_equal": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true
+          ],
+          "tokens_equal": 32,
+          "first_token_equal": 8,
+          "max_first_logit_error": 0.03515625
+        },
+        {
+          "seed": 46,
+          "method": "padded",
+          "backend": "sdpa",
+          "sequences_equal": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true
+          ],
+          "tokens_equal": 32,
+          "first_token_equal": 8,
+          "max_first_logit_error": 0.0546875
+        },
+        {
+          "seed": 46,
+          "method": "bucketed",
+          "backend": "sdpa",
+          "sequences_equal": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true
+          ],
+          "tokens_equal": 32,
+          "first_token_equal": 8,
+          "max_first_logit_error": 0.0595703125
+        },
+        {
+          "seed": 46,
+          "method": "packed",
+          "backend": "torch-varlen-flash",
+          "sequences_equal": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true
+          ],
+          "tokens_equal": 32,
+          "first_token_equal": 8,
+          "max_first_logit_error": 0.0546875
+        },
+        {
+          "seed": 47,
+          "method": "padded",
+          "backend": "sdpa",
+          "sequences_equal": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true
+          ],
+          "tokens_equal": 32,
+          "first_token_equal": 8,
+          "max_first_logit_error": 0.03125
+        },
+        {
+          "seed": 47,
+          "method": "bucketed",
+          "backend": "sdpa",
+          "sequences_equal": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true
+          ],
+          "tokens_equal": 32,
+          "first_token_equal": 8,
+          "max_first_logit_error": 0.033203125
+        },
+        {
+          "seed": 47,
+          "method": "packed",
+          "backend": "torch-varlen-flash",
+          "sequences_equal": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true
+          ],
+          "tokens_equal": 32,
+          "first_token_equal": 8,
+          "max_first_logit_error": 0.044921875
+        },
+        {
+          "seed": 48,
+          "method": "padded",
+          "backend": "sdpa",
+          "sequences_equal": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true
+          ],
+          "tokens_equal": 32,
+          "first_token_equal": 8,
+          "max_first_logit_error": 0.078125
+        },
+        {
+          "seed": 48,
+          "method": "bucketed",
+          "backend": "sdpa",
+          "sequences_equal": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true
+          ],
+          "tokens_equal": 32,
+          "first_token_equal": 8,
+          "max_first_logit_error": 0.0390625
+        },
+        {
+          "seed": 48,
+          "method": "packed",
+          "backend": "torch-varlen-flash",
+          "sequences_equal": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true
+          ],
+          "tokens_equal": 32,
+          "first_token_equal": 8,
+          "max_first_logit_error": 0.0546875
+        },
+        {
+          "seed": 49,
+          "method": "padded",
+          "backend": "sdpa",
+          "sequences_equal": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            false,
+            true,
+            true
+          ],
+          "tokens_equal": 30,
+          "first_token_equal": 8,
+          "max_first_logit_error": 0.05078125
+        },
+        {
+          "seed": 49,
+          "method": "bucketed",
+          "backend": "sdpa",
+          "sequences_equal": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true
+          ],
+          "tokens_equal": 32,
+          "first_token_equal": 8,
+          "max_first_logit_error": 0.03125
+        },
+        {
+          "seed": 49,
+          "method": "packed",
+          "backend": "torch-varlen-flash",
+          "sequences_equal": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true
+          ],
+          "tokens_equal": 32,
+          "first_token_equal": 8,
+          "max_first_logit_error": 0.0283203125
+        },
+        {
+          "seed": 50,
+          "method": "padded",
+          "backend": "sdpa",
+          "sequences_equal": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true
+          ],
+          "tokens_equal": 32,
+          "first_token_equal": 8,
+          "max_first_logit_error": 0.041015625
+        },
+        {
+          "seed": 50,
+          "method": "bucketed",
+          "backend": "sdpa",
+          "sequences_equal": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true
+          ],
+          "tokens_equal": 32,
+          "first_token_equal": 8,
+          "max_first_logit_error": 0.046875
+        },
+        {
+          "seed": 50,
+          "method": "packed",
+          "backend": "torch-varlen-flash",
+          "sequences_equal": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true
+          ],
+          "tokens_equal": 32,
+          "first_token_equal": 8,
+          "max_first_logit_error": 0.0546875
+        }
+      ],
+      "timings_ms": {
+        "padded": [
+          [
+            48.196929041296244,
+            173.32751001231372
+          ],
+          [
+            42.14340902399272,
+            162.5410420820117
+          ],
+          [
+            51.54877598397434,
+            196.65725901722908
+          ],
+          [
+            52.64601798262447,
+            170.01452599652112
+          ],
+          [
+            41.064706980250776,
+            159.06691399868578
+          ],
+          [
+            41.27368796616793,
+            157.83212194219232
+          ],
+          [
+            40.1096009882167,
+            157.89765201043338
+          ],
+          [
+            45.13573297299445,
+            175.18521391320974
+          ],
+          [
+            41.56727506779134,
+            160.39976896718144
+          ],
+          [
+            43.51042304188013,
+            167.19453094992787
+          ],
+          [
+            39.3976999912411,
+            153.26200798153877
+          ],
+          [
+            49.15712110232562,
+            185.35095104016364
+          ]
+        ],
+        "bucketed": [
+          [
+            79.1295759845525,
+            310.28096901718527
+          ],
+          [
+            85.40878596249968,
+            333.8846319820732
+          ],
+          [
+            84.4023359240964,
+            330.1551069598645
+          ],
+          [
+            100.96654994413257,
+            389.4029789371416
+          ],
+          [
+            82.34712400007993,
+            328.98074795957655
+          ],
+          [
+            82.77915499638766,
+            320.98562794271857
+          ],
+          [
+            91.57874900847673,
+            362.524354015477
+          ],
+          [
+            99.41018093377352,
+            328.3744329819456
+          ],
+          [
+            78.08417303021997,
+            310.64021005295217
+          ],
+          [
+            77.77414296288043,
+            319.8754199547693
+          ],
+          [
+            78.4889729693532,
+            316.75596500281245
+          ],
+          [
+            87.60663098655641,
+            359.90280797705054
+          ]
+        ],
+        "packed": [
+          [
+            36.3908699946478,
+            157.6043909881264
+          ],
+          [
+            38.23692607693374,
+            161.69404599349946
+          ],
+          [
+            42.033854057081044,
+            191.64088601246476
+          ],
+          [
+            40.432394947856665,
+            188.00419196486473
+          ],
+          [
+            37.439486011862755,
+            158.63012499175966
+          ],
+          [
+            38.071710034273565,
+            160.20560404285789
+          ],
+          [
+            39.169374969787896,
+            170.03876704256982
+          ],
+          [
+            38.84043707512319,
+            179.23951102420688
+          ],
+          [
+            35.72895599063486,
+            150.5244669970125
+          ],
+          [
+            37.41474694106728,
+            161.80804395116866
+          ],
+          [
+            37.26344206370413,
+            145.87949600536376
+          ],
+          [
+            37.0330719742924,
+            165.50497605931014
+          ]
+        ]
+      },
+      "summary": {
+        "padded": {
+          "batch_ttft_p50_ms": 42.826916032936424,
+          "batch_ttft_p95_ms": 52.64601798262447,
+          "end_to_end_p50_ms": 164.86778651596978,
+          "useful_prefill_tokens_per_s": 23910.19701751309
+        },
+        "bucketed": {
+          "batch_ttft_p50_ms": 83.59074546024203,
+          "batch_ttft_p95_ms": 100.96654994413257,
+          "end_to_end_p50_ms": 328.67759047076106,
+          "useful_prefill_tokens_per_s": 12250.159923349906
+        },
+        "packed": {
+          "batch_ttft_p50_ms": 37.75559802306816,
+          "batch_ttft_p95_ms": 42.033854057081044,
+          "end_to_end_p50_ms": 161.75104497233406,
+          "useful_prefill_tokens_per_s": 27121.805867684834
+        }
+      },
+      "gpus_before": [
+        "0, NVIDIA GeForce RTX 4090, 100 %, 1145 MiB",
+        "1, NVIDIA GeForce RTX 4090, 27 %, 2433 MiB",
+        "2, NVIDIA GeForce RTX 4090, 100 %, 2913 MiB"
+      ],
+      "gpus_after": [
+        "0, NVIDIA GeForce RTX 4090, 100 %, 1145 MiB",
+        "1, NVIDIA GeForce RTX 4090, 14 %, 2433 MiB",
+        "2, NVIDIA GeForce RTX 4090, 100 %, 2913 MiB"
+      ]
+    },
+    {
+      "lengths": [
+        8,
+        16,
+        24,
+        32,
+        40,
+        48,
+        88,
+        768
+      ],
+      "checks": [
+        {
+          "seed": 42,
+          "method": "padded",
+          "backend": "sdpa",
+          "sequences_equal": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true
+          ],
+          "tokens_equal": 32,
+          "first_token_equal": 8,
+          "max_first_logit_error": 0.0439453125
+        },
+        {
+          "seed": 42,
+          "method": "bucketed",
+          "backend": "sdpa",
+          "sequences_equal": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true
+          ],
+          "tokens_equal": 32,
+          "first_token_equal": 8,
+          "max_first_logit_error": 0.03564453125
+        },
+        {
+          "seed": 42,
+          "method": "packed",
+          "backend": "torch-varlen-flash",
+          "sequences_equal": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true
+          ],
+          "tokens_equal": 32,
+          "first_token_equal": 8,
+          "max_first_logit_error": 0.035400390625
+        },
+        {
+          "seed": 43,
+          "method": "padded",
+          "backend": "sdpa",
+          "sequences_equal": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true
+          ],
+          "tokens_equal": 32,
+          "first_token_equal": 8,
+          "max_first_logit_error": 0.03125
+        },
+        {
+          "seed": 43,
+          "method": "bucketed",
+          "backend": "sdpa",
+          "sequences_equal": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true
+          ],
+          "tokens_equal": 32,
+          "first_token_equal": 8,
+          "max_first_logit_error": 0.03125
+        },
+        {
+          "seed": 43,
+          "method": "packed",
+          "backend": "torch-varlen-flash",
+          "sequences_equal": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true
+          ],
+          "tokens_equal": 32,
+          "first_token_equal": 8,
+          "max_first_logit_error": 0.03125
+        },
+        {
+          "seed": 44,
+          "method": "padded",
+          "backend": "sdpa",
+          "sequences_equal": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true
+          ],
+          "tokens_equal": 32,
+          "first_token_equal": 8,
+          "max_first_logit_error": 0.037109375
+        },
+        {
+          "seed": 44,
+          "method": "bucketed",
+          "backend": "sdpa",
+          "sequences_equal": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true
+          ],
+          "tokens_equal": 32,
+          "first_token_equal": 8,
+          "max_first_logit_error": 0.0390625
+        },
+        {
+          "seed": 44,
+          "method": "packed",
+          "backend": "torch-varlen-flash",
+          "sequences_equal": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true
+          ],
+          "tokens_equal": 32,
+          "first_token_equal": 8,
+          "max_first_logit_error": 0.04150390625
+        },
+        {
+          "seed": 45,
+          "method": "padded",
+          "backend": "sdpa",
+          "sequences_equal": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true
+          ],
+          "tokens_equal": 32,
+          "first_token_equal": 8,
+          "max_first_logit_error": 0.078125
+        },
+        {
+          "seed": 45,
+          "method": "bucketed",
+          "backend": "sdpa",
+          "sequences_equal": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true
+          ],
+          "tokens_equal": 32,
+          "first_token_equal": 8,
+          "max_first_logit_error": 0.0625
+        },
+        {
+          "seed": 45,
+          "method": "packed",
+          "backend": "torch-varlen-flash",
+          "sequences_equal": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true
+          ],
+          "tokens_equal": 32,
+          "first_token_equal": 8,
+          "max_first_logit_error": 0.0859375
+        },
+        {
+          "seed": 46,
+          "method": "padded",
+          "backend": "sdpa",
+          "sequences_equal": [
+            false,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true
+          ],
+          "tokens_equal": 31,
+          "first_token_equal": 8,
+          "max_first_logit_error": 0.029296875
+        },
+        {
+          "seed": 46,
+          "method": "bucketed",
+          "backend": "sdpa",
+          "sequences_equal": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true
+          ],
+          "tokens_equal": 32,
+          "first_token_equal": 8,
+          "max_first_logit_error": 0.03515625
+        },
+        {
+          "seed": 46,
+          "method": "packed",
+          "backend": "torch-varlen-flash",
+          "sequences_equal": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true
+          ],
+          "tokens_equal": 32,
+          "first_token_equal": 8,
+          "max_first_logit_error": 0.03955078125
+        },
+        {
+          "seed": 47,
+          "method": "padded",
+          "backend": "sdpa",
+          "sequences_equal": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true
+          ],
+          "tokens_equal": 32,
+          "first_token_equal": 8,
+          "max_first_logit_error": 0.033203125
+        },
+        {
+          "seed": 47,
+          "method": "bucketed",
+          "backend": "sdpa",
+          "sequences_equal": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true
+          ],
+          "tokens_equal": 32,
+          "first_token_equal": 8,
+          "max_first_logit_error": 0.0294189453125
+        },
+        {
+          "seed": 47,
+          "method": "packed",
+          "backend": "torch-varlen-flash",
+          "sequences_equal": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true
+          ],
+          "tokens_equal": 32,
+          "first_token_equal": 8,
+          "max_first_logit_error": 0.0322265625
+        },
+        {
+          "seed": 48,
+          "method": "padded",
+          "backend": "sdpa",
+          "sequences_equal": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true
+          ],
+          "tokens_equal": 32,
+          "first_token_equal": 8,
+          "max_first_logit_error": 0.0390625
+        },
+        {
+          "seed": 48,
+          "method": "bucketed",
+          "backend": "sdpa",
+          "sequences_equal": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true
+          ],
+          "tokens_equal": 32,
+          "first_token_equal": 8,
+          "max_first_logit_error": 0.046875
+        },
+        {
+          "seed": 48,
+          "method": "packed",
+          "backend": "torch-varlen-flash",
+          "sequences_equal": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true
+          ],
+          "tokens_equal": 32,
+          "first_token_equal": 8,
+          "max_first_logit_error": 0.04296875
+        },
+        {
+          "seed": 49,
+          "method": "padded",
+          "backend": "sdpa",
+          "sequences_equal": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true
+          ],
+          "tokens_equal": 32,
+          "first_token_equal": 8,
+          "max_first_logit_error": 0.04296875
+        },
+        {
+          "seed": 49,
+          "method": "bucketed",
+          "backend": "sdpa",
+          "sequences_equal": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true
+          ],
+          "tokens_equal": 32,
+          "first_token_equal": 8,
+          "max_first_logit_error": 0.03271484375
+        },
+        {
+          "seed": 49,
+          "method": "packed",
+          "backend": "torch-varlen-flash",
+          "sequences_equal": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true
+          ],
+          "tokens_equal": 32,
+          "first_token_equal": 8,
+          "max_first_logit_error": 0.041015625
+        },
+        {
+          "seed": 50,
+          "method": "padded",
+          "backend": "sdpa",
+          "sequences_equal": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true
+          ],
+          "tokens_equal": 32,
+          "first_token_equal": 8,
+          "max_first_logit_error": 0.05078125
+        },
+        {
+          "seed": 50,
+          "method": "bucketed",
+          "backend": "sdpa",
+          "sequences_equal": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true
+          ],
+          "tokens_equal": 32,
+          "first_token_equal": 8,
+          "max_first_logit_error": 0.04296875
+        },
+        {
+          "seed": 50,
+          "method": "packed",
+          "backend": "torch-varlen-flash",
+          "sequences_equal": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true
+          ],
+          "tokens_equal": 32,
+          "first_token_equal": 8,
+          "max_first_logit_error": 0.046875
+        }
+      ],
+      "timings_ms": {
+        "padded": [
+          [
+            87.77437708340585,
+            207.85903802607208
+          ],
+          [
+            87.38798089325428,
+            207.97055691946298
+          ],
+          [
+            90.78165900427848,
+            213.5921400040388
+          ],
+          [
+            86.93108998704702,
+            198.3712959336117
+          ],
+          [
+            87.0290920138359,
+            200.40970004629344
+          ],
+          [
+            87.60458207689226,
+            204.19490500353277
+          ],
+          [
+            87.45184808503836,
+            202.9514811001718
+          ],
+          [
+            94.0782829420641,
+            243.1182189611718
+          ],
+          [
+            100.84819106850773,
+            260.2179329842329
+          ],
+          [
+            94.81125301681459,
+            246.08459800947458
+          ],
+          [
+            93.32370304036885,
+            237.77496395632625
+          ],
+          [
+            92.1416450291872,
+            209.42773902788758
+          ]
+        ],
+        "bucketed": [
+          [
+            211.5790779935196,
+            797.1426249714568
+          ],
+          [
+            214.93107406422496,
+            799.1104110842571
+          ],
+          [
+            210.1249269908294,
+            788.6605029925704
+          ],
+          [
+            209.2933199601248,
+            772.5406980607659
+          ],
+          [
+            201.55802508816123,
+            775.9674499975517
+          ],
+          [
+            205.0823699682951,
+            779.2199939722195
+          ],
+          [
+            204.57771490328014,
+            785.867205937393
+          ],
+          [
+            259.9926999537274,
+            983.788623008877
+          ],
+          [
+            220.91767308302224,
+            861.3171169999987
+          ],
+          [
+            262.32177997007966,
+            991.9591010548174
+          ],
+          [
+            246.43276003189385,
+            936.6771070053801
+          ],
+          [
+            239.3595069879666,
+            901.8687770003453
+          ]
+        ],
+        "packed": [
+          [
+            37.29179501533508,
+            155.403567943722
+          ],
+          [
+            37.292728084139526,
+            159.58488604519516
+          ],
+          [
+            37.208401947282255,
+            157.35903498716652
+          ],
+          [
+            34.233488026075065,
+            145.54705505724996
+          ],
+          [
+            34.205308998934925,
+            145.77634795568883
+          ],
+          [
+            35.634294035844505,
+            151.51273703668267
+          ],
+          [
+            37.422321969643235,
+            162.81838598661125
+          ],
+          [
+            42.390427901409566,
+            200.92705299612135
+          ],
+          [
+            43.02119207568467,
+            204.58479202352464
+          ],
+          [
+            44.07176095992327,
+            197.73322599940002
+          ],
+          [
+            41.7353919474408,
+            192.6885989960283
+          ],
+          [
+            41.758183971978724,
+            190.06336806342006
+          ]
+        ]
+      },
+      "summary": {
+        "padded": {
+          "batch_ttft_p50_ms": 89.27801804384217,
+          "batch_ttft_p95_ms": 100.84819106850773,
+          "end_to_end_p50_ms": 208.69914797367528,
+          "useful_prefill_tokens_per_s": 11469.788671799812
+        },
+        "bucketed": {
+          "batch_ttft_p50_ms": 213.25507602887228,
+          "batch_ttft_p95_ms": 262.32177997007966,
+          "end_to_end_p50_ms": 798.126518027857,
+          "useful_prefill_tokens_per_s": 4801.761435499721
+        },
+        "packed": {
+          "batch_ttft_p50_ms": 37.35752502689138,
+          "batch_ttft_p95_ms": 44.07176095992327,
+          "end_to_end_p50_ms": 161.2016360159032,
+          "useful_prefill_tokens_per_s": 27410.80944904368
+        }
+      },
+      "gpus_before": [
+        "0, NVIDIA GeForce RTX 4090, 100 %, 1145 MiB",
+        "1, NVIDIA GeForce RTX 4090, 14 %, 2433 MiB",
+        "2, NVIDIA GeForce RTX 4090, 100 %, 2913 MiB"
+      ],
+      "gpus_after": [
+        "0, NVIDIA GeForce RTX 4090, 0 %, 443 MiB",
+        "1, NVIDIA GeForce RTX 4090, 16 %, 2997 MiB",
+        "2, NVIDIA GeForce RTX 4090, 100 %, 2913 MiB"
+      ]
+    }
+  ]
+}

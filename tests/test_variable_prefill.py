@@ -47,6 +47,15 @@ def test_context_boundary(tiny_model):
         generate_batch(tiny_model, [prompt], "packed", 3)
 
 
+def test_auto_requires_threshold_and_cpu_uses_padded(tiny_model):
+    prompts = [torch.tensor([1, 2, 3]), torch.tensor([8])]
+    with pytest.raises(ValueError, match="threshold"):
+        generate_batch(tiny_model, prompts, "auto", 2)
+    result = generate_batch(tiny_model, prompts, "auto", 2, pack_at_padding=0.2)
+    assert result.method == "padded"
+    torch.testing.assert_close(result.token_ids, generate_batch(tiny_model, prompts, "padded", 2).token_ids)
+
+
 @pytest.mark.skipif(not torch.cuda.is_available(), reason="CUDA varlen attention")
 def test_cuda_packed_causal_gqa_and_isolation(tiny_model):
     pytest.importorskip("torch.nn.attention.varlen")
@@ -62,3 +71,8 @@ def test_cuda_packed_causal_gqa_and_isolation(tiny_model):
     changed = generate_batch(model, prompts, "packed", 4)
     torch.testing.assert_close(changed.first_logits[1:], result.first_logits[1:], atol=0, rtol=0)
     torch.testing.assert_close(changed.token_ids[1:], result.token_ids[1:])
+    selected = generate_batch(model, prompts, "auto", 4, pack_at_padding=1/3)
+    assert selected.method == "packed"
+    torch.testing.assert_close(selected.token_ids, changed.token_ids)
+    selected = generate_batch(model, prompts, "auto", 4, pack_at_padding=0.5)
+    assert selected.method == "padded"

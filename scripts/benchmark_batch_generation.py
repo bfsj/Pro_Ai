@@ -19,6 +19,8 @@ METHODS = ("padded", "bucketed", "packed")
 SHAPES = ((256,) * 4, (192, 224, 288, 320), (16, 32, 80, 896),
           (128,) * 8, (96, 96, 112, 112, 144, 144, 160, 160),
           (8, 16, 24, 32, 40, 48, 88, 768))
+HOLDOUT = ((128,) * 4, (105, 123, 140, 144), (72, 98, 161, 181), (8, 20, 40, 444),
+           (92, 104, 116, 120, 132, 140, 152, 168), (16, 32, 48, 64, 80, 96, 176, 512))
 
 
 def gpu_snapshot():
@@ -48,25 +50,31 @@ def solo_reference(model, prompts, steps):
 
 
 def evaluate(model, lengths, args):
+    methods = METHODS if args.validate_threshold is None else ("padded", "packed", "auto")
+
+    def generate(prompts, method):
+        threshold = args.validate_threshold if method == "auto" else None
+        return generate_batch(model, prompts, method, args.new_tokens, pack_at_padding=threshold)
+
     checks = []
     for seed in range(args.seed, args.seed + args.seeds):
         prompts = make_prompts(model, lengths, seed)
         first, tokens = solo_reference(model, prompts, args.new_tokens)
-        for method in METHODS:
-            run = generate_batch(model, prompts, method, args.new_tokens)
+        for method in methods:
+            run = generate(prompts, method)
             matches = run.token_ids == tokens
-            checks.append(dict(seed=seed, method=method, backend=run.prefill_backend,
+            checks.append(dict(seed=seed, method=method, selected=run.method, backend=run.prefill_backend,
                                sequences_equal=matches.all(1).tolist(),
                                tokens_equal=int(matches.sum()), first_token_equal=int(matches[:, 0].sum()),
                                max_first_logit_error=float((run.first_logits.float() - first.float()).abs().max())))
     prompts = make_prompts(model, lengths, args.seed)
-    timings = {m: [] for m in METHODS}
-    orders = list(permutations(METHODS))
-    for method in METHODS:
-        generate_batch(model, prompts, method, args.new_tokens)
+    timings = {m: [] for m in methods}
+    orders = list(permutations(methods))
+    for method in methods:
+        generate(prompts, method)
     for repeat in range(args.repeats):
         for method in orders[repeat % len(orders)]:
-            run = generate_batch(model, prompts, method, args.new_tokens)
+            run = generate(prompts, method)
             timings[method].append([run.first_token_ms, run.total_ms])
     summary = {}
     for method, samples in timings.items():
@@ -87,6 +95,7 @@ def main():
     parser.add_argument("--seed", type=int, default=42)
     parser.add_argument("--repeats", type=int, default=12)
     parser.add_argument("--new-tokens", type=int, default=4)
+    parser.add_argument("--validate-threshold", type=float, help="Evaluate the specified auto threshold on held-out shapes")
     parser.add_argument("--output", type=Path, required=True)
     args = parser.parse_args()
     if args.output.exists() or min(args.repeats, args.seeds, args.new_tokens) < 1:
@@ -99,12 +108,12 @@ def main():
     cuda = args.device == "cuda"
     report = dict(torch=str(torch.__version__), transformers=transformers.__version__, dtype=args.dtype,
                   device=torch.cuda.get_device_name() if cuda else "cpu", model=Path(args.model).name,
-                  new_tokens=args.new_tokens, seeds=args.seeds, repeats=args.repeats,
+                  new_tokens=args.new_tokens, seeds=args.seeds, repeats=args.repeats, pack_at_padding=args.validate_threshold,
                   timing_columns=["batch_first_token_ms", "total_ms"], shapes=[])
     model = AutoModelForCausalLM.from_pretrained(
         args.model, dtype=getattr(torch, args.dtype), attn_implementation="sdpa"
     ).to(args.device).eval()
-    for lengths in SHAPES:
+    for lengths in (SHAPES if args.validate_threshold is None else HOLDOUT):
         before = gpu_snapshot() if cuda else []
         shape = evaluate(model, lengths, args)
         shape.update(gpus_before=before, gpus_after=gpu_snapshot() if cuda else [])

@@ -63,7 +63,8 @@ def parser():
     generate = commands.add_parser("generate", help="Run an explicit greedy loop")
     batch = commands.add_parser("generate-batch", help="Generate from variable-length prompts in input order")
     batch.add_argument("--prompt", action="append", required=True)
-    batch.add_argument("--method", choices=("padded", "bucketed", "packed"), required=True)
+    batch.add_argument("--method", choices=("padded", "bucketed", "packed", "auto"), required=True)
+    batch.add_argument("--pack-at-padding", type=float, help="Auto: pack when padding occupies at least this fraction")
     batch.add_argument("--new-tokens", type=int, default=16)
     check = commands.add_parser("check", help="Teacher-forced cache correctness and precision diagnostics")
     bench = commands.add_parser("benchmark", help="Controlled, interleaved cache/norm benchmark")
@@ -154,9 +155,9 @@ def main():
             [{"role": "user", "content": prompt}], add_generation_prompt=True,
             enable_thinking=False, return_tensors="pt",
         )[0].to(args.device) for prompt in args.prompt]
-        result = generate_batch(model, sequences, args.method, args.new_tokens)
+        result = generate_batch(model, sequences, args.method, args.new_tokens, pack_at_padding=args.pack_at_padding)
         print(json.dumps(dict(outputs=tokenizer.batch_decode(result.token_ids, skip_special_tokens=True),
-                              backend=result.prefill_backend, batch_first_token_ms=result.first_token_ms,
+                              method=result.method, backend=result.prefill_backend, batch_first_token_ms=result.first_token_ms,
                               total_ms=result.total_ms), ensure_ascii=False, indent=2))
     elif args.command == "generate":
         from transformers import AutoTokenizer

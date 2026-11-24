@@ -1,0 +1,1765 @@
+{
+  "torch": "2.11.0+cu128",
+  "transformers": "4.57.6",
+  "dtype": "float16",
+  "device": "NVIDIA GeForce RTX 4090",
+  "model": "Qwen3-0.6B",
+  "new_tokens": 4,
+  "seeds": 2,
+  "repeats": 12,
+  "pack_at_padding": 0.2,
+  "timing_columns": [
+    "batch_first_token_ms",
+    "total_ms"
+  ],
+  "shapes": [
+    {
+      "lengths": [
+        128,
+        128,
+        128,
+        128
+      ],
+      "checks": [
+        {
+          "seed": 113,
+          "method": "padded",
+          "selected": "padded",
+          "backend": "sdpa",
+          "sequences_equal": [
+            true,
+            true,
+            true,
+            true
+          ],
+          "tokens_equal": 16,
+          "first_token_equal": 4,
+          "max_first_logit_error": 0.0665283203125
+        },
+        {
+          "seed": 113,
+          "method": "packed",
+          "selected": "packed",
+          "backend": "torch-varlen-flash",
+          "sequences_equal": [
+            true,
+            true,
+            true,
+            true
+          ],
+          "tokens_equal": 16,
+          "first_token_equal": 4,
+          "max_first_logit_error": 0.0665283203125
+        },
+        {
+          "seed": 113,
+          "method": "auto",
+          "selected": "padded",
+          "backend": "sdpa",
+          "sequences_equal": [
+            true,
+            true,
+            true,
+            true
+          ],
+          "tokens_equal": 16,
+          "first_token_equal": 4,
+          "max_first_logit_error": 0.0665283203125
+        },
+        {
+          "seed": 114,
+          "method": "padded",
+          "selected": "padded",
+          "backend": "sdpa",
+          "sequences_equal": [
+            true,
+            true,
+            true,
+            true
+          ],
+          "tokens_equal": 16,
+          "first_token_equal": 4,
+          "max_first_logit_error": 0.03515625
+        },
+        {
+          "seed": 114,
+          "method": "packed",
+          "selected": "packed",
+          "backend": "torch-varlen-flash",
+          "sequences_equal": [
+            true,
+            true,
+            true,
+            true
+          ],
+          "tokens_equal": 16,
+          "first_token_equal": 4,
+          "max_first_logit_error": 0.03515625
+        },
+        {
+          "seed": 114,
+          "method": "auto",
+          "selected": "padded",
+          "backend": "sdpa",
+          "sequences_equal": [
+            true,
+            true,
+            true,
+            true
+          ],
+          "tokens_equal": 16,
+          "first_token_equal": 4,
+          "max_first_logit_error": 0.03515625
+        }
+      ],
+      "timings_ms": {
+        "padded": [
+          [
+            35.91895697172731,
+            125.41292991954833
+          ],
+          [
+            38.27864397317171,
+            132.359441020526
+          ],
+          [
+            38.04769506677985,
+            132.1061101043597
+          ],
+          [
+            35.72126501239836,
+            125.31469203531742
+          ],
+          [
+            35.85959109477699,
+            129.5314070302993
+          ],
+          [
+            35.76136101037264,
+            122.9449639795348
+          ],
+          [
+            35.720236017368734,
+            127.2635729983449
+          ],
+          [
+            35.87056999094784,
+            122.9069409891963
+          ],
+          [
+            35.81844596192241,
+            125.02148794010282
+          ],
+          [
+            35.86155897937715,
+            125.31754502560943
+          ],
+          [
+            36.57542401924729,
+            126.01450399961323
+          ],
+          [
+            39.097424945794046,
+            133.64637200720608
+          ]
+        ],
+        "packed": [
+          [
+            43.03155897650868,
+            132.48837098944932
+          ],
+          [
+            43.059880030341446,
+            132.6545299962163
+          ],
+          [
+            45.34909606445581,
+            137.14994699694216
+          ],
+          [
+            45.408973935991526,
+            139.21058597043157
+          ],
+          [
+            43.102690018713474,
+            132.7397070126608
+          ],
+          [
+            40.683286963030696,
+            130.03827398642898
+          ],
+          [
+            40.78041692264378,
+            127.85285199061036
+          ],
+          [
+            40.68381094839424,
+            127.86495196633041
+          ],
+          [
+            40.71835207287222,
+            127.95800005551428
+          ],
+          [
+            41.70362197328359,
+            132.42370693478733
+          ],
+          [
+            43.91864198260009,
+            135.55463997181505
+          ],
+          [
+            44.13487808778882,
+            136.02564006578177
+          ]
+        ],
+        "auto": [
+          [
+            38.156282040290534,
+            132.45284999720752
+          ],
+          [
+            38.14864403102547,
+            129.9842679873109
+          ],
+          [
+            38.12339098658413,
+            132.3297310154885
+          ],
+          [
+            38.245644071139395,
+            130.01485099084675
+          ],
+          [
+            35.77765403315425,
+            125.2605210756883
+          ],
+          [
+            35.765103064477444,
+            125.04435109440237
+          ],
+          [
+            35.73080094065517,
+            122.89616791531444
+          ],
+          [
+            35.88875592686236,
+            127.44767195545137
+          ],
+          [
+            35.756472032517195,
+            125.21928199566901
+          ],
+          [
+            35.78410600312054,
+            125.25048502720892
+          ],
+          [
+            35.94782098662108,
+            125.1471039140597
+          ],
+          [
+            36.75767406821251,
+            126.23264407739043
+          ]
+        ]
+      },
+      "summary": {
+        "padded": {
+          "batch_ttft_p50_ms": 35.8660644851625,
+          "batch_ttft_p95_ms": 39.097424945794046,
+          "end_to_end_p50_ms": 125.71371695958078,
+          "useful_prefill_tokens_per_s": 14275.332611745298
+        },
+        "packed": {
+          "batch_ttft_p50_ms": 43.04571950342506,
+          "batch_ttft_p95_ms": 45.408973935991526,
+          "end_to_end_p50_ms": 132.5714504928328,
+          "useful_prefill_tokens_per_s": 11894.330165842883
+        },
+        "auto": {
+          "batch_ttft_p50_ms": 35.91828845674172,
+          "batch_ttft_p95_ms": 38.245644071139395,
+          "end_to_end_p50_ms": 125.74658257653937,
+          "useful_prefill_tokens_per_s": 14254.576762938703
+        }
+      },
+      "gpus_before": [
+        "0, NVIDIA GeForce RTX 4090, 100 %, 1463 MiB",
+        "1, NVIDIA GeForce RTX 4090, 100 %, 2671 MiB",
+        "2, NVIDIA GeForce RTX 4090, 100 %, 2913 MiB"
+      ],
+      "gpus_after": [
+        "0, NVIDIA GeForce RTX 4090, 100 %, 1463 MiB",
+        "1, NVIDIA GeForce RTX 4090, 100 %, 2893 MiB",
+        "2, NVIDIA GeForce RTX 4090, 100 %, 2913 MiB"
+      ]
+    },
+    {
+      "lengths": [
+        105,
+        123,
+        140,
+        144
+      ],
+      "checks": [
+        {
+          "seed": 113,
+          "method": "padded",
+          "selected": "padded",
+          "backend": "sdpa",
+          "sequences_equal": [
+            true,
+            true,
+            true,
+            true
+          ],
+          "tokens_equal": 16,
+          "first_token_equal": 4,
+          "max_first_logit_error": 0.0390625
+        },
+        {
+          "seed": 113,
+          "method": "packed",
+          "selected": "packed",
+          "backend": "torch-varlen-flash",
+          "sequences_equal": [
+            true,
+            true,
+            true,
+            true
+          ],
+          "tokens_equal": 16,
+          "first_token_equal": 4,
+          "max_first_logit_error": 0.0390625
+        },
+        {
+          "seed": 113,
+          "method": "auto",
+          "selected": "padded",
+          "backend": "sdpa",
+          "sequences_equal": [
+            true,
+            true,
+            true,
+            true
+          ],
+          "tokens_equal": 16,
+          "first_token_equal": 4,
+          "max_first_logit_error": 0.0390625
+        },
+        {
+          "seed": 114,
+          "method": "padded",
+          "selected": "padded",
+          "backend": "sdpa",
+          "sequences_equal": [
+            true,
+            true,
+            true,
+            true
+          ],
+          "tokens_equal": 16,
+          "first_token_equal": 4,
+          "max_first_logit_error": 0.041015625
+        },
+        {
+          "seed": 114,
+          "method": "packed",
+          "selected": "packed",
+          "backend": "torch-varlen-flash",
+          "sequences_equal": [
+            true,
+            true,
+            true,
+            true
+          ],
+          "tokens_equal": 16,
+          "first_token_equal": 4,
+          "max_first_logit_error": 0.0390625
+        },
+        {
+          "seed": 114,
+          "method": "auto",
+          "selected": "padded",
+          "backend": "sdpa",
+          "sequences_equal": [
+            true,
+            true,
+            true,
+            true
+          ],
+          "tokens_equal": 16,
+          "first_token_equal": 4,
+          "max_first_logit_error": 0.041015625
+        }
+      ],
+      "timings_ms": {
+        "padded": [
+          [
+            61.57667702063918,
+            214.83156003523618
+          ],
+          [
+            59.31157397571951,
+            212.44662499520928
+          ],
+          [
+            61.813791980966926,
+            217.38804306369275
+          ],
+          [
+            58.873345027677715,
+            214.60974507499486
+          ],
+          [
+            60.97191805019975,
+            217.5699070794508
+          ],
+          [
+            61.84964906424284,
+            247.17648304067552
+          ],
+          [
+            68.98342294152826,
+            249.22916304785758
+          ],
+          [
+            70.80424693413079,
+            247.02096194960177
+          ],
+          [
+            49.44298998452723,
+            172.51930793281645
+          ],
+          [
+            118.42393199913204,
+            261.08657696750015
+          ],
+          [
+            54.17675501666963,
+            180.06155896000564
+          ],
+          [
+            47.1730389399454,
+            163.41249598190188
+          ]
+        ],
+        "packed": [
+          [
+            50.603596959263086,
+            206.6820840118453
+          ],
+          [
+            50.42619607411325,
+            209.08875006716698
+          ],
+          [
+            50.32796401064843,
+            203.9300730684772
+          ],
+          [
+            52.81005101278424,
+            206.69811696279794
+          ],
+          [
+            50.45348801650107,
+            211.86741394922137
+          ],
+          [
+            52.41765594109893,
+            211.57478797249496
+          ],
+          [
+            57.4369509704411,
+            235.7079660287127
+          ],
+          [
+            62.47552402783185,
+            223.08316093403846
+          ],
+          [
+            52.35349794384092,
+            198.25880194548517
+          ],
+          [
+            43.30388596281409,
+            161.85686201788485
+          ],
+          [
+            43.28439594246447,
+            159.46922590956092
+          ],
+          [
+            43.18700195290148,
+            164.09681597724557
+          ]
+        ],
+        "auto": [
+          [
+            59.54825598746538,
+            215.9536590334028
+          ],
+          [
+            59.376887045800686,
+            223.13372499775141
+          ],
+          [
+            63.29146691132337,
+            220.52685695234686
+          ],
+          [
+            61.57675292342901,
+            223.39563991408795
+          ],
+          [
+            59.55021898262203,
+            225.149153964594
+          ],
+          [
+            58.942049043253064,
+            223.93282793927938
+          ],
+          [
+            68.55708395596594,
+            298.0323969386518
+          ],
+          [
+            66.9211270287633,
+            240.32251199241728
+          ],
+          [
+            49.63540390599519,
+            172.83215990755707
+          ],
+          [
+            49.60594198200852,
+            175.16229499597102
+          ],
+          [
+            56.66456592734903,
+            204.04206588864326
+          ],
+          [
+            49.54030900262296,
+            172.53514705225825
+          ]
+        ]
+      },
+      "summary": {
+        "padded": {
+          "batch_ttft_p50_ms": 61.274297535419464,
+          "batch_ttft_p95_ms": 118.42393199913204,
+          "end_to_end_p50_ms": 216.10980154946446,
+          "useful_prefill_tokens_per_s": 8355.868946584653
+        },
+        "packed": {
+          "batch_ttft_p50_ms": 50.52854248788208,
+          "batch_ttft_p95_ms": 62.47552402783185,
+          "end_to_end_p50_ms": 206.69010048732162,
+          "useful_prefill_tokens_per_s": 10132.886776276786
+        },
+        "auto": {
+          "batch_ttft_p50_ms": 59.462571516633034,
+          "batch_ttft_p95_ms": 68.55708395596594,
+          "end_to_end_p50_ms": 221.83029097504914,
+          "useful_prefill_tokens_per_s": 8610.458426890973
+        }
+      },
+      "gpus_before": [
+        "0, NVIDIA GeForce RTX 4090, 100 %, 1463 MiB",
+        "1, NVIDIA GeForce RTX 4090, 100 %, 2893 MiB",
+        "2, NVIDIA GeForce RTX 4090, 100 %, 2913 MiB"
+      ],
+      "gpus_after": [
+        "0, NVIDIA GeForce RTX 4090, 100 %, 1463 MiB",
+        "1, NVIDIA GeForce RTX 4090, 100 %, 2913 MiB",
+        "2, NVIDIA GeForce RTX 4090, 0 %, 415 MiB"
+      ]
+    },
+    {
+      "lengths": [
+        72,
+        98,
+        161,
+        181
+      ],
+      "checks": [
+        {
+          "seed": 113,
+          "method": "padded",
+          "selected": "padded",
+          "backend": "sdpa",
+          "sequences_equal": [
+            true,
+            true,
+            true,
+            true
+          ],
+          "tokens_equal": 16,
+          "first_token_equal": 4,
+          "max_first_logit_error": 0.041015625
+        },
+        {
+          "seed": 113,
+          "method": "packed",
+          "selected": "packed",
+          "backend": "torch-varlen-flash",
+          "sequences_equal": [
+            true,
+            true,
+            true,
+            true
+          ],
+          "tokens_equal": 16,
+          "first_token_equal": 4,
+          "max_first_logit_error": 0.03125
+        },
+        {
+          "seed": 113,
+          "method": "auto",
+          "selected": "packed",
+          "backend": "torch-varlen-flash",
+          "sequences_equal": [
+            true,
+            true,
+            true,
+            true
+          ],
+          "tokens_equal": 16,
+          "first_token_equal": 4,
+          "max_first_logit_error": 0.03125
+        },
+        {
+          "seed": 114,
+          "method": "padded",
+          "selected": "padded",
+          "backend": "sdpa",
+          "sequences_equal": [
+            true,
+            true,
+            true,
+            true
+          ],
+          "tokens_equal": 16,
+          "first_token_equal": 4,
+          "max_first_logit_error": 0.029296875
+        },
+        {
+          "seed": 114,
+          "method": "packed",
+          "selected": "packed",
+          "backend": "torch-varlen-flash",
+          "sequences_equal": [
+            true,
+            true,
+            true,
+            true
+          ],
+          "tokens_equal": 16,
+          "first_token_equal": 4,
+          "max_first_logit_error": 0.025390625
+        },
+        {
+          "seed": 114,
+          "method": "auto",
+          "selected": "packed",
+          "backend": "torch-varlen-flash",
+          "sequences_equal": [
+            true,
+            true,
+            true,
+            true
+          ],
+          "tokens_equal": 16,
+          "first_token_equal": 4,
+          "max_first_logit_error": 0.025390625
+        }
+      ],
+      "timings_ms": {
+        "padded": [
+          [
+            50.905051990412176,
+            176.75589199643582
+          ],
+          [
+            50.93110795132816,
+            174.3848118931055
+          ],
+          [
+            51.003779051825404,
+            174.23894593957812
+          ],
+          [
+            50.90224195737392,
+            176.5508110402152
+          ],
+          [
+            50.81064801197499,
+            174.1095690522343
+          ],
+          [
+            46.16345802787691,
+            162.54931793082505
+          ],
+          [
+            46.22182005550712,
+            162.5595031073317
+          ],
+          [
+            46.08730797190219,
+            162.42556099314243
+          ],
+          [
+            48.62134298309684,
+            164.7256789728999
+          ],
+          [
+            48.61321789212525,
+            172.00976994354278
+          ],
+          [
+            50.81916693598032,
+            171.81627999525517
+          ],
+          [
+            298.57427498791367,
+            417.9579389747232
+          ]
+        ],
+        "packed": [
+          [
+            45.60093500185758,
+            171.260436065495
+          ],
+          [
+            45.47002399340272,
+            171.17463296744972
+          ],
+          [
+            45.49706692341715,
+            171.05281399562955
+          ],
+          [
+            43.23372803628445,
+            168.6013180296868
+          ],
+          [
+            45.679131988435984,
+            168.82033995352685
+          ],
+          [
+            43.248462956398726,
+            164.12618791218847
+          ],
+          [
+            40.88184901047498,
+            157.12826303206384
+          ],
+          [
+            40.90028500650078,
+            157.04047004692256
+          ],
+          [
+            41.01890802849084,
+            157.14032901450992
+          ],
+          [
+            43.166599003598094,
+            166.4218360092491
+          ],
+          [
+            43.28636301215738,
+            166.5219080168754
+          ],
+          [
+            43.1412470061332,
+            166.40587302390486
+          ]
+        ],
+        "auto": [
+          [
+            45.66615493968129,
+            171.27852700650692
+          ],
+          [
+            43.24826702941209,
+            166.65967705193907
+          ],
+          [
+            45.60193698853254,
+            171.2153380503878
+          ],
+          [
+            45.68498698063195,
+            171.17427894845605
+          ],
+          [
+            45.48843402881175,
+            173.35013602860272
+          ],
+          [
+            43.24589797761291,
+            164.23382004722953
+          ],
+          [
+            43.21394197177142,
+            161.7570329690352
+          ],
+          [
+            40.86036002263427,
+            157.04441303387284
+          ],
+          [
+            43.210220988839865,
+            161.7870139889419
+          ],
+          [
+            43.269306886941195,
+            164.20041292440146
+          ],
+          [
+            43.13071700744331,
+            161.76587692461908
+          ],
+          [
+            43.265201966278255,
+            164.34087592642754
+          ]
+        ]
+      },
+      "summary": {
+        "padded": {
+          "batch_ttft_p50_ms": 50.814907473977655,
+          "batch_ttft_p95_ms": 298.57427498791367,
+          "end_to_end_p50_ms": 173.05966949788854,
+          "useful_prefill_tokens_per_s": 10075.783376407711
+        },
+        "packed": {
+          "batch_ttft_p50_ms": 43.241095496341586,
+          "batch_ttft_p95_ms": 45.679131988435984,
+          "end_to_end_p50_ms": 166.47187201306224,
+          "useful_prefill_tokens_per_s": 11840.58808230975
+        },
+        "auto": {
+          "batch_ttft_p50_ms": 43.25673449784517,
+          "batch_ttft_p95_ms": 45.68498698063195,
+          "end_to_end_p50_ms": 164.28734798682854,
+          "useful_prefill_tokens_per_s": 11836.307246574639
+        }
+      },
+      "gpus_before": [
+        "0, NVIDIA GeForce RTX 4090, 100 %, 1463 MiB",
+        "1, NVIDIA GeForce RTX 4090, 100 %, 2913 MiB",
+        "2, NVIDIA GeForce RTX 4090, 0 %, 415 MiB"
+      ],
+      "gpus_after": [
+        "0, NVIDIA GeForce RTX 4090, 100 %, 1463 MiB",
+        "1, NVIDIA GeForce RTX 4090, 100 %, 2567 MiB",
+        "2, NVIDIA GeForce RTX 4090, 0 %, 441 MiB"
+      ]
+    },
+    {
+      "lengths": [
+        8,
+        20,
+        40,
+        444
+      ],
+      "checks": [
+        {
+          "seed": 113,
+          "method": "padded",
+          "selected": "padded",
+          "backend": "sdpa",
+          "sequences_equal": [
+            true,
+            true,
+            true,
+            true
+          ],
+          "tokens_equal": 16,
+          "first_token_equal": 4,
+          "max_first_logit_error": 0.0625
+        },
+        {
+          "seed": 113,
+          "method": "packed",
+          "selected": "packed",
+          "backend": "torch-varlen-flash",
+          "sequences_equal": [
+            true,
+            true,
+            true,
+            true
+          ],
+          "tokens_equal": 16,
+          "first_token_equal": 4,
+          "max_first_logit_error": 0.0673828125
+        },
+        {
+          "seed": 113,
+          "method": "auto",
+          "selected": "packed",
+          "backend": "torch-varlen-flash",
+          "sequences_equal": [
+            true,
+            true,
+            true,
+            true
+          ],
+          "tokens_equal": 16,
+          "first_token_equal": 4,
+          "max_first_logit_error": 0.0673828125
+        },
+        {
+          "seed": 114,
+          "method": "padded",
+          "selected": "padded",
+          "backend": "sdpa",
+          "sequences_equal": [
+            true,
+            true,
+            true,
+            true
+          ],
+          "tokens_equal": 16,
+          "first_token_equal": 4,
+          "max_first_logit_error": 0.03515625
+        },
+        {
+          "seed": 114,
+          "method": "packed",
+          "selected": "packed",
+          "backend": "torch-varlen-flash",
+          "sequences_equal": [
+            true,
+            true,
+            true,
+            true
+          ],
+          "tokens_equal": 16,
+          "first_token_equal": 4,
+          "max_first_logit_error": 0.0244140625
+        },
+        {
+          "seed": 114,
+          "method": "auto",
+          "selected": "packed",
+          "backend": "torch-varlen-flash",
+          "sequences_equal": [
+            true,
+            true,
+            true,
+            true
+          ],
+          "tokens_equal": 16,
+          "first_token_equal": 4,
+          "max_first_logit_error": 0.0244140625
+        }
+      ],
+      "timings_ms": {
+        "padded": [
+          [
+            40.58945900760591,
+            153.62439199816436
+          ],
+          [
+            40.94452201388776,
+            156.31453809328377
+          ],
+          [
+            41.21340089477599,
+            157.4477719841525
+          ],
+          [
+            41.060235002078116,
+            156.40725602861494
+          ],
+          [
+            40.63189192675054,
+            155.00346990302205
+          ],
+          [
+            40.51854205317795,
+            155.3489420330152
+          ],
+          [
+            40.29162705410272,
+            154.577951063402
+          ],
+          [
+            41.38540802523494,
+            154.1041909949854
+          ],
+          [
+            41.841782978735864,
+            159.2455570353195
+          ],
+          [
+            41.65700706653297,
+            159.32074701413512
+          ],
+          [
+            41.15683399140835,
+            156.6948579857126
+          ],
+          [
+            40.649403934367,
+            155.2615569671616
+          ]
+        ],
+        "packed": [
+          [
+            34.18403002433479,
+            147.16372406110168
+          ],
+          [
+            35.43994599021971,
+            151.12382103689015
+          ],
+          [
+            35.78739403747022,
+            152.35990204382688
+          ],
+          [
+            36.927962908521295,
+            153.65188790019602
+          ],
+          [
+            34.82160798739642,
+            148.27264100313187
+          ],
+          [
+            34.03377893846482,
+            145.37954493425786
+          ],
+          [
+            35.60849197674543,
+            149.62800696957856
+          ],
+          [
+            35.49495991319418,
+            150.6334039149806
+          ],
+          [
+            36.26446798443794,
+            153.8290489697829
+          ],
+          [
+            36.30200994666666,
+            153.13790296204388
+          ],
+          [
+            35.32152494881302,
+            148.22033897507936
+          ],
+          [
+            34.9702590610832,
+            149.62408901192248
+          ]
+        ],
+        "auto": [
+          [
+            34.28360994439572,
+            149.3911639554426
+          ],
+          [
+            36.84548498131335,
+            150.98869998473674
+          ],
+          [
+            35.816494026221335,
+            151.94052795413882
+          ],
+          [
+            35.67126300185919,
+            152.2035540547222
+          ],
+          [
+            34.68943096231669,
+            148.93022901378572
+          ],
+          [
+            34.58322200458497,
+            146.3415449252352
+          ],
+          [
+            35.36003897897899,
+            150.9585150051862
+          ],
+          [
+            34.56964995712042,
+            149.39617202617228
+          ],
+          [
+            36.32164094597101,
+            154.71388096921146
+          ],
+          [
+            35.97146598622203,
+            151.8514499766752
+          ],
+          [
+            35.72403301950544,
+            152.0767949987203
+          ],
+          [
+            34.90330500062555,
+            148.57008890248835
+          ]
+        ]
+      },
+      "summary": {
+        "padded": {
+          "batch_ttft_p50_ms": 41.00237850798294,
+          "batch_ttft_p95_ms": 41.841782978735864,
+          "end_to_end_p50_ms": 155.83174006314948,
+          "useful_prefill_tokens_per_s": 12487.08047266859
+        },
+        "packed": {
+          "batch_ttft_p50_ms": 35.467452951706946,
+          "batch_ttft_p95_ms": 36.927962908521295,
+          "end_to_end_p50_ms": 150.13070544227958,
+          "useful_prefill_tokens_per_s": 14435.770188999684
+        },
+        "auto": {
+          "batch_ttft_p50_ms": 35.51565099041909,
+          "batch_ttft_p95_ms": 36.84548498131335,
+          "end_to_end_p50_ms": 150.97360749496147,
+          "useful_prefill_tokens_per_s": 14416.179507398587
+        }
+      },
+      "gpus_before": [
+        "0, NVIDIA GeForce RTX 4090, 100 %, 1463 MiB",
+        "1, NVIDIA GeForce RTX 4090, 100 %, 2567 MiB",
+        "2, NVIDIA GeForce RTX 4090, 0 %, 441 MiB"
+      ],
+      "gpus_after": [
+        "0, NVIDIA GeForce RTX 4090, 100 %, 1463 MiB",
+        "1, NVIDIA GeForce RTX 4090, 22 %, 2031 MiB",
+        "2, NVIDIA GeForce RTX 4090, 0 %, 1053 MiB"
+      ]
+    },
+    {
+      "lengths": [
+        92,
+        104,
+        116,
+        120,
+        132,
+        140,
+        152,
+        168
+      ],
+      "checks": [
+        {
+          "seed": 113,
+          "method": "padded",
+          "selected": "padded",
+          "backend": "sdpa",
+          "sequences_equal": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true
+          ],
+          "tokens_equal": 32,
+          "first_token_equal": 8,
+          "max_first_logit_error": 0.046875
+        },
+        {
+          "seed": 113,
+          "method": "packed",
+          "selected": "packed",
+          "backend": "torch-varlen-flash",
+          "sequences_equal": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            false,
+            true
+          ],
+          "tokens_equal": 29,
+          "first_token_equal": 8,
+          "max_first_logit_error": 0.0513916015625
+        },
+        {
+          "seed": 113,
+          "method": "auto",
+          "selected": "packed",
+          "backend": "torch-varlen-flash",
+          "sequences_equal": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            false,
+            true
+          ],
+          "tokens_equal": 29,
+          "first_token_equal": 8,
+          "max_first_logit_error": 0.0513916015625
+        },
+        {
+          "seed": 114,
+          "method": "padded",
+          "selected": "padded",
+          "backend": "sdpa",
+          "sequences_equal": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true
+          ],
+          "tokens_equal": 32,
+          "first_token_equal": 8,
+          "max_first_logit_error": 0.03515625
+        },
+        {
+          "seed": 114,
+          "method": "packed",
+          "selected": "packed",
+          "backend": "torch-varlen-flash",
+          "sequences_equal": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true
+          ],
+          "tokens_equal": 32,
+          "first_token_equal": 8,
+          "max_first_logit_error": 0.041015625
+        },
+        {
+          "seed": 114,
+          "method": "auto",
+          "selected": "packed",
+          "backend": "torch-varlen-flash",
+          "sequences_equal": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true
+          ],
+          "tokens_equal": 32,
+          "first_token_equal": 8,
+          "max_first_logit_error": 0.041015625
+        }
+      ],
+      "timings_ms": {
+        "padded": [
+          [
+            42.03403799328953,
+            157.0682239253074
+          ],
+          [
+            61.12897803541273,
+            181.24821700621396
+          ],
+          [
+            40.418504970148206,
+            158.74388092197478
+          ],
+          [
+            39.777574012987316,
+            157.61049801949412
+          ],
+          [
+            40.96525604836643,
+            155.23178200237453
+          ],
+          [
+            39.618748938664794,
+            152.33992994762957
+          ],
+          [
+            38.692193920724094,
+            165.88009300176054
+          ],
+          [
+            86.60739997867495,
+            276.13692998420447
+          ],
+          [
+            56.762551073916256,
+            249.29031601641327
+          ],
+          [
+            70.31675602775067,
+            290.0159549899399
+          ],
+          [
+            89.22928606625646,
+            315.87905203923583
+          ],
+          [
+            41.21414804831147,
+            160.23430600762367
+          ]
+        ],
+        "packed": [
+          [
+            35.55460704956204,
+            183.04641300346702
+          ],
+          [
+            36.81135503575206,
+            278.8209649734199
+          ],
+          [
+            67.4788459436968,
+            233.02588099613786
+          ],
+          [
+            33.5149799939245,
+            144.89988703280687
+          ],
+          [
+            36.6086270660162,
+            152.04557206016034
+          ],
+          [
+            35.40110704489052,
+            150.08688904345036
+          ],
+          [
+            51.13638797774911,
+            238.69221506174654
+          ],
+          [
+            35.43231403455138,
+            248.69605607818812
+          ],
+          [
+            82.21105101983994,
+            266.0536920884624
+          ],
+          [
+            67.50109302811325,
+            275.42136900592595
+          ],
+          [
+            59.94928092695773,
+            286.49004094768316
+          ],
+          [
+            69.0838840091601,
+            237.3752270359546
+          ]
+        ],
+        "auto": [
+          [
+            83.40022701304406,
+            313.646070077084
+          ],
+          [
+            36.12718603108078,
+            153.04901904892176
+          ],
+          [
+            53.13128896523267,
+            214.05428601428866
+          ],
+          [
+            34.19813490472734,
+            149.01577692944556
+          ],
+          [
+            36.300572915934026,
+            151.46659198217094
+          ],
+          [
+            37.502198945730925,
+            199.55619901884347
+          ],
+          [
+            35.577540984377265,
+            228.63387200050056
+          ],
+          [
+            67.04274599906057,
+            224.42003001924604
+          ],
+          [
+            67.3746980028227,
+            309.7150289686397
+          ],
+          [
+            36.17442096583545,
+            228.6590120056644
+          ],
+          [
+            99.78327504359186,
+            261.429489008151
+          ],
+          [
+            83.13985401764512,
+            315.144679043442
+          ]
+        ]
+      },
+      "summary": {
+        "padded": {
+          "batch_ttft_p50_ms": 41.6240930208005,
+          "batch_ttft_p95_ms": 89.22928606625646,
+          "end_to_end_p50_ms": 163.0571995046921,
+          "useful_prefill_tokens_per_s": 24601.13664190314
+        },
+        "packed": {
+          "batch_ttft_p50_ms": 43.973871506750584,
+          "batch_ttft_p95_ms": 82.21105101983994,
+          "end_to_end_p50_ms": 238.03372104885057,
+          "useful_prefill_tokens_per_s": 23286.555513830575
+        },
+        "auto": {
+          "batch_ttft_p50_ms": 45.3167439554818,
+          "batch_ttft_p95_ms": 99.78327504359186,
+          "end_to_end_p50_ms": 226.5269510098733,
+          "useful_prefill_tokens_per_s": 22596.504307678322
+        }
+      },
+      "gpus_before": [
+        "0, NVIDIA GeForce RTX 4090, 100 %, 1463 MiB",
+        "1, NVIDIA GeForce RTX 4090, 22 %, 2031 MiB",
+        "2, NVIDIA GeForce RTX 4090, 0 %, 1053 MiB"
+      ],
+      "gpus_after": [
+        "0, NVIDIA GeForce RTX 4090, 100 %, 1463 MiB",
+        "1, NVIDIA GeForce RTX 4090, 20 %, 2031 MiB",
+        "2, NVIDIA GeForce RTX 4090, 0 %, 1055 MiB"
+      ]
+    },
+    {
+      "lengths": [
+        16,
+        32,
+        48,
+        64,
+        80,
+        96,
+        176,
+        512
+      ],
+      "checks": [
+        {
+          "seed": 113,
+          "method": "padded",
+          "selected": "padded",
+          "backend": "sdpa",
+          "sequences_equal": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true
+          ],
+          "tokens_equal": 32,
+          "first_token_equal": 8,
+          "max_first_logit_error": 0.0380859375
+        },
+        {
+          "seed": 113,
+          "method": "packed",
+          "selected": "packed",
+          "backend": "torch-varlen-flash",
+          "sequences_equal": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true
+          ],
+          "tokens_equal": 32,
+          "first_token_equal": 8,
+          "max_first_logit_error": 0.05078125
+        },
+        {
+          "seed": 113,
+          "method": "auto",
+          "selected": "packed",
+          "backend": "torch-varlen-flash",
+          "sequences_equal": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true
+          ],
+          "tokens_equal": 32,
+          "first_token_equal": 8,
+          "max_first_logit_error": 0.05078125
+        },
+        {
+          "seed": 114,
+          "method": "padded",
+          "selected": "padded",
+          "backend": "sdpa",
+          "sequences_equal": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true
+          ],
+          "tokens_equal": 32,
+          "first_token_equal": 8,
+          "max_first_logit_error": 0.033203125
+        },
+        {
+          "seed": 114,
+          "method": "packed",
+          "selected": "packed",
+          "backend": "torch-varlen-flash",
+          "sequences_equal": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true
+          ],
+          "tokens_equal": 32,
+          "first_token_equal": 8,
+          "max_first_logit_error": 0.033203125
+        },
+        {
+          "seed": 114,
+          "method": "auto",
+          "selected": "packed",
+          "backend": "torch-varlen-flash",
+          "sequences_equal": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true
+          ],
+          "tokens_equal": 32,
+          "first_token_equal": 8,
+          "max_first_logit_error": 0.033203125
+        }
+      ],
+      "timings_ms": {
+        "padded": [
+          [
+            54.904449032619596,
+            168.78442093729973
+          ],
+          [
+            55.650451919063926,
+            173.7084590131417
+          ],
+          [
+            58.46623098477721,
+            183.2975110737607
+          ],
+          [
+            55.33417395781726,
+            171.96180892642587
+          ],
+          [
+            55.16702705062926,
+            173.52253594435751
+          ],
+          [
+            54.907401907257736,
+            168.42735290993005
+          ],
+          [
+            55.21838099230081,
+            168.82521798834205
+          ],
+          [
+            54.842940997332335,
+            166.0024580778554
+          ],
+          [
+            55.02134095877409,
+            169.06857991125435
+          ],
+          [
+            55.067427922040224,
+            169.8953389422968
+          ],
+          [
+            55.453725974075496,
+            174.4250429328531
+          ],
+          [
+            55.38417003117502,
+            170.25761900004
+          ]
+        ],
+        "packed": [
+          [
+            34.52806710265577,
+            149.8154840664938
+          ],
+          [
+            35.76402005273849,
+            155.69100703578442
+          ],
+          [
+            36.18938405998051,
+            154.32005608454347
+          ],
+          [
+            36.60837700590491,
+            153.63400906790048
+          ],
+          [
+            36.10605304129422,
+            152.54444896709174
+          ],
+          [
+            35.069145960733294,
+            150.34842398017645
+          ],
+          [
+            35.489576985128224,
+            151.12797799520195
+          ],
+          [
+            34.35843205079436,
+            146.92162000574172
+          ],
+          [
+            33.60838000662625,
+            144.06068006064743
+          ],
+          [
+            34.540310967713594,
+            146.97216590866446
+          ],
+          [
+            36.130103981122375,
+            153.96300295833498
+          ],
+          [
+            35.74578301049769,
+            151.98461094405502
+          ]
+        ],
+        "auto": [
+          [
+            35.515411058440804,
+            151.06147003825754
+          ],
+          [
+            35.62619199510664,
+            151.39705291949213
+          ],
+          [
+            37.05248492769897,
+            158.11769396532327
+          ],
+          [
+            35.92806390952319,
+            154.25759099889547
+          ],
+          [
+            35.157736972905695,
+            152.14080992154777
+          ],
+          [
+            35.70600494276732,
+            151.86226298101246
+          ],
+          [
+            33.66417810320854,
+            148.3313370263204
+          ],
+          [
+            34.12747208494693,
+            147.28488505352288
+          ],
+          [
+            35.37538507953286,
+            150.7652320433408
+          ],
+          [
+            33.909660996869206,
+            144.28682497236878
+          ],
+          [
+            35.31223000027239,
+            151.46476007066667
+          ],
+          [
+            35.54160799831152,
+            152.93878503143787
+          ]
+        ]
+      },
+      "summary": {
+        "padded": {
+          "batch_ttft_p50_ms": 55.19270402146503,
+          "batch_ttft_p95_ms": 58.46623098477721,
+          "end_to_end_p50_ms": 170.0764789711684,
+          "useful_prefill_tokens_per_s": 18553.176876453734
+        },
+        "packed": {
+          "batch_ttft_p50_ms": 35.61767999781296,
+          "batch_ttft_p95_ms": 36.60837700590491,
+          "end_to_end_p50_ms": 151.55629446962848,
+          "useful_prefill_tokens_per_s": 28749.766971427587
+        },
+        "auto": {
+          "batch_ttft_p50_ms": 35.44539806898683,
+          "batch_ttft_p95_ms": 37.05248492769897,
+          "end_to_end_p50_ms": 151.4309064950794,
+          "useful_prefill_tokens_per_s": 28889.50486624539
+        }
+      },
+      "gpus_before": [
+        "0, NVIDIA GeForce RTX 4090, 100 %, 1463 MiB",
+        "1, NVIDIA GeForce RTX 4090, 20 %, 2031 MiB",
+        "2, NVIDIA GeForce RTX 4090, 0 %, 1055 MiB"
+      ],
+      "gpus_after": [
+        "0, NVIDIA GeForce RTX 4090, 100 %, 1463 MiB",
+        "1, NVIDIA GeForce RTX 4090, 28 %, 2453 MiB",
+        "2, NVIDIA GeForce RTX 4090, 0 %, 1055 MiB"
+      ]
+    }
+  ]
+}

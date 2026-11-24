@@ -13,6 +13,8 @@ python scripts/benchmark_batch_generation.py --model /path/to/Qwen3-0.6B --devic
 
 CUDA 打包路径使用 PyTorch 的 `torch.nn.attention.varlen`，在 PyTorch 2.11 上测试，要求支持 Flash Attention 的 GPU 和 FP16 或 BF16。CPU 可用 `--device cpu --dtype float32` 检查分段 SDPA 参考实现。生成采用固定步数的贪心解码。批首 token 延迟从输入 token 已在设备上开始，计入输入整理、缓存写回和整批首次采样，排除排队与分词。
 
+在支持打包的 GPU 上可用 `--method auto --pack-at-padding 0.20` 试验基于填充占比的选择，程序返回实际执行的方法。RTX 4090 上一个 8 请求长短混合批的首 token 中位耗时从 89.28 ms 降至 37.36 ms，8 个等长请求则从 31.00 ms 升至 35.38 ms。20% 阈值在六种新形状中选中四次实测较快的路径，使用者需针对目标负载校准。[性能、正确性与阈值验证](docs/experiments/variable-batch-4090/README.md)
+
 ## 核心成果
 
 | 模块 | 实现与验收 |
