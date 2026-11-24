@@ -56,11 +56,15 @@ def load_model(args):
 
 
 def parser():
-    root = argparse.ArgumentParser(description="Pro_Ai: single-GPU inference, KV cache and Triton experiments")
+    root = argparse.ArgumentParser(description="Qwen Prefill Lab: single-GPU inference and variable-length batches")
     commands = root.add_subparsers(dest="command", required=True)
     commands.add_parser("env", help="Print runtime, GPU and source provenance")
     inspect = commands.add_parser("inspect", help="Inspect weights, logits and per-layer cache")
     generate = commands.add_parser("generate", help="Run an explicit greedy loop")
+    batch = commands.add_parser("generate-batch", help="Generate from variable-length prompts in input order")
+    batch.add_argument("--prompt", action="append", required=True)
+    batch.add_argument("--method", choices=("padded", "bucketed", "packed"), required=True)
+    batch.add_argument("--new-tokens", type=int, default=16)
     check = commands.add_parser("check", help="Teacher-forced cache correctness and precision diagnostics")
     bench = commands.add_parser("benchmark", help="Controlled, interleaved cache/norm benchmark")
     profile = commands.add_parser("profile", help="Export a separate diagnostic trace and operator summary")
@@ -68,7 +72,7 @@ def parser():
     report = commands.add_parser("report", help="Create Markdown, CSV, raw JSON and figures")
     suite = commands.add_parser("suite", help="FP32 correctness gate, benchmark, traces and report")
     norm = commands.add_parser("kernel-benchmark", help="Triton vs torch eager vs torch.compile RMSNorm")
-    for command in (inspect, generate, check, bench, profile, suite):
+    for command in (inspect, generate, batch, check, bench, profile, suite):
         add_model_arguments(command)
     for command in (inspect, check, profile):
         command.add_argument("--input-length", type=int, default=128)
@@ -142,7 +146,19 @@ def main():
         return
     model = load_model(args)
     mode = "no_cache" if getattr(args, "no_cache", False) else getattr(args, "cache_mode", "dynamic")
-    if args.command == "generate":
+    if args.command == "generate-batch":
+        from transformers import AutoTokenizer
+        from .prefill import generate_batch
+        tokenizer = AutoTokenizer.from_pretrained(args.model)
+        sequences = [tokenizer.apply_chat_template(
+            [{"role": "user", "content": prompt}], add_generation_prompt=True,
+            enable_thinking=False, return_tensors="pt",
+        )[0].to(args.device) for prompt in args.prompt]
+        result = generate_batch(model, sequences, args.method, args.new_tokens)
+        print(json.dumps(dict(outputs=tokenizer.batch_decode(result.token_ids, skip_special_tokens=True),
+                              backend=result.prefill_backend, batch_first_token_ms=result.first_token_ms,
+                              total_ms=result.total_ms), ensure_ascii=False, indent=2))
+    elif args.command == "generate":
         from transformers import AutoTokenizer
         tokenizer = AutoTokenizer.from_pretrained(args.model)
         text = tokenizer.apply_chat_template(

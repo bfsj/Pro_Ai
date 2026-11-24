@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "pro-ai"
 version = "0.2.0"
-description = "Single-GPU LLM inference: controlled KV cache experiments, Triton RMSNorm and reproducible reports"
+description = "Qwen Prefill Lab: variable-length batch generation, single-GPU inference and controlled kernel benchmarks"
 readme = "README.md"
 requires-python = ">=3.10"
 dependencies = [

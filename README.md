@@ -1,6 +1,17 @@
-# Pro_Ai · Single-GPU LLM Inference Lab
+# Qwen Prefill Lab · 单卡变长批推理
 
-单卡 LLM 推理与性能分析实验项目。围绕同一个 dense Qwen3 模型，完成 **推理循环 → 缓存正确性 → 受控性能实验 → Triton 算子 → 端到端验证 → 可复现报告**。
+同一张 GPU 收到长短不一的提示词，按最长输入补齐、先按长度分桶、只计算有效 token，哪种方式能更快地返回首 token？本项目在 Qwen3 上实现三条可接续解码的路径，并用逐请求完整重算检查输出。
+
+### 运行变长批生成
+
+```bash
+python -m inference_lab generate-batch --model /path/to/Qwen3-0.6B --device cuda --dtype float16 --method packed --new-tokens 16 --prompt "什么是显存？" --prompt "解释一下为什么同一批里的长提示词会影响短请求。"
+python scripts/benchmark_batch_generation.py --model /path/to/Qwen3-0.6B --device cuda --dtype float16 --output batch-run.json
+```
+
+`generate-batch` 按输入顺序返回每条请求的文本。补齐路径使用左填充；分桶路径按长度分到上界为二次幂的桶中，各桶独立解码；打包路径将有效 token 合并，按每条请求重置 RoPE 位置，CUDA 下每层调用一次因果变长注意力，再按原请求位置将 K/V 写入支持批量解码的稠密缓存。这样减少的是 Prefill 计算，稠密解码缓存仍有填充开销。
+
+CUDA 打包路径使用 PyTorch 的 `torch.nn.attention.varlen`，在 PyTorch 2.11 上测试，要求支持 Flash Attention 的 GPU 和 FP16 或 BF16。CPU 可用 `--device cpu --dtype float32` 检查分段 SDPA 参考实现。生成采用固定步数的贪心解码。批首 token 延迟从输入 token 已在设备上开始，计入输入整理、缓存写回和整批首次采样，排除排队与分词。
 
 ## 核心成果
 
@@ -13,7 +24,13 @@
 | 实验交付 | 一条 suite 命令输出正确性 JSON、原始测量、CSV、曲线、Markdown 报告和 Profiler trace |
 | 工程验证 | 离线微型 Qwen3 CPU 测试、条件 GPU 测试、GitHub Actions；无须下载模型即可测逻辑 |
 
-**范围：** 单 GPU、等长无 padding、固定输出长度、忽略 EOS。尚未实现生产服务、在线调度、多卡训练或多租户隔离。StaticCache / DynamicCache 来自 Transformers；本项目的工作在于推理执行、策略集成、实验设计、算子和验证。
+经典缓存对照使用等长输入，固定输出长度并忽略 EOS。StaticCache / DynamicCache 来自 Transformers。上面的 `generate-batch` 支持变长输入，以下早期实验单独测量 Prefill。
+
+### 早期变长 Prefill 对照
+
+在已安装本项目的环境执行 `python scripts/benchmark_prefill.py --model /path/to/Qwen3-0.6B --device cpu --output prefill.json`。GPU 可使用 `--device cuda`。每种方法按原请求顺序输出末位 logits，以逐条执行为参考。Packed 路径合并有效 token 做投影和 MLP，每条序列重置位置并独立调用因果 SDPA。分桶使用上取整至二次幂的长度分组。三组输入均含 256 个有效 token，分别覆盖等长、轻度和高度不均衡的情况。测量包含整理输入与恢复输出，排除模型加载、tokenizer 和排队。每条路径先预热和校验，再轮换顺序测 21 次。P95 使用最近秩方法。
+
+本地 Qwen3-0.6B、CPU 四线程、FP32 实测的有效 token/s 如下。输入长度为 8、64、24、160 时，统一补齐、分桶、Packed 分别为 108、212、272。四条等长 64 的输入分别为 291、290、286。[完整计时与误差](docs/experiments/variable-prefill-cpu.json) · [美团有界生成与 Packed Prefill 实践](https://tech.meituan.com/2026/10/15/Small-Language-Model-in-meituan.html)
 
 真实结果已收录到 [实验目录](docs/experiments/README.md)。在 RTX 4090 / Qwen3-0.6B 上：
 
